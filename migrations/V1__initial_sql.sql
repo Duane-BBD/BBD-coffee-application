@@ -1,19 +1,20 @@
 create table office(
-officeID int NOT NULL,
-officeName varchar(255) NOT NULL,
-PRIMARY KEY(officeID)
+    officeID int NOT NULL,
+    officeName varchar(255) NOT NULL,
+    PRIMARY KEY(officeID)
 );
  
  create table userStatus(
-userStatusID INT AUTO_INCREMENT NOT NULL,
-statusValue VARCHAR(255) NOT NULL,
-PRIMARY KEY(userStatusID)
+    userStatusID INT AUTO_INCREMENT NOT NULL,
+    statusValue VARCHAR(255) NOT NULL,
+    PRIMARY KEY(userStatusID)
 );
 
 CREATE TABLE userType(
-userTypeID INT AUTO_INCREMENT NOT NULL,
-userTypeValue VARCHAR(255) NOT NULL,
-primary key(userTypeID));
+    userTypeID INT AUTO_INCREMENT NOT NULL,
+    userTypeValue VARCHAR(255) NOT NULL,
+    primary key(userTypeID)
+);
  
 CREATE TABLE appUser (
     userID INT NOT NULL,
@@ -32,28 +33,30 @@ CREATE TABLE appUser (
 );
  
 CREATE TABLE product(
-productID INT AUTO_INCREMENT NOT NULL,
-productName VARCHAR(255) NOT NULL,
-PRIMARY KEY(productID));
+    productID INT AUTO_INCREMENT NOT NULL,
+    productName VARCHAR(255) NOT NULL,
+    PRIMARY KEY(productID)
+);
  
  CREATE TABLE orderStatus(
-orderStatusID INT AUTO_INCREMENT NOT NULL,
-orderStatusValue VARCHAR(255) NOT NULL,
-PRIMARY KEY(orderStatusID));
+    orderStatusID INT AUTO_INCREMENT NOT NULL,
+    orderStatusValue VARCHAR(255) NOT NULL,
+    PRIMARY KEY(orderStatusID)
+);
  
 CREATE TABLE orderList(
-orderID INT AUTO_INCREMENT NOT NULL ,
-productID INT NOT NULL,
-orderStatusID INT NOT NULL,
-quantity INT NOT NULL,
-userID INT NOT NULL,
-timeForBan TIMESTAMP NULL,
-PRIMARY KEY(orderID),
-CONSTRAINT FK_ProductOrderList FOREIGN KEY (productID) REFERENCES product(productID),
-CONSTRAINT FK_OrderStatusOrderList FOREIGN KEY (orderStatusID) REFERENCES orderStatus(orderStatusID),
-CONSTRAINT FK_AppUserOrderList FOREIGN KEY (userID) REFERENCES appUser(userID)
-ON UPDATE CASCADE
-ON DELETE CASCADE
+    orderID INT AUTO_INCREMENT NOT NULL ,
+    productID INT NOT NULL,
+    orderStatusID INT NOT NULL,
+    quantity INT NOT NULL,
+    userID INT NOT NULL,
+    timeForBan TIMESTAMP NULL,
+    PRIMARY KEY(orderID),
+    CONSTRAINT FK_ProductOrderList FOREIGN KEY (productID) REFERENCES product(productID),
+    CONSTRAINT FK_OrderStatusOrderList FOREIGN KEY (orderStatusID) REFERENCES orderStatus(orderStatusID),
+    CONSTRAINT FK_AppUserOrderList FOREIGN KEY (userID) REFERENCES appUser(userID)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 CREATE TABLE availability(
