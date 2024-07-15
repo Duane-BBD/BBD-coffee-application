@@ -1,4 +1,4 @@
-[environments.sample]
+[environments.development]
 url = "jdbc:mysql://localhost:3306/bbdcoffee"
 user = "root"
 
@@ -9,9 +9,9 @@ name = "bbd-coffee-app"
 [flyway]
 locations = [ "filesystem:migrations" ]
 mixed = true
-outOfOrder = true
+outOfOrder = false
 validateMigrationNaming = true
-environment = "sample"
+environment = "development"
 cleanDisabled = false
 
 [flyway.check]
