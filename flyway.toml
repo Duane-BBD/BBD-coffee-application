@@ -1,0 +1,29 @@
+[environments.sample]
+url = "jdbc:mysql://localhost:3306/bbdcoffee"
+user = "root"
+
+databaseType = "mysql"
+id = "657bb446-6f41-4fb6-94d5-f2bfc934ad6e"
+name = "bbd-coffee-app"
+
+[flyway]
+locations = [ "filesystem:migrations" ]
+mixed = true
+outOfOrder = true
+validateMigrationNaming = true
+environment = "sample"
+cleanDisabled = false
+
+[flyway.check]
+majorTolerance = 0
+
+[flywayDesktop]
+developmentEnvironment = "development"
+schemaModel = "schema-model"
+shadowEnvironment = "shadow"
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[redgateCompare.mysql.options.ignores]
+ignoreNewlinesInTextObjects = "off"
