@@ -23,7 +23,20 @@ INSERT INTO orderList(`orderID`, `productID`, `orderStatusID`, `quantity`, `user
 VALUES ('1', '1', '2', '2', '1025'), ('2', '5', '2', '2', '1025'), ('3', '2', '1', '1', '1028');
 
 
-CREATE VIEW completeOrder AS
-SELECT ol.orderID, ol.productID, p.productName, ol.orderStatusID, ol.quantity, ol.timeForBan
+
+Create view addToCart
+AS
+SELECT p.productID, p.productName, o.officeName
+FROM product p 
+JOIN availability a on p.productID=a.productID
+JOIN office o on a.officeID=o.officeID
+
+
+CREATE VIEW orderdetails
+AS 
+SELECT ol.orderID, ol.productID, p.productName, ol.quantity, ol.timeForBan,s.orderStatusValue
 FROM orderList ol
-JOIN product p ON ol.productID = p.productID;
+JOIN product p ON ol.productID = p.productID
+JOIN orderstatus s ON s.orderStatusID=ol.orderStatusID;
+
+ 
