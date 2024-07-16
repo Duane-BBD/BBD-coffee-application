@@ -10,15 +10,18 @@ BEGIN
         orderstatus.orderStatusValue,
         orderlist.quantity
     FROM
-        orderList 
-        INNER JOIN product  ON orderlist.productID = product.productID
-        INNER JOIN appuser  ON orderlist.userID = appuser.userID
-        INNER JOIN office  ON appuser.officeID= office.officeID
-        INNER JOIN orderStatus  ON orderlist.orderStatusID = orderstatus.orderStatusID;
+        orderList Ol
+        INNER JOIN product P
+        ON Ol.productID = P.productID
+        INNER JOIN appuser Au
+        ON Ol.userID = appuser.userID
+        INNER JOIN office O
+        ON Au.officeID= O.officeID
+        INNER JOIN orderStatus Os
+        ON Ol.orderStatusID = Os.orderStatusID;
 END $$
 
 DELIMITER;
-
 
 DELIMITER $$
 CREATE PROCEDURE GetProductAvailabilityByOffice(IN OfficeID INT)
@@ -30,3 +33,32 @@ BEGIN
     WHERE A.officeID = OfficeID;
 END $$ 
 DELIMITER;
+
+DELIMITER $$
+CREATE PROCEDURE CreateBaristaUser(
+    IN userID INT,
+    IN firstName VARCHAR(255),
+    IN lastName VARCHAR(255),
+    IN officeName VARCHAR(255),
+    IN statusValue VARCHAR(255)
+)
+BEGIN
+    DECLARE officeIDVal INT;
+    DECLARE userStatusIDVal INT;
+    DECLARE userTypeIDVal INT;
+    SELECT officeID INTO officeIDVal
+    FROM office O
+    WHERE officeName = O.officeName
+    LIMIT 1;
+    SELECT userStatusID INTO userStatusIDVal
+    FROM userStatus Us
+    WHERE statusValue = Us.statusValue
+    LIMIT 1;
+    SELECT userTypeID INTO userTypeIDVal
+    FROM userType
+    WHERE userTypeValue = 'barista'
+    LIMIT 1;
+    INSERT INTO appUser (userID, firstName, lastName, officeID, userStatusID, userTypeID)
+    VALUES (userID, firstName, lastName, officeIDVal, userStatusIDVal, userTypeIDVal);
+END $$
+DELIMITER ;
