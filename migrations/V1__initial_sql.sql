@@ -56,7 +56,6 @@ CREATE TABLE orderList(
     orderStatusID INT NOT NULL,
     quantity INT NOT NULL,
     userID INT NOT NULL,
-    timeForBan TIMESTAMP NULL,
     PRIMARY KEY(orderID),
     CONSTRAINT FK_ProductOrderList FOREIGN KEY (productID) REFERENCES product(productID)	
     ON UPDATE CASCADE,

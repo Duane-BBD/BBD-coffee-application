@@ -12,16 +12,13 @@ BEGIN
     DECLARE userTypeIDVal INT;
     SELECT officeID INTO officeIDVal
     FROM office O
-    WHERE officeName = O.officeName
-    LIMIT 1;
+    WHERE officeName = O.officeName;
     SELECT userStatusID INTO userStatusIDVal
     FROM userStatus Us
-    WHERE statusValue = Us.statusValue
-    LIMIT 1;
+    WHERE statusValue = Us.statusValue;
     SELECT userTypeID INTO userTypeIDVal
     FROM userType
-    WHERE userTypeValue = 'barista'
-    LIMIT 1;
+    WHERE userTypeValue = 'barista';
     INSERT INTO appUser (userID, firstName, lastName, officeID, userStatusID, userTypeID)
     VALUES (userID, firstName, lastName, officeIDVal, userStatusIDVal, userTypeIDVal);
 END $$
