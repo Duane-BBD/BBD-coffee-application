@@ -1,5 +1,5 @@
 create table office(
-    officeID int NOT NULL,
+    officeID INT AUTO_INCREMENT NOT NULL,
     officeName varchar(255) NOT NULL,
     PRIMARY KEY(officeID),
     UNIQUE(officeName)

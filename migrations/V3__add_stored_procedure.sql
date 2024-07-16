@@ -1,40 +1,4 @@
 DELIMITER $$
- 
-CREATE PROCEDURE GetOrderDetails()
-BEGIN
-    SELECT
-        orderlist.orderID,
-        product.productName,
-        office.officeName,
-        CONCAT(appuser.firstName, ' ', appuser.lastName) AS userName,
-        orderstatus.orderStatusValue,
-        orderlist.quantity
-    FROM
-        orderList Ol
-        INNER JOIN product P
-        ON Ol.productID = P.productID
-        INNER JOIN appuser Au
-        ON Ol.userID = appuser.userID
-        INNER JOIN office O
-        ON Au.officeID= O.officeID
-        INNER JOIN orderStatus Os
-        ON Ol.orderStatusID = Os.orderStatusID;
-END $$
-
-DELIMITER;
-
-DELIMITER $$
-CREATE PROCEDURE GetProductAvailabilityByOffice(IN OfficeID INT)
-BEGIN
-    SELECT P.productName, O.officeName
-    FROM availability A
-    INNER JOIN product P ON A.productID = P.productID
-    INNER JOIN office O ON A.officeID = O.officeID
-    WHERE A.officeID = OfficeID;
-END $$ 
-DELIMITER;
-
-DELIMITER $$
 CREATE PROCEDURE CreateBaristaUser(
     IN userID INT,
     IN firstName VARCHAR(255),

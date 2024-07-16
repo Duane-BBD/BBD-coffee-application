@@ -24,17 +24,26 @@ VALUES ('1', '2', '2', '1025'), ('5', '2', '2', '1025'), ('2', '1', '1', '1028')
 
 
 
-Create view availabilityView
+CREATE VIEW availabilityView
 AS
 SELECT p.productID, p.productName, o.officeName
 FROM product p
 INNER JOIN availability a on p.productID=a.productID
-INNER JOIN office o on a.officeID=o.officeID
+INNER JOIN office o on a.officeID=o.officeID;
 
 
-CREATE VIEW orderdetails
+CREATE VIEW orderDetails
 AS 
-SELECT ol.orderID, ol.productID, p.productName, ol.quantity, ol.timeForBan,s.orderStatusValue
-FROM orderList ol
-INNER JOIN product p ON ol.productID = p.productID
-INNER JOIN orderstatus s ON s.orderStatusID=ol.orderStatusID;
+    SELECT
+        Ol.orderID,
+        P.productName,
+        O.officeName,
+        CONCAT(Au.firstName, ' ', Au.lastName) AS userName,
+        Os.orderStatusValue,
+        Ol.quantity
+    FROM
+        orderList Ol
+        INNER JOIN product P ON Ol.productID = P.productID
+        INNER JOIN appuser Au ON Ol.userID = Au.userID
+        INNER JOIN office O ON Au.officeID= O.officeID
+        INNER JOIN orderStatus Os ON Ol.orderStatusID = Os.orderStatusID;
