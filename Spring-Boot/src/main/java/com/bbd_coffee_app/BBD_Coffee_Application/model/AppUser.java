@@ -7,8 +7,7 @@ import lombok.*;
 import java.sql.Timestamp;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class AppUser {

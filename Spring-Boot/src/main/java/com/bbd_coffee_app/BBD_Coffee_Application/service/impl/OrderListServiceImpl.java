@@ -1,5 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
+//import com.bbd_coffee_app.BBD_Coffee_Application.DTO.UserOrderList;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.OrderListRepository;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderListService;
@@ -18,6 +19,11 @@ public class OrderListServiceImpl implements OrderListService {
     public OrderListServiceImpl(OrderListRepository orderListRepository) {
         this.orderListRepository = orderListRepository;
     }
+
+//    @Override
+//    public List<UserOrderList> getOrderDetails(Integer orderID) {
+//        return List.of();
+//    }
 
     @Override
     public String createOrder(OrderList orderList) {
