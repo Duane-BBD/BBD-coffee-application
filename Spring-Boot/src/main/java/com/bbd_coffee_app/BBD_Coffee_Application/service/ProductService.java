@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.bbd_coffee_app.BBD_Coffee_Application.service;
 
 import com.example.demo.model.Product;
 
