@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.bbd_coffee_app.BBD_Coffee_Application.repository;
 
 import com.example.demo.model.OrderStatus;
 import jakarta.persistence.criteria.CriteriaBuilder;
