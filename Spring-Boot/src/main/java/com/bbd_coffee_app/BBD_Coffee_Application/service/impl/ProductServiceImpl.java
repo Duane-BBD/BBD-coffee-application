@@ -1,8 +1,8 @@
-package com.example.demo.service.impl;
+package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
-import com.example.demo.model.Product;
-import com.example.demo.repository.ProductRepository;
-import com.example.demo.service.ProductService;
+import com.bbd_coffee_app.BBD_Coffee_Application.model.Product;
+import com.bbd_coffee_app.BBD_Coffee_Application.repository.ProductRepository;
+import com.bbd_coffee_app.BBD_Coffee_Application.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

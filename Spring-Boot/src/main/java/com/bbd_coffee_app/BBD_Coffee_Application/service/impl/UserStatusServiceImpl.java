@@ -1,8 +1,8 @@
-package com.example.demo.service.impl;
+package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
-import com.example.demo.model.UserStatus;
-import com.example.demo.repository.UsersStatusRepository;
-import com.example.demo.service.UserStatusService;
+import com.bbd_coffee_app.BBD_Coffee_Application.model.UserStatus;
+import com.bbd_coffee_app.BBD_Coffee_Application.repository.UsersStatusRepository;
+import com.bbd_coffee_app.BBD_Coffee_Application.service.UserStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
