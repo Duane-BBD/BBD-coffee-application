@@ -1,6 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.controller;
 
-import com.bbd_coffee_app.BBD_Coffee_Application.DTO.UserOrderList;
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OrderListDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ public class OrderDetailController {
     }
 
     @GetMapping("{orderID}")
-    public UserOrderList getOrderDetails(@PathVariable("orderID") Integer orderID) {
+    public OrderListDTO getOrderDetails(@PathVariable("orderID") Integer orderID) {
         return orderListService.getOrderDetails(orderID);
     }
 }
