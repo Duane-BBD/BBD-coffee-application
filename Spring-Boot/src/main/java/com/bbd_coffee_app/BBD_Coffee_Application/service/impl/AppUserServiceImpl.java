@@ -32,14 +32,12 @@ public class AppUserServiceImpl implements AppUserService {
 
         if(optional.isPresent()) {
             AppUser user = optional.get();
-
             appUserRepository.save(UtilsFunctions.updatedAppuser(appUser, user));
         }
         else {
             throw new RuntimeException("User not found!");
         }
 
-//        appUserRepository.save(appUser);
         return "Update Success!";
     }
 

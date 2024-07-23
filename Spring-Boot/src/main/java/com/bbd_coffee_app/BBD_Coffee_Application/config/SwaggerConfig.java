@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @OpenAPIDefinition
 @Configuration
 public class SwaggerConfig {
-
     @Bean
     public OpenAPI baseOpenApi() {
         return new OpenAPI().info(new Info().title("BBD-Coffee-Application").version("1.0.0").description("Spring doc"));
