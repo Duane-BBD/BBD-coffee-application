@@ -45,16 +45,13 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public String createProduct(Product Product) {
-         productRepository.save(Product);
-        return "product created";
-
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
     }
 
     @Override
-    public String deleteProduct(Integer productID) {
+    public void deleteProduct(Integer productID) {
         productRepository.deleteById(productID);
-        return "product deleted";
     }
 
     @Override
@@ -67,3 +64,5 @@ public class ProductServiceImpl  implements ProductService {
         return productRepository.findAll();
     }
 }
+
+

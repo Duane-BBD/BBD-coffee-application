@@ -56,4 +56,6 @@ public class AppUserServiceImpl implements AppUserService {
     public List<AppUser> getAllUsers() {
         return appUserRepository.findAll();
     }
+
+
 }

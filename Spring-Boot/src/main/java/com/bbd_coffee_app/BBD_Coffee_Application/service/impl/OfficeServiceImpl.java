@@ -31,6 +31,11 @@ public class OfficeServiceImpl implements OfficeService {
         return officeRepository.findById(officeID).get();
     }
 
+//    @Override
+//    public List<Office> getAllOffice(Integer userTypeID) {
+//        return officeRepository.findAll();
+//    }
+
     @Override
     public List<Office> getAllOffice() {
         return officeRepository.findAll();
