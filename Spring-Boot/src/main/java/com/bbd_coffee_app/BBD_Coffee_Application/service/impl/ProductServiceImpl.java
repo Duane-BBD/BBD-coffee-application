@@ -36,7 +36,7 @@ public class ProductServiceImpl  implements ProductService {
 
         for (Availability A : allAvailabilities) {
             if (Objects.equals(A.getOfficeID(), officeID)) {
-                Integer prod = A.getProductID();
+                Integer prod = A.getProductID().getProductID();
                 Optional<Product> optional = productRepository.findById(prod);
                 optional.ifPresent(product -> productsAvailable.add(product.getProductName()));
             }

@@ -1,7 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +9,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="availability")
 public class Availability {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer availabilityID;
-    private Integer officeID;
-    private Integer productID;
+    @JoinColumn(name="officeID",referencedColumnName = "officeID",nullable = false)
+    @ManyToOne
+    private Office officeID;
+    @ManyToOne
+    @JoinColumn(name="productID",referencedColumnName = "productID", nullable=false)
+    private  Product productID;
+
 }

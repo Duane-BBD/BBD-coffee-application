@@ -4,10 +4,11 @@ import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderHistory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface OrderHistoryService {
 //    public String createHistory(OrderHistory orderHistory);
-//    public OrderHistory getHistory(Integer orderHistoryID);
-    public List<OrderHistory> getAllHistory();
+//     List<OrderHistory> getHistory(Integer orderHistoryID);
+     List<OrderHistory> getAllHistory();
 }
