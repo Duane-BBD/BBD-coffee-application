@@ -15,29 +15,29 @@ public class AvailabilityServiceImpl implements AvailabilityService {
     @Autowired
     AvailabilityRepository availabilityRepository;
 
-    @Autowired
-    ProductRepository productRepository;
-
-    public AvailabilityServiceImpl(AvailabilityRepository availabilityRepository) {
-        this.availabilityRepository = availabilityRepository;
-    }
-
-    @Override
-    public String createAvailability(Availability availability) {
-        availabilityRepository.save(availability);
-        return "Create Success!";
-    }
-
-    @Override
-    public String deleteAvailability(Integer availabilityID) {
-        availabilityRepository.deleteById(availabilityID);
-        return "Delete Success!";
-    }
-
-    @Override
-    public Availability getAvailability(Integer availabilityID) {
-        return availabilityRepository.findById(availabilityID).get();
-    }
+//    @Autowired
+//    ProductRepository productRepository;
+//
+//    public AvailabilityServiceImpl(AvailabilityRepository availabilityRepository) {
+//        this.availabilityRepository = availabilityRepository;
+//    }
+//
+//    @Override
+//    public String createAvailability(Availability availability) {
+//        availabilityRepository.save(availability);
+//        return "Create Success!";
+//    }
+//
+//    @Override
+//    public String deleteAvailability(Integer availabilityID) {
+//        availabilityRepository.deleteById(availabilityID);
+//        return "Delete Success!";
+//    }
+//
+//    @Override
+//    public Availability getAvailability(Integer availabilityID) {
+//        return availabilityRepository.findById(availabilityID).get();
+//    }
 
     @Override
     public List<Availability> getAllAvailability() {

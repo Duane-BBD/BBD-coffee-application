@@ -1,5 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ProductDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Availability;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Product;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.AvailabilityRepository;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl  implements ProductService {
@@ -45,6 +47,19 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
+    public List<ProductDTO> getAllProductDTOs() {
+        List<Product> products = getAllProduct();
+        return products.stream()
+                .sorted((p1, p2) -> Integer.compare(p1.getProductID(), p2.getProductID()))
+                .map(product -> {
+                    ProductDTO dto = new ProductDTO();
+                    dto.setProductID(product.getProductID());
+                    dto.setProductName(product.getProductName());
+                    return dto;
+                }).collect(Collectors.toList());
+    }
+
+    @Override
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
@@ -64,5 +79,6 @@ public class ProductServiceImpl  implements ProductService {
         return productRepository.findAll();
     }
 }
+
 
 

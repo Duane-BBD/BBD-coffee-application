@@ -19,38 +19,38 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUserServiceImpl(AppUserRepository appUserRepository) {
         this.appUserRepository = appUserRepository;
     }
-
-    @Override
-    public String createUser(AppUser appUser) {
-        appUserRepository.save(appUser);
-        return "Create Success!";
-    }
-
-    @Override
-    public String updateUser(AppUser appUser, Integer appUserID) {
-        Optional<AppUser> optional = appUserRepository.findById(appUserID);
-
-        if(optional.isPresent()) {
-            AppUser user = optional.get();
-            appUserRepository.save(UtilsFunctions.updatedAppuser(appUser, user));
-        }
-        else {
-            throw new RuntimeException("User not found!");
-        }
-
-        return "Update Success!";
-    }
-
-    @Override
-    public String deleteUser(Integer appUserID) {
-        appUserRepository.deleteById(appUserID);
-        return "Delete Success!";
-    }
-
-    @Override
-    public AppUser getUser(Integer appUserID) {
-        return appUserRepository.findById(appUserID).get();
-    }
+//
+//    @Override
+//    public String createUser(AppUser appUser) {
+//        appUserRepository.save(appUser);
+//        return "Create Success!";
+//    }
+//
+//    @Override
+//    public String updateUser(AppUser appUser, Integer appUserID) {
+//        Optional<AppUser> optional = appUserRepository.findById(appUserID);
+//
+//        if(optional.isPresent()) {
+//            AppUser user = optional.get();
+//            appUserRepository.save(UtilsFunctions.updatedAppuser(appUser, user));
+//        }
+//        else {
+//            throw new RuntimeException("User not found!");
+//        }
+//
+//        return "Update Success!";
+//    }
+//
+//    @Override
+//    public String deleteUser(Integer appUserID) {
+//        appUserRepository.deleteById(appUserID);
+//        return "Delete Success!";
+//    }
+//
+//    @Override
+//    public AppUser getUser(Integer appUserID) {
+//        return appUserRepository.findById(appUserID).get();
+//    }
 
     @Override
     public List<AppUser> getAllUsers() {

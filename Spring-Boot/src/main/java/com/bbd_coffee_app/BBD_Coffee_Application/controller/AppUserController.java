@@ -19,30 +19,30 @@ public class AppUserController {
         this.appUserService = appUserService;
     }
 
-    @GetMapping("{userID}")
-    public AppUser getUserDetails(@PathVariable("userID") Integer userID) {
-        return appUserService.getUser(userID);
-    }
-
-    @GetMapping()
-    public List<AppUser> getAllUserDetails() {
-        return appUserService.getAllUsers();
-    }
-
-    @PostMapping
-    public String createUser(@RequestBody AppUser appUser) {
-        return appUserService.createUser(appUser);
-    }
-
-    @PutMapping("{userID}")
-    public String updateUser(@RequestBody AppUser appUser, @PathVariable("userID") Integer userID) {
-        return appUserService.updateUser(appUser, userID);
-    }
-
-    @DeleteMapping("{userID}")
-    public String deleteAppUserDetails(@PathVariable("userID") Integer userID) {
-        return appUserService.deleteUser(userID);
-    }
+//    @GetMapping("{userID}")
+//    public AppUser getUserDetails(@PathVariable("userID") Integer userID) {
+//        return appUserService.getUser(userID);
+//    }
+//
+//    @GetMapping()
+//    public List<AppUser> getAllUserDetails() {
+//        return appUserService.getAllUsers();
+//    }
+//
+//    @PostMapping
+//    public String createUser(@RequestBody AppUser appUser) {
+//        return appUserService.createUser(appUser);
+//    }
+//
+//    @PutMapping("{userID}")
+//    public String updateUser(@RequestBody AppUser appUser, @PathVariable("userID") Integer userID) {
+//        return appUserService.updateUser(appUser, userID);
+//    }
+//
+//    @DeleteMapping("{userID}")
+//    public String deleteAppUserDetails(@PathVariable("userID") Integer userID) {
+//        return appUserService.deleteUser(userID);
+//    }
 
     @Autowired
     UserTypeService userTypeService;

@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface AppUserService {
 
-    public String createUser(AppUser appUser);
-    public String updateUser(AppUser appUser, Integer appUserID);
-    public String deleteUser(Integer appUserID);
-    public AppUser getUser(Integer appUserID);
+//    public String createUser(AppUser appUser);
+//    public String updateUser(AppUser appUser, Integer appUserID);
+//    public String deleteUser(Integer appUserID);
+//    public AppUser getUser(Integer appUserID);
     public List<AppUser> getAllUsers();
 
 }

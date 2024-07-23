@@ -23,28 +23,24 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("{officeID}")
+    @GetMapping("/office/{officeID}")
     public List<String> getProductsAvailable(@PathVariable("officeID") Integer officeID) {
         return productService.productsAtOffice(officeID);
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllOffice() {
+    public ResponseEntity<List<ProductDTO>> getAllProduct() {
         try {
-            List<Product> product = productService.getAllProduct();
-            List<ProductDTO> productDTOs = product.stream()
-                    .sorted((o1, o2) -> Integer.compare(o1.getProductID(), o2.getProductID()))
-                    .map(office -> {
-                        ProductDTO dto = new ProductDTO();
-                        dto.setProductID(office.getProductID());
-                        dto.setProductName(office.getProductName());
-                        return dto;
-                    }).collect(Collectors.toList());
-
+            List<ProductDTO> productDTOs = productService.getAllProductDTOs();
             return new ResponseEntity<>(productDTOs, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("{productID}")
+    public Product getProduct(@PathVariable("productID") Integer productID) {
+        return productService.getProduct(productID);
     }
 
     @DeleteMapping("{productID}")
