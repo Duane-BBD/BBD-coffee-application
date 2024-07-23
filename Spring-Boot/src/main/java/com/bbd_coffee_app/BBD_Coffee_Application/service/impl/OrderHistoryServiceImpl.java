@@ -18,16 +18,16 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
         this.orderHistoryRepository = orderHistoryRepository;
     }
 
-    @Override
-    public String createHistory(OrderHistory orderHistory) {
-        orderHistoryRepository.save(orderHistory);
-        return "Create Success!";
-    }
+//    @Override
+//    public String createHistory(OrderHistory orderHistory) {
+//        orderHistoryRepository.save(orderHistory);
+//        return "Create Success!";
+//    }
 
-    @Override
-    public OrderHistory getHistory(Integer orderHistoryID) {
-        return orderHistoryRepository.findById(orderHistoryID).get();
-    }
+//    @Override
+//    public OrderHistory getHistory(Integer orderHistoryID) {
+//        return orderHistoryRepository.findById(orderHistoryID).get();
+//    }
 
     @Override
     public List<OrderHistory> getAllHistory() {

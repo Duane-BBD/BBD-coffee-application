@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/bbdcoffee
     username: root
-    password: Mypassword2002
+    password: swizelantao2002
 
   #Jpa Settings
   jpa:

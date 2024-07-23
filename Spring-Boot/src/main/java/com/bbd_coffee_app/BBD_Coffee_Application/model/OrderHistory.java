@@ -1,7 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -12,9 +11,13 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class OrderHistory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderHistoryID;
-    private Integer orderID;
-    private Integer orderStatusID;
+    private int orderID;
+
+    @ManyToOne
+    @JoinColumn(name="orderStatusID",referencedColumnName = "orderStatusID", nullable=false)
+    private OrderStatus orderStatusID;
     private Timestamp orderTime;
 
 }
