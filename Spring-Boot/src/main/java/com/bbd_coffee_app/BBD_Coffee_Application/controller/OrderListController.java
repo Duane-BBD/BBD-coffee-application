@@ -3,6 +3,8 @@ package com.bbd_coffee_app.BBD_Coffee_Application.controller;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.OrderListRepository;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -18,7 +20,11 @@ public class OrderListController {
     }
 
     @PatchMapping("{orderID}")
-    public String updateOrderStatus(@PathVariable Integer orderID) {
-        return orderListService.updateOrderStatus(orderID);
+    public ResponseEntity<String> updateOrderStatus(@PathVariable Integer orderID) {
+        try {
+            return new ResponseEntity<>(orderListService.updateOrderStatus(orderID), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

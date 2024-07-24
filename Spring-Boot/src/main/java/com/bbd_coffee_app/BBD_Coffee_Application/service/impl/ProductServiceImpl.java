@@ -10,10 +10,7 @@ import com.bbd_coffee_app.BBD_Coffee_Application.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,7 +34,7 @@ public class ProductServiceImpl  implements ProductService {
         List<String> productsAvailable = new ArrayList<String>();
 
         for (Availability A : allAvailabilities) {
-            if (Objects.equals(A.getOfficeID(), officeID)) {
+            if (Objects.equals(A.getOfficeID().getOfficeID(), officeID)) {
                 Integer prod = A.getProductID().getProductID();
                 Optional<Product> optional = productRepository.findById(prod);
                 optional.ifPresent(product -> productsAvailable.add(product.getProductName()));
@@ -50,7 +47,7 @@ public class ProductServiceImpl  implements ProductService {
     public List<ProductDTO> getAllProductDTOs() {
         List<Product> products = getAllProduct();
         return products.stream()
-                .sorted((p1, p2) -> Integer.compare(p1.getProductID(), p2.getProductID()))
+                .sorted(Comparator.comparingInt(Product::getProductID))
                 .map(product -> {
                     ProductDTO dto = new ProductDTO();
                     dto.setProductID(product.getProductID());

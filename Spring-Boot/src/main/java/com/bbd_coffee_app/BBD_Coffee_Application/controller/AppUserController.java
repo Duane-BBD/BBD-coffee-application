@@ -5,6 +5,8 @@ import com.bbd_coffee_app.BBD_Coffee_Application.model.UserType;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.AppUserService;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.UserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,12 +50,21 @@ public class AppUserController {
     UserTypeService userTypeService;
 
     @GetMapping("/type/{userTypeID}")
-    public UserType getTypeDetails(@PathVariable("userTypeID") Integer userTypeID) {
-        return userTypeService.getType(userTypeID);
+    public ResponseEntity<UserType> getTypeDetails(@PathVariable("userTypeID") Integer userTypeID) {
+        try {
+            return new ResponseEntity<>(userTypeService.getType(userTypeID), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/type")
-    public List<UserType> getAllTypeDetails() {
-        return userTypeService.getAllType();
+    public ResponseEntity<List<UserType>> getAllTypeDetails() {
+        userTypeService.getAllType();
+        try {
+            return new ResponseEntity<>(userTypeService.getAllType(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

@@ -24,8 +24,12 @@ public class ProductController {
     }
 
     @GetMapping("/office/{officeID}")
-    public List<String> getProductsAvailable(@PathVariable("officeID") Integer officeID) {
-        return productService.productsAtOffice(officeID);
+    public ResponseEntity<List<String>> getProductsAvailable(@PathVariable("officeID") Integer officeID) {
+        try {
+            return new ResponseEntity<>(productService.productsAtOffice(officeID), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping
@@ -39,8 +43,12 @@ public class ProductController {
     }
 
     @GetMapping("{productID}")
-    public Product getProduct(@PathVariable("productID") Integer productID) {
-        return productService.getProduct(productID);
+    public ResponseEntity<Product> getProduct(@PathVariable("productID") Integer productID) {
+        try {
+            return new ResponseEntity<>(productService.getProduct(productID), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("{productID}")
