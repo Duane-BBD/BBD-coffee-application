@@ -11,5 +11,6 @@ public interface AppUserService {
 //    public String deleteUser(Integer appUserID);
 //    public AppUser getUser(Integer appUserID);
     public List<AppUser> getAllUsers();
+    public void banUser(Integer userID);
 
 }

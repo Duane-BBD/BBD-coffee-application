@@ -7,6 +7,8 @@ import com.bbd_coffee_app.BBD_Coffee_Application.utils.UtilsFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,5 +59,14 @@ public class AppUserServiceImpl implements AppUserService {
         return appUserRepository.findAll();
     }
 
-
+    @Override
+    public void banUser(Integer userID) {
+        Optional<AppUser> optional = appUserRepository.findById(userID);
+        if(optional.isPresent()) {
+            AppUser user = optional.get();
+            user.setUserStatusID(3);
+            user.setBannedUntil(Timestamp.from(Instant.now().plusSeconds(24 * 60 * 60)));
+            appUserRepository.save(user);
+        };
+    }
 }
