@@ -32,11 +32,9 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
         return orderHistoryRepository.findAll();
     }
 
-//    @Override
-//    public String createHistory(OrderHistory orderHistory) {
-//        orderHistoryRepository.save(orderHistory);
-//        return "Create Success!";
-//    }
-
-
+    @Override
+    public String createHistory(OrderHistory orderHistory) {
+        orderHistoryRepository.save(orderHistory);
+        return "Create Success!";
+    }
 }

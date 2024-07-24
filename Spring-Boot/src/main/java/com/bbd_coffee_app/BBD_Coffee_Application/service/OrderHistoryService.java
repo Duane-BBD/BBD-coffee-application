@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public interface OrderHistoryService {
-//    public String createHistory(OrderHistory orderHistory);
+    public String createHistory(OrderHistory orderHistory);
 //     List<OrderHistory> getHistory(Integer orderHistoryID);
      List<OrderHistory> getAllHistory();
 }

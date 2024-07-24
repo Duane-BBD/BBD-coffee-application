@@ -17,7 +17,7 @@ public class OrderHistoryDTO {
     private Timestamp orderTime;
     public OrderHistoryDTO(OrderHistory orderHistory) {
         this.orderID = orderHistory.getOrderID();
-        this.orderStatusValue = orderHistory.getOrderStatusID().getOrderStatusValue();
+        this.orderStatusValue = String.valueOf(orderHistory.getOrderStatusID());
         this.orderTime=orderHistory.getOrderTime();
     }
 }

@@ -9,13 +9,13 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderHistory {
-       private Integer orderHistoryID;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderID;
+    private Integer orderHistoryID;
+    private Integer orderID;
     @ManyToOne
     @JoinColumn(name="orderStatusID",referencedColumnName = "orderStatusID", nullable=false)
     private OrderStatus orderStatusID;
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp orderTime;
-
 }
