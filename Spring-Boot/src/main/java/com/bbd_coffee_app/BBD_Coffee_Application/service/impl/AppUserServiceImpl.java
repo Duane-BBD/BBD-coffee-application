@@ -1,5 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.UserRegisterDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.AppUser;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.AppUserRepository;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.AppUserService;
@@ -21,12 +22,11 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUserServiceImpl(AppUserRepository appUserRepository) {
         this.appUserRepository = appUserRepository;
     }
-//
-//    @Override
-//    public String createUser(AppUser appUser) {
-//        appUserRepository.save(appUser);
-//        return "Create Success!";
-//    }
+
+    @Override
+    public void createUser(AppUser appUser) {
+        appUserRepository.save(appUser);
+    }
 //
 //    @Override
 //    public String updateUser(AppUser appUser, Integer appUserID) {
@@ -67,6 +67,21 @@ public class AppUserServiceImpl implements AppUserService {
             user.setUserStatusID(3);
             user.setBannedUntil(Timestamp.from(Instant.now().plusSeconds(24 * 60 * 60)));
             appUserRepository.save(user);
-        };
+        }
     }
+
+//    public void userRegister(AppUserRepository appUserRepository) {
+//        this.appUserRepository = appUserRepository;
+//    }
+
+
+//    public AppUser registerUser(UserRegisterDTO userRegisterDTO) {
+//        AppUser user = new AppUser();
+//        user.setUserID(userRegisterDTO.getUserID());
+//        user.setFirstName(userRegisterDTO.getFirstName());
+//        user.setLastName(userRegisterDTO.getLastName());
+//        user.setOffice(userRegisterDTO.getOfficeName());
+//
+//        return appUserRepository.save(user);
+//    }
 }

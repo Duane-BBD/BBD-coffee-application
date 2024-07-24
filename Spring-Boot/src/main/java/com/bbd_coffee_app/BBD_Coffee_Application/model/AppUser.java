@@ -16,13 +16,13 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userID;
     private String firstName;
     private String lastName;
-    private int officeID;
-    private int userStatusID;
-    private int userTypeID;
+    private Integer officeID;
+    private Integer userStatusID;
+    private Integer userTypeID;
     private Timestamp bannedUntil;
 
     @ManyToOne
@@ -32,4 +32,13 @@ public class AppUser {
     @ManyToOne
     @JoinColumn(name = "officeID", insertable = false, updatable = false)
     private Office office;
+
+    public AppUser(Integer userID, String firstName, String lastName, Integer id, Integer userStatusID, Integer userTypeID) {
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.officeID = id;
+        this.userStatusID = userStatusID;
+        this.userTypeID = userTypeID;
+    }
 }
