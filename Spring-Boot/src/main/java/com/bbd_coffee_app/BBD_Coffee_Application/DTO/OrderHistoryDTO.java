@@ -14,9 +14,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class OrderHistoryDTO {
     private Integer orderID;
+    private String productName;
     private String orderStatusValue;
+    private int quantity;
     @JsonFormat(pattern = "HH:mm:ss, dd-MM-yyyy")
     private Timestamp orderTime;
+
     public OrderHistoryDTO(OrderHistory orderHistory) {
         this.orderID = orderHistory.getOrderID();
         this.orderStatusValue = orderHistory.getOrderStatusID().getOrderStatusValue();

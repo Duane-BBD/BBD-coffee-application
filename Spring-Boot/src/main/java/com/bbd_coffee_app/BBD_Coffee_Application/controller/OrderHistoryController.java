@@ -21,12 +21,20 @@ public class OrderHistoryController {
 
     @GetMapping("/")
     public ResponseEntity<List<OrderHistoryDTO>> getAllOrderHistories() {
+        try {
             List<OrderHistoryDTO> orderHistories = orderHistoryService.getAllHistory();
             return new ResponseEntity<>(orderHistories, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-    @GetMapping("/{orderID}")
-    public ResponseEntity<List<OrderHistoryDTO>> getorderHistory(@PathVariable("orderID") Integer orderID){
-            return new ResponseEntity<>(orderHistoryService.getOrderHistory(orderID), HttpStatus.OK);
+    @GetMapping("/{userID}")
+    public ResponseEntity<List<OrderHistoryDTO>> getorderHistory(@PathVariable("userID") Integer userID){
+        try {
+            return new ResponseEntity<>(orderHistoryService.getOrderHistory(userID), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
