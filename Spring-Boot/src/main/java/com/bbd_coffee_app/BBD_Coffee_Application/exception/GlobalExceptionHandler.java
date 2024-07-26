@@ -1,9 +1,14 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.exception;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 
@@ -12,6 +17,8 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleResourceNotFound(ResourceNotFoundException exception) {
@@ -60,4 +67,11 @@ public class GlobalExceptionHandler {
         map.put("StatusCode", "500");
         return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(DataAccessResourceFailureException.class)
+    public ResponseEntity<String> handleDataAccessException(DataAccessResourceFailureException  ex, WebRequest request) {
+        logger.error("Database connection error: ", ex);
+        return new ResponseEntity<>("Database error: Unable to connect to the database. Please try again later.", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }

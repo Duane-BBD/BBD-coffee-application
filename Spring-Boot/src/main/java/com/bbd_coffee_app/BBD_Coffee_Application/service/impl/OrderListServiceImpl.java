@@ -1,6 +1,7 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OrderListDTO;
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ReceiveOrderDetailDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderHistory;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderStatus;
@@ -12,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.time.Duration;
 import java.time.Instant;
-import java.time.temporal.Temporal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,7 +105,7 @@ public class OrderListServiceImpl implements OrderListService {
 
     public void logHistory(OrderList order, Integer orderID) {
         OrderHistory entry = new OrderHistory();
-        entry.setOrderID(orderID);
+        entry.setOrderID(order.getOrderID());
         OrderStatus data = new OrderStatus();
         data.setOrderStatusID(order.getOrderStatusID());
         entry.setOrderStatusID(data);
@@ -116,9 +114,17 @@ public class OrderListServiceImpl implements OrderListService {
     }
 
     @Override
-    public String createOrder(OrderList orderList) {
-        orderListRepository.save(orderList);
-        return "Create Success!";
+    public void createOrder(List<ReceiveOrderDetailDTO> allOrderDetailDTO) {
+        for (ReceiveOrderDetailDTO orderDetailDTO: allOrderDetailDTO) {
+            OrderList newOrder = new OrderList();
+            newOrder.setQuantity(orderDetailDTO.getQuantity());
+            newOrder.setUserID(orderDetailDTO.getUserID());
+            newOrder.setProductID(productRepository.findByProductName(orderDetailDTO.getProductName()));
+            newOrder.setOrderStatusID(1);
+            orderListRepository.save(newOrder);
+            logHistory(newOrder, orderListRepository.findAll().size());
+        }
+//        orderListRepository.save(orderDetailDTO);
     }
 
     @Override

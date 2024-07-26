@@ -64,7 +64,6 @@ public class AvailabilityServiceImpl implements AvailabilityService {
         List<Product> allProducts = productRepository.findAll();
         List<Office> allOffices = officeRepository.findAll();
         Availability newAvail = new Availability();
-
         for(Product prod : allProducts) {
             if (Objects.equals(prod.getProductName(), availabilityDTO.getProductName()))
                 newAvail.setProductID(prod);
