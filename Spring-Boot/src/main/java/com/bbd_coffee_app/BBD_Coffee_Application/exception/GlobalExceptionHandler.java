@@ -73,5 +73,4 @@ public class GlobalExceptionHandler {
         logger.error("Database connection error: ", ex);
         return new ResponseEntity<>("Database error: Unable to connect to the database. Please try again later.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
 }

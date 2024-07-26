@@ -2,6 +2,7 @@ package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OrderListDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ReceiveOrderDetailDTO;
+import com.bbd_coffee_app.BBD_Coffee_Application.exception.ResourceNotFoundException;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderHistory;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderStatus;
@@ -50,46 +51,45 @@ public class OrderListServiceImpl implements OrderListService {
     public OrderListDTO getOrderDetails(Integer orderID) {
         Optional<OrderList> optional = orderListRepository.findById(orderID);
 
-        if (optional.isPresent()) {
-            OrderList order = optional.get();
-            OrderListDTO item = new OrderListDTO();
-            item.setOrderID(orderID);
-            item.setUserName(appUserRepository.findById(order.getUserID()).get().getFirstName() + " " + appUserRepository.findById(order.getUserID()).get().getLastName());
-            item.setProductName(productRepository.findById(order.getProductID()).get().getProductName());
-            item.setQuantity(order.getQuantity());
-            item.setStatus(orderStatusRepository.findById(order.getOrderStatusID()).get().getOrderStatusValue());
-            return item;
+        if (optional.isEmpty()) {
+            throw new ResourceNotFoundException("OrderID " + orderID + " does not exist!");
         }
-        else {
-            return null;
-        }
+
+        OrderList order = optional.get();
+        OrderListDTO item = new OrderListDTO();
+        item.setOrderID(orderID);
+        item.setUserName(appUserRepository.findById(order.getUserID()).get().getFirstName() + " " + appUserRepository.findById(order.getUserID()).get().getLastName());
+        item.setProductName(productRepository.findById(order.getProductID()).get().getProductName());
+        item.setQuantity(order.getQuantity());
+        item.setStatus(orderStatusRepository.findById(order.getOrderStatusID()).get().getOrderStatusValue());
+        return item;
     }
 
     @Override
     public String updateOrderStatus(Integer orderID) {
         Optional<OrderList> optional = orderListRepository.findById(orderID);
-
-        if(optional.isPresent()) {
-            OrderList order = optional.get();
-            return switch (order.getOrderStatusID()) {
-                case 1, 2, 3 -> {
-                    if (orderID == 3 && isLate(orderID)) {
-                        order.setOrderStatusID(5);
-                        logHistory(order, orderID);
-                        appUserService.banUser(order.getUserID());
-                        orderListRepository.save(order);
-                        yield "OrderID " + orderID + " was cancelled due to being late to receive the order!";
-                    }
-                    order.setOrderStatusID(order.getOrderStatusID() + 1);
-                    logHistory(order, orderID);
-                    orderListRepository.save(order);
-                    yield "Updated!";
-                }
-                case 4 -> "Order " + orderID + " is complete!";
-                default -> "Order " + orderID + " was cancelled!";
-            };
+        if(optional.isEmpty()){
+            throw new ResourceNotFoundException("OrderID " + orderID + " does not exist!");
         }
-        return "OrderID " + orderID + " does not exist!";
+
+        OrderList order = optional.get();
+        return switch (order.getOrderStatusID()) {
+            case 1, 2, 3 -> {
+                if (orderID == 3 && isLate(orderID)) {
+                    order.setOrderStatusID(5);
+                    logHistory(order, orderID);
+                    appUserService.banUser(order.getUserID());
+                    orderListRepository.save(order);
+                    yield "OrderID " + orderID + " was cancelled due to being late to receive the order!";
+                }
+                order.setOrderStatusID(order.getOrderStatusID() + 1);
+                logHistory(order, orderID);
+                orderListRepository.save(order);
+                yield "Updated!";
+            }
+            case 4 -> "Order " + orderID + " is complete!";
+            default -> "Order " + orderID + " was cancelled!";
+        };
     }
 
     public Boolean isLate(Integer orderID) {

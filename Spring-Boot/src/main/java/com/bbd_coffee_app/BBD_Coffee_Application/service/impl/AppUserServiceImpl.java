@@ -1,11 +1,15 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.UserRegisterDTO;
+import com.bbd_coffee_app.BBD_Coffee_Application.exception.BadRequestException;
+import com.bbd_coffee_app.BBD_Coffee_Application.exception.ConflictException;
+import com.bbd_coffee_app.BBD_Coffee_Application.exception.ResourceNotFoundException;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.AppUser;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.AppUserRepository;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.AppUserService;
 import com.bbd_coffee_app.BBD_Coffee_Application.utils.UtilsFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -24,7 +28,7 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public void createUser(AppUser appUser) {
+    public void createUser(AppUser appUser) throws BadRequestException, ConflictException{
         appUserRepository.save(appUser);
     }
 //
@@ -55,18 +59,24 @@ public class AppUserServiceImpl implements AppUserService {
 //    }
 
     @Override
-    public List<AppUser> getAllUsers() {
-        return appUserRepository.findAll();
+    public List<AppUser> getAllUsers() throws DataAccessResourceFailureException {
+        try {
+            return appUserRepository.findAll();
+        } catch (Exception e) {
+            throw new DataAccessResourceFailureException("Unable to access data", e);
+        }
     }
 
     @Override
-    public void banUser(Integer userID) {
+    public void banUser(Integer userID) throws ResourceNotFoundException {
         Optional<AppUser> optional = appUserRepository.findById(userID);
         if(optional.isPresent()) {
             AppUser user = optional.get();
             user.setUserStatusID(3);
             user.setBannedUntil(Timestamp.from(Instant.now().plusSeconds(24 * 60 * 60)));
             appUserRepository.save(user);
+        }else {
+            throw new ResourceNotFoundException("User not found with id: " + userID);
         }
     }
 

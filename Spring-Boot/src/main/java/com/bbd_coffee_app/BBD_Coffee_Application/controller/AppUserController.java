@@ -44,25 +44,21 @@ public class AppUserController {
 //        return appUserService.deleteUser(userID);
 //    }
 
-    @Autowired
-    UserTypeService userTypeService;
-
-    @GetMapping("/type/{userTypeID}")
-    public ResponseEntity<UserType> getTypeDetails(@PathVariable("userTypeID") Integer userTypeID) {
-        try {
-            return new ResponseEntity<>(userTypeService.getType(userTypeID), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @GetMapping("/type")
-    public ResponseEntity<List<UserType>> getAllTypeDetails() {
-        userTypeService.getAllType();
-        try {
-            return new ResponseEntity<>(userTypeService.getAllType(), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @Autowired
+//    UserTypeService userTypeService;
+//
+//    @GetMapping("/type/{userTypeID}")
+//    public ResponseEntity<UserType> getTypeDetails(@PathVariable("userTypeID") Integer userTypeID) {
+//            return new ResponseEntity<>(userTypeService.getType(userTypeID), HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/type")
+//    public ResponseEntity<List<UserType>> getAllTypeDetails() {
+//        userTypeService.getAllType();
+//        try {
+//            return new ResponseEntity<>(userTypeService.getAllType(), HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }

@@ -26,9 +26,6 @@ public class OfficeController {
 
     @PostMapping
     public ResponseEntity<Void> createOffice(@RequestBody OfficeCreateDTO officeCreateDTO) {
-        if (officeCreateDTO.getOfficeName() == null || officeCreateDTO.getOfficeName().trim().isEmpty()) {
-            throw new BadRequestException("officeName cannot be empty.");
-        }
         Office office = new Office();
         office.setOfficeName(officeCreateDTO.getOfficeName());
         officeService.createOffice(office);
