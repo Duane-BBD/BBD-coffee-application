@@ -3,7 +3,7 @@ package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Office;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.OfficeRepository;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OfficeService;
-import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OfficeDTO;
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OfficeResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,12 +32,12 @@ public class OfficeServiceImpl implements OfficeService {
     }
 
     @Override
-    public List<OfficeDTO> getAllOfficeDTOs() {
+    public List<OfficeResponseDTO> getAllOfficeDTOs() {
         List<Office> offices = getAllOffice();
         return offices.stream()
                 .sorted((o1, o2) -> Integer.compare(o1.getOfficeID(), o2.getOfficeID()))
                 .map(office -> {
-                    OfficeDTO dto = new OfficeDTO();
+                    OfficeResponseDTO dto = new OfficeResponseDTO();
                     dto.setOfficeID(office.getOfficeID());
                     dto.setOfficeName(office.getOfficeName());
                     return dto;

@@ -1,6 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 
-import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ProductDTO;
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ProductResponseDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Availability;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Product;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.AvailabilityRepository;
@@ -44,12 +44,12 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public List<ProductDTO> getAllProductDTOs() {
+    public List<ProductResponseDTO> getAllProductDTOs() {
         List<Product> products = getAllProduct();
         return products.stream()
                 .sorted(Comparator.comparingInt(Product::getProductID))
                 .map(product -> {
-                    ProductDTO dto = new ProductDTO();
+                    ProductResponseDTO dto = new ProductResponseDTO();
                     dto.setProductID(product.getProductID());
                     dto.setProductName(product.getProductName());
                     return dto;
@@ -66,6 +66,10 @@ public class ProductServiceImpl  implements ProductService {
         productRepository.deleteById(productID);
     }
 
+//    @Override
+//    public void deleteProduct(String productName) {
+//        productRepository.deleteProduct(productName);
+//    }
     @Override
     public Product getProduct(Integer productID) {
         return productRepository.findById(productID).get();

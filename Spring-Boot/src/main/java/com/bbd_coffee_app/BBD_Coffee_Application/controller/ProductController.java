@@ -1,8 +1,7 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.controller;
 
-import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OfficeDTO;
-import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ProductDTO;
-import com.bbd_coffee_app.BBD_Coffee_Application.model.Office;
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ProductCreateDTO;
+import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ProductResponseDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Product;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/products")
@@ -25,49 +23,33 @@ public class ProductController {
 
     @GetMapping("/office/{officeID}")
     public ResponseEntity<List<String>> getProductsAvailable(@PathVariable("officeID") Integer officeID) {
-        try {
-            return new ResponseEntity<>(productService.productsAtOffice(officeID), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        List<String> products = productService.productsAtOffice(officeID);
+        return ResponseEntity.ok(products);
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProduct() {
-        try {
-            List<ProductDTO> productDTOs = productService.getAllProductDTOs();
-            return new ResponseEntity<>(productDTOs, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<List<ProductResponseDTO>> getAllProduct() {
+        List<ProductResponseDTO> productDTOs = productService.getAllProductDTOs();
+        return ResponseEntity.ok(productDTOs);
     }
 
     @GetMapping("{productID}")
     public ResponseEntity<Product> getProduct(@PathVariable("productID") Integer productID) {
-        try {
-            return new ResponseEntity<>(productService.getProduct(productID), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        Product product = productService.getProduct(productID);
+        return ResponseEntity.ok(product);
     }
 
     @DeleteMapping("{productID}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("productID") Integer productID) {
-        try {
-            productService.deleteProduct(productID);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        productService.deleteProduct(productID);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping
-    public ResponseEntity<Void> createProduct(@RequestBody Product product) {
-        try {
-            Product createdProduct = productService.createProduct(product);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<Void> createProduct(@RequestBody ProductCreateDTO productCreateDTO) {
+        Product product = new Product();
+        product.setProductName(productCreateDTO.getProductName());
+        productService.createProduct(product);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
