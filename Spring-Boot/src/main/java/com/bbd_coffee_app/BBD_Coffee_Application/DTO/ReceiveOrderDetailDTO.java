@@ -12,4 +12,5 @@ public class ReceiveOrderDetailDTO {
     private String productName;
     private Integer quantity;
     private Integer userID;
+    private Integer officeID;
 }

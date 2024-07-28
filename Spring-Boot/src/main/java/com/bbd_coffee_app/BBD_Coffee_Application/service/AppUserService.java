@@ -14,7 +14,7 @@ public interface AppUserService {
     public void createUser(AppUser appUser) throws BadRequestException, ConflictException;
 //    public String updateUser(AppUser appUser, Integer appUserID);
 //    public String deleteUser(Integer appUserID);
-//    public AppUser getUser(Integer appUserID);
+    public AppUser getUser(Integer appUserID);
     public List<AppUser> getAllUsers() throws BadRequestException,DataAccessResourceFailureException;
     public void banUser(Integer userID) throws ResourceNotFoundException;
 //    AppUser registerUser(UserRegisterDTO userRegisterDTO);

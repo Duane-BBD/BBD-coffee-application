@@ -4,20 +4,16 @@ import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OrderListDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ReceiveOrderDetailDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.exception.ResourceNotFoundException;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Office;
-import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderHistory;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.*;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.AppUserService;
-import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderHistoryService;
+import com.bbd_coffee_app.BBD_Coffee_Application.service.OfficeService;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderListService;
 import com.bbd_coffee_app.BBD_Coffee_Application.utils.UtilsFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -36,16 +32,10 @@ public class OrderListServiceImpl implements OrderListService {
     OrderStatusRepository orderStatusRepository;
 
     @Autowired
-    OrderHistoryService orderHistoryService;
-
-    @Autowired
-    OrderHistoryRepository orderHistoryRepository;
-
-    @Autowired
     AppUserService appUserService;
 
     @Autowired
-    OfficeRepository officeRepository;
+    OfficeService officeService;
 
     @Autowired
     UtilsFunctions utils;
@@ -92,7 +82,7 @@ public class OrderListServiceImpl implements OrderListService {
         OrderList order = optional.get();
         return switch (order.getOrderStatusID()) {
             case 1, 2, 3 -> {
-                if (orderID == 3 && isLate(orderID)) {
+                if (orderID == 3 && utils.isLate(orderID)) {
                     order.setOrderStatusID(5);
                     utils.logHistory(order, orderID);
                     appUserService.banUser(order.getUserID());
@@ -109,17 +99,6 @@ public class OrderListServiceImpl implements OrderListService {
         };
     }
 
-    public Boolean isLate(Integer orderID) {
-        List<OrderHistory> allHistory = orderHistoryRepository.findAll();
-        OrderHistory reqHistory = new OrderHistory();
-        for(OrderHistory history : allHistory) {
-            if(Objects.equals(history.getOrderID(), orderID))
-                reqHistory = history;
-        }
-        long oneHourAgoMillis = reqHistory.getOrderTime().getTime() + (60 * 60 * 1000);
-        return reqHistory.getOrderTime().getTime() <= oneHourAgoMillis && oneHourAgoMillis <= Timestamp.from(Instant.now()).getTime();
-    }
-
     private OrderListDTO convertToDTO(OrderList order) {
         OrderListDTO item = new OrderListDTO();
         item.setOrderID(order.getOrderID());
@@ -132,16 +111,36 @@ public class OrderListServiceImpl implements OrderListService {
     }
 
     @Override
-    public void createOrder(List<ReceiveOrderDetailDTO> allOrderDetailDTO) {
+    public String createOrder(List<ReceiveOrderDetailDTO> allOrderDetailDTO) {
         for (ReceiveOrderDetailDTO orderDetailDTO: allOrderDetailDTO) {
+            if (utils.isBanned(orderDetailDTO.getUserID())) {
+                return "User is banned!";
+            }
             OrderList newOrder = new OrderList();
             newOrder.setQuantity(orderDetailDTO.getQuantity());
             newOrder.setUserID(orderDetailDTO.getUserID());
             newOrder.setProductID(productRepository.findByProductName(orderDetailDTO.getProductName()));
             newOrder.setOrderStatusID(1);
+            Office newOffice = new Office(orderDetailDTO.getOfficeID(), officeService.getOffice(orderDetailDTO.getOfficeID()).getOfficeName());
+            newOrder.setOffice(newOffice);
             orderListRepository.save(newOrder);
             utils.logHistory(newOrder, orderListRepository.findAll().size());
         }
+        return "Order placed!";
+    }
+
+    @Override
+    public String cancelOrder(Integer orderID) {
+        Optional<OrderList> order = orderListRepository.findById(orderID);
+        if(order.isEmpty()) {
+            return "Order with orderID " + orderID + "not found!";
+        }
+        if(utils.isPending(order.get().getOrderStatusID())) {
+            order.get().setOrderStatusID(5);
+            utils.logHistory(order.get(), orderID);
+            return "Order cancelled!";
+        }
+        return "Order cannot be cancelled since the order is not in pending state!";
     }
 
     @Override

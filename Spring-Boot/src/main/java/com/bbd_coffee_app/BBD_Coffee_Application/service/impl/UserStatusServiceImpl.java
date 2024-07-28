@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserStatusServiceImpl implements UserStatusService {
@@ -19,7 +20,8 @@ public class UserStatusServiceImpl implements UserStatusService {
 
     @Override
     public UserStatus getUserStatus(Integer userStatusID){
-        return usersStatusRepository.findById(userStatusID).get();
+        Optional<UserStatus> optional = usersStatusRepository.findById(userStatusID);
+        return optional.orElse(null);
     }
 
     @Override

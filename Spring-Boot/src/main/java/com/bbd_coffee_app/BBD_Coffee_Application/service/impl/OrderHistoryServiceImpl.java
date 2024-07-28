@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class OrderHistoryServiceImpl implements OrderHistoryService {
@@ -47,17 +46,13 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 //    }
 
     @Override
-    public List<OrderHistoryDTO> getAllHistory() {
-        List<OrderHistory> orderHistory= orderHistoryRepository.findAll();
-        return   orderHistory.stream()
-                .map(OrderHistoryDTO::new)
-                .toList();
+    public List<OrderHistory> getAllHistory() {
+        return orderHistoryRepository.findAll();
     }
 
     @Override
-    public String createHistory(OrderHistory orderHistory) {
+    public void createHistory(OrderHistory orderHistory) {
         orderHistoryRepository.save(orderHistory);
-        return "Create Success!";
     }
     @Override
     public List<OrderHistoryDTO> getOrderHistory(Integer userID){

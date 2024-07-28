@@ -1,26 +1,26 @@
 INSERT INTO product(`productName`)
-VALUES ('Espresso'),('Latte'), ('Cappuccino'), ('Americano'), ('Macchiato'),('Mocha');
+VALUES ('Espresso'), ('Latte'), ('Cappuccino'), ('Americano'), ('Macchiato'), ('Mocha');
 
 INSERT INTO office(`officeName`)
-VALUES ('Pune'), ('Cape town'),('London'),('Amsterdam'),('Pretoria'),('Johannseburg');
+VALUES ('Pune'), ('Cape town'), ('London'), ('Amsterdam'), ('Pretoria'), ('Johannseburg');
 
 INSERT INTO availability(`officeID`, `productID`)
 VALUES (3,4), (1,6), (2,2);
 
 INSERT INTO orderStatus(`orderStatusValue`)
-VALUES ('Pending'),('In progress'),('Prepared'),('Complete'),('Cancelled');
+VALUES ('Pending'), ('In progress'), ('Prepared'), ('Complete'), ('Cancelled');
 
 INSERT INTO userStatus(`statusValue`)
-VALUES ('Active'),('Inactive'),('Ban');
+VALUES ('Active'), ('Inactive'), ('Ban');
 
 INSERT INTO userType(`userTypeValue`)
-VALUES ('Employee'),('Barista');
+VALUES ('Employee'), ('Barista'), ('Admin');
 
 INSERT INTO appUser(`userID`, `firstName`, `lastName`, `officeID`, `userStatusID`, `userTypeID`) 
 VALUES ('1025', 'swizel', 'antao', '2', '1', '1'), ('1056', 'duane', 'rodrigues', '5', '2', '2'), ('1028', 'sanketh', 'shenoy', '1', '3', '1');
 
-INSERT INTO orderList(`productID`, `orderStatusID`, `quantity`, `userID`) 
-VALUES ('1', '2', '2', '1025'), ('5', '2', '2', '1025'), ('2', '1', '1', '1028');
+INSERT INTO orderList(`productID`, `orderStatusID`, `quantity`, `userID`, `officeID`) 
+VALUES ('1', '2', '2', '1025', '1'), ('5', '2', '2', '1025', '1'), ('2', '1', '1', '1028', '3');
 
 
 

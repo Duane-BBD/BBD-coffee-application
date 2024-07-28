@@ -14,6 +14,4 @@ public class UserStatus {
     @Id
     private Integer userStatusID;
     private String StatusValue;
-
-
 }

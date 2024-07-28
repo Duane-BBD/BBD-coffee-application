@@ -10,7 +10,8 @@ public interface OrderListService {
     public OrderListDTO getOrderDetails(Integer orderID);
     List<OrderListDTO> getOrderDetails(Integer orderID, Integer officeID); // New method
     public String updateOrderStatus(Integer orderID);
-    public void createOrder(List<ReceiveOrderDetailDTO> orderDetailDTO);
+    public String createOrder(List<ReceiveOrderDetailDTO> orderDetailDTO);
+    public String cancelOrder(Integer orderID);
     public String updateOrder(OrderList orderList, Integer orderID);
     public String deleteOrder(Integer orderID);
     public OrderList getOrder(Integer orderID);

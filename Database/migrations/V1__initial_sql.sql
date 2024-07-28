@@ -1,11 +1,11 @@
-create table office(
+CREATE TABLE office(
     officeID INT AUTO_INCREMENT NOT NULL,
     officeName varchar(255) NOT NULL,
     PRIMARY KEY(officeID),
     UNIQUE(officeName)
 );
- 
- create table userStatus(
+
+CREATE TABLE userStatus(
     userStatusID INT AUTO_INCREMENT NOT NULL,
     statusValue VARCHAR(255) NOT NULL,
     PRIMARY KEY(userStatusID),
@@ -18,7 +18,7 @@ CREATE TABLE userType(
     primary key(userTypeID),
     UNIQUE(userTypeValue)
 );
- 
+
 CREATE TABLE appUser (
     userID INT NOT NULL,
     firstName VARCHAR(255) NOT NULL,
@@ -35,15 +35,15 @@ CREATE TABLE appUser (
 	CONSTRAINT FK_UserTypeAppUser FOREIGN KEY (userTypeID) REFERENCES userType(userTypeID)
 	ON UPDATE CASCADE
 );
- 
+
 CREATE TABLE product(
     productID INT AUTO_INCREMENT NOT NULL,
     productName VARCHAR(255) NOT NULL,
     PRIMARY KEY(productID),
     UNIQUE(productName)
 );
- 
- CREATE TABLE orderStatus(
+
+CREATE TABLE orderStatus(
     orderStatusID INT AUTO_INCREMENT NOT NULL,
     orderStatusValue VARCHAR(255) NOT NULL,
     PRIMARY KEY(orderStatusID),
@@ -56,12 +56,15 @@ CREATE TABLE orderList(
     orderStatusID INT NOT NULL,
     quantity INT NOT NULL,
     userID INT NOT NULL,
+    officeID INT NOT NULL,
     PRIMARY KEY(orderID),
     CONSTRAINT FK_ProductOrderList FOREIGN KEY (productID) REFERENCES product(productID)	
     ON UPDATE CASCADE,
     CONSTRAINT FK_OrderStatusOrderList FOREIGN KEY (orderStatusID) REFERENCES orderStatus(orderStatusID)
     ON UPDATE CASCADE,
     CONSTRAINT FK_AppUserOrderList FOREIGN KEY (userID) REFERENCES appUser(userID)
+    ON UPDATE CASCADE,
+    CONSTRAINT FK_OfficeOrderList FOREIGN KEY (officeID) REFERENCES office(officeID)
     ON UPDATE CASCADE
 );
 

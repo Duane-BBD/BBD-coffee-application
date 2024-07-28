@@ -21,4 +21,10 @@ public class Office {
     @OneToMany(mappedBy = "office")
     @JsonIgnore
     private Set<OrderList> orderLists;
+
+
+    public Office(Integer officeID, String officeName) {
+        this.officeID = officeID;
+        this.officeName = officeName;
+    }
 }

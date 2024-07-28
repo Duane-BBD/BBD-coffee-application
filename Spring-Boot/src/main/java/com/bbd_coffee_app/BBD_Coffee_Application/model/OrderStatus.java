@@ -20,7 +20,6 @@ public class OrderStatus {
     @OneToMany(mappedBy="orderStatusID")
     private Set<OrderStatus> orderStatusId;
 //new
-    @OneToMany(mappedBy = "orderStatus")
-    private Set<Product> products;
-
+//    @OneToMany(mappedBy = "orderStatus")
+//    private Set<Product> products;
 }

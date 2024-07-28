@@ -18,7 +18,7 @@ public class Product {
     private Integer productID;
     private String productName;
     //new
-    @ManyToOne
-    @JoinColumn(name = "orderStatusID")
-    private OrderStatus orderStatus;
+//    @ManyToOne
+//    @JoinColumn(name = "orderStatusID")
+//    private OrderStatus orderStatus;
 }

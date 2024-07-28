@@ -8,8 +8,8 @@ import java.util.List;
 
 @Service
 public interface OrderHistoryService {
-    public String createHistory(OrderHistory orderHistory);
+    public void createHistory(OrderHistory orderHistory);
 //     List<OrderHistory> getHistory(Integer orderHistoryID);
-     List<OrderHistoryDTO> getAllHistory();
+     List<OrderHistory> getAllHistory();
      List<OrderHistoryDTO> getOrderHistory(Integer orderID);
 }

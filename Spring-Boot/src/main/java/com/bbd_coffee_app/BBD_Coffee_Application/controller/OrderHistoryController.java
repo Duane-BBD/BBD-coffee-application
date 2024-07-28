@@ -22,7 +22,10 @@ public class OrderHistoryController {
     @GetMapping("/")
     public ResponseEntity<List<OrderHistoryDTO>> getAllOrderHistories() {
         try {
-            List<OrderHistoryDTO> orderHistories = orderHistoryService.getAllHistory();
+            List<OrderHistoryDTO> orderHistories = orderHistoryService.getAllHistory()
+                    .stream()
+                    .map(OrderHistoryDTO::new)
+                    .toList();;
             return new ResponseEntity<>(orderHistories, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

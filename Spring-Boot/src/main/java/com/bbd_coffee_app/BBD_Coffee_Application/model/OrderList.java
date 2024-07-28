@@ -3,8 +3,6 @@ package com.bbd_coffee_app.BBD_Coffee_Application.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
-
 @Entity
 @Data
 @AllArgsConstructor

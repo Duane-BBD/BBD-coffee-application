@@ -52,11 +52,12 @@ public class AppUserServiceImpl implements AppUserService {
 //        appUserRepository.deleteById(appUserID);
 //        return "Delete Success!";
 //    }
-//
-//    @Override
-//    public AppUser getUser(Integer appUserID) {
-//        return appUserRepository.findById(appUserID).get();
-//    }
+
+    @Override
+    public AppUser getUser(Integer appUserID) {
+        Optional<AppUser> user = appUserRepository.findById(appUserID);
+        return user.orElse(null);
+    }
 
     @Override
     public List<AppUser> getAllUsers() throws DataAccessResourceFailureException {

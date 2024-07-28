@@ -25,8 +25,7 @@ public class PlaceOrderController {
     @PostMapping()
     public ResponseEntity<String> createAvailability(@RequestBody List<ReceiveOrderDetailDTO> receiveAllOrderDetailDTO) {
         try {
-            orderListService.createOrder(receiveAllOrderDetailDTO);
-            return new ResponseEntity<>( HttpStatus.CREATED);
+            return new ResponseEntity<>(orderListService.createOrder(receiveAllOrderDetailDTO), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
