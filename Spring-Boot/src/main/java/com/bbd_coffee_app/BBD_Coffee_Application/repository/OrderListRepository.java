@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface OrderListRepository extends JpaRepository<OrderList, Integer> {
+//    Optional<OrderList> findByOrderIDAndOfficeID(Integer orderID, Integer officeID);
     @Query("SELECT orderID, productID, quantity FROM OrderList ol WHERE ol.userID = :userID")
     List<OrderList> findOrdersByUserId(Integer userID);
 

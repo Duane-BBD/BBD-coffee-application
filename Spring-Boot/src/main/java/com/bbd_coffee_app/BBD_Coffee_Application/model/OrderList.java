@@ -17,7 +17,11 @@ public class OrderList {
     private Integer orderStatusID;
     private Integer quantity;
     private Integer userID;
+//    private Integer officeID;
 
+    @ManyToOne
+    @JoinColumn(name = "officeID", nullable = false)
+    private Office office;
 }
 
 

@@ -18,5 +18,7 @@ public class Office {
     @OneToMany(mappedBy="officeID")
     private Set<Availability> officeId;
     private String officeName;
-
+    @OneToMany(mappedBy = "office")
+    @JsonIgnore
+    private Set<OrderList> orderLists;
 }

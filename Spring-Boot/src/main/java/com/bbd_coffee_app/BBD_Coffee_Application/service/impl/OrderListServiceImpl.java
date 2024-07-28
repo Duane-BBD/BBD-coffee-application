@@ -3,6 +3,7 @@ package com.bbd_coffee_app.BBD_Coffee_Application.service.impl;
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OrderListDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ReceiveOrderDetailDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.exception.ResourceNotFoundException;
+import com.bbd_coffee_app.BBD_Coffee_Application.model.Office;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderHistory;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.*;
@@ -44,6 +45,9 @@ public class OrderListServiceImpl implements OrderListService {
     AppUserService appUserService;
 
     @Autowired
+    OfficeRepository officeRepository;
+
+    @Autowired
     UtilsFunctions utils;
 
     public OrderListServiceImpl(OrderListRepository orderListRepository) {
@@ -59,14 +63,24 @@ public class OrderListServiceImpl implements OrderListService {
         }
 
         OrderList order = optional.get();
-        OrderListDTO item = new OrderListDTO();
-        item.setOrderID(orderID);
-        item.setUserName(appUserRepository.findById(order.getUserID()).get().getFirstName() + " " + appUserRepository.findById(order.getUserID()).get().getLastName());
-        item.setProductName(productRepository.findById(order.getProductID()).get().getProductName());
-        item.setQuantity(order.getQuantity());
-        item.setStatus(orderStatusRepository.findById(order.getOrderStatusID()).get().getOrderStatusValue());
-        return item;
+        return convertToDTO(order);
     }
+
+    @Override
+    public List<OrderListDTO> getOrderDetails(Integer orderID, Integer officeID) {
+        List<OrderList> orders = orderListRepository.findAll();
+        Optional<OrderList> optional = orders.stream()
+                .filter(order -> order.getOrderID().equals(orderID) && order.getOffice().getOfficeID().equals(officeID))
+                .findFirst();
+
+        if (optional.isEmpty()) {
+            throw new ResourceNotFoundException("OrderID " + orderID + " in OfficeID " + officeID + " does not exist!");
+        }
+
+        OrderList order = optional.get();
+        return List.of(convertToDTO(order));
+    }
+
 
     @Override
     public String updateOrderStatus(Integer orderID) {
@@ -104,6 +118,17 @@ public class OrderListServiceImpl implements OrderListService {
         }
         long oneHourAgoMillis = reqHistory.getOrderTime().getTime() + (60 * 60 * 1000);
         return reqHistory.getOrderTime().getTime() <= oneHourAgoMillis && oneHourAgoMillis <= Timestamp.from(Instant.now()).getTime();
+    }
+
+    private OrderListDTO convertToDTO(OrderList order) {
+        OrderListDTO item = new OrderListDTO();
+        item.setOrderID(order.getOrderID());
+        item.setUserName(appUserRepository.findById(order.getUserID()).get().getFirstName() + " " + appUserRepository.findById(order.getUserID()).get().getLastName());
+        item.setProductName(productRepository.findById(order.getProductID()).get().getProductName());
+        item.setQuantity(order.getQuantity());
+        item.setStatus(orderStatusRepository.findById(order.getOrderStatusID()).get().getOrderStatusValue());
+        item.setOfficeName(order.getOffice().getOfficeName()); // Assuming Office entity has getOfficeName()
+        return item;
     }
 
     @Override
