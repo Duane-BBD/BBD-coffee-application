@@ -5,11 +5,11 @@ import com.bbd_coffee_app.BBD_Coffee_Application.DTO.ReceiveOrderDetailDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.exception.ResourceNotFoundException;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderHistory;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
-import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderStatus;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.*;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.AppUserService;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderHistoryService;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderListService;
+import com.bbd_coffee_app.BBD_Coffee_Application.utils.UtilsFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +42,9 @@ public class OrderListServiceImpl implements OrderListService {
 
     @Autowired
     AppUserService appUserService;
+
+    @Autowired
+    UtilsFunctions utils;
 
     public OrderListServiceImpl(OrderListRepository orderListRepository) {
         this.orderListRepository = orderListRepository;
@@ -77,13 +80,13 @@ public class OrderListServiceImpl implements OrderListService {
             case 1, 2, 3 -> {
                 if (orderID == 3 && isLate(orderID)) {
                     order.setOrderStatusID(5);
-                    logHistory(order, orderID);
+                    utils.logHistory(order, orderID);
                     appUserService.banUser(order.getUserID());
                     orderListRepository.save(order);
                     yield "OrderID " + orderID + " was cancelled due to being late to receive the order!";
                 }
                 order.setOrderStatusID(order.getOrderStatusID() + 1);
-                logHistory(order, orderID);
+                utils.logHistory(order, orderID);
                 orderListRepository.save(order);
                 yield "Updated!";
             }
@@ -103,16 +106,6 @@ public class OrderListServiceImpl implements OrderListService {
         return reqHistory.getOrderTime().getTime() <= oneHourAgoMillis && oneHourAgoMillis <= Timestamp.from(Instant.now()).getTime();
     }
 
-    public void logHistory(OrderList order, Integer orderID) {
-        OrderHistory entry = new OrderHistory();
-        entry.setOrderID(order.getOrderID());
-        OrderStatus data = new OrderStatus();
-        data.setOrderStatusID(order.getOrderStatusID());
-        entry.setOrderStatusID(data);
-        entry.setOrderTime(Timestamp.from(Instant.now()));
-        orderHistoryService.createHistory(entry);
-    }
-
     @Override
     public void createOrder(List<ReceiveOrderDetailDTO> allOrderDetailDTO) {
         for (ReceiveOrderDetailDTO orderDetailDTO: allOrderDetailDTO) {
@@ -122,9 +115,8 @@ public class OrderListServiceImpl implements OrderListService {
             newOrder.setProductID(productRepository.findByProductName(orderDetailDTO.getProductName()));
             newOrder.setOrderStatusID(1);
             orderListRepository.save(newOrder);
-            logHistory(newOrder, orderListRepository.findAll().size());
+            utils.logHistory(newOrder, orderListRepository.findAll().size());
         }
-//        orderListRepository.save(orderDetailDTO);
     }
 
     @Override

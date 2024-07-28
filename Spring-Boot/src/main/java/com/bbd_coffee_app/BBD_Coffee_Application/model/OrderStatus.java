@@ -19,4 +19,8 @@ public class OrderStatus {
     private String orderStatusValue;
     @OneToMany(mappedBy="orderStatusID")
     private Set<OrderStatus> orderStatusId;
+//new
+    @OneToMany(mappedBy = "orderStatus")
+    private Set<Product> products;
+
 }
