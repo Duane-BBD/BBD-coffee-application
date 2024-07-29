@@ -30,10 +30,10 @@ public class OrderListController {
         }
     }
 
-    @GetMapping("{orderID}/office/{officeID}")
-    public ResponseEntity<List<OrderListDTO>> getOrderDetails(@PathVariable("orderID") Integer orderID, @PathVariable("officeID") Integer officeID) {
+    @GetMapping("office/{officeID}")
+    public ResponseEntity<List<OrderListDTO>> getOrderDetailsByOfficeID(@PathVariable("officeID") Integer officeID) {
         try {
-            return new ResponseEntity<>(orderListService.getOrderDetails(orderID, officeID), HttpStatus.OK);
+            return new ResponseEntity<>(orderListService.getOrderDetailsByOfficeID(officeID), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

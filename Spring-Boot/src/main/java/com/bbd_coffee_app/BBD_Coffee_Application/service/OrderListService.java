@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface OrderListService {
     public OrderListDTO getOrderDetails(Integer orderID);
-    List<OrderListDTO> getOrderDetails(Integer orderID, Integer officeID); // New method
+    List<OrderListDTO> getOrderDetailsByOfficeID(Integer officeID); // New method
     public String updateOrderStatus(Integer orderID);
     public String createOrder(List<ReceiveOrderDetailDTO> orderDetailDTO);
     public String cancelOrder(Integer orderID);

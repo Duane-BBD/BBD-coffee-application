@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderListServiceImpl implements OrderListService {
@@ -57,18 +58,18 @@ public class OrderListServiceImpl implements OrderListService {
     }
 
     @Override
-    public List<OrderListDTO> getOrderDetails(Integer orderID, Integer officeID) {
+    public List<OrderListDTO> getOrderDetailsByOfficeID(Integer officeID) {
         List<OrderList> orders = orderListRepository.findAll();
-        Optional<OrderList> optional = orders.stream()
-                .filter(order -> order.getOrderID().equals(orderID) && order.getOffice().getOfficeID().equals(officeID))
-                .findFirst();
+        List<OrderListDTO> orderDTOs = orders.stream()
+                .filter(order -> order.getOffice().getOfficeID().equals(officeID))
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
 
-        if (optional.isEmpty()) {
-            throw new ResourceNotFoundException("OrderID " + orderID + " in OfficeID " + officeID + " does not exist!");
+        if (orderDTOs.isEmpty()) {
+            throw new ResourceNotFoundException("Orders in OfficeID " + officeID + " do not exist!");
         }
 
-        OrderList order = optional.get();
-        return List.of(convertToDTO(order));
+        return orderDTOs;
     }
 
 
@@ -106,7 +107,6 @@ public class OrderListServiceImpl implements OrderListService {
         item.setProductName(productRepository.findById(order.getProductID()).get().getProductName());
         item.setQuantity(order.getQuantity());
         item.setStatus(orderStatusRepository.findById(order.getOrderStatusID()).get().getOrderStatusValue());
-        item.setOfficeName(order.getOffice().getOfficeName()); // Assuming Office entity has getOfficeName()
         return item;
     }
 
