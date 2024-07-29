@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BaristaDisplayImpl implements BaristaDisplayService {
+public class BaristaDisplayServiceImpl implements BaristaDisplayService {
 
     @Autowired
-    OrderListRepository orderListRepository;
+    private OrderListRepository orderListRepository;
 
     @Override
-    public List<BaristaDisplayDTO> getOrderByStatus(Integer officeID, String orderStatusValue){
-//     return orderListRepository.fetchBaristaDisplayDetails(officeID, orderStatusValue);
-
-        return List.of();
+    public List<BaristaDisplayDTO> getOrderByStatus(Integer officeID, String orderStatusValue) {
+        return orderListRepository.fetchBaristaDisplayDetails(officeID, orderStatusValue);
     }
 }
