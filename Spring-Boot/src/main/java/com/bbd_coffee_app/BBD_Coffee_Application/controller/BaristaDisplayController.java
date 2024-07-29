@@ -3,6 +3,7 @@ package com.bbd_coffee_app.BBD_Coffee_Application.controller;
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.AvailabilityDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.BaristaDisplayDTO;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.BaristaDisplayService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 public class BaristaDisplayController {
     @Autowired
     BaristaDisplayService baristaDisplayService;
+
     @GetMapping("{officeID}/{orderStatusValue}")
     public ResponseEntity<List<BaristaDisplayDTO>> getStatusValueByOfficeID(@PathVariable Integer officeID, @PathVariable String orderStatusValue){
         try {
