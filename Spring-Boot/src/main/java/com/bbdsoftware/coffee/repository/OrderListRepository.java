@@ -12,7 +12,7 @@ public interface OrderListRepository extends JpaRepository<OrderList, Integer> {
     @Query("SELECT orderID, productID, quantity FROM OrderList ol WHERE ol.userID = :userID")
     List<OrderList> findOrdersByUserId(Integer userID);
 
-    @Query("SELECT new com.bbd_coffee_app.BBD_Coffee_Application.DTO.BaristaDisplayDTO(ol.orderID, p.productName, ol.quantity) " +
+    @Query("SELECT new com.bbdsoftware.coffee.DTO.BaristaDisplayDTO(ol.orderID, p.productName, ol.quantity) " +
             "FROM OrderList ol " +
             "JOIN Product p ON p.productID = ol.productID " +
             "JOIN AppUser a ON a.userID = ol.userID " +

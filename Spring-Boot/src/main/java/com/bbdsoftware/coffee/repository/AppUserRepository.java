@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
-    @Query("SELECT new com.bbd_coffee_app.BBD_Coffee_Application.DTO.UserOfficeDTO(u.firstName, u.lastName, ut.userTypeValue, o.officeName) " +
+    @Query("SELECT new com.bbdsoftware.coffee.DTO.UserOfficeDTO(u.firstName, u.lastName, ut.userTypeValue, o.officeName) " +
             "FROM AppUser u " +
             "INNER JOIN u.userType ut " +
             "INNER JOIN u.office o")

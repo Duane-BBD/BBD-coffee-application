@@ -1,10 +1,6 @@
 package com.bbdsoftware.coffee.utils;
 
-import com.bbd_coffee_app.coffee.model.*;
-import com.bbdsoftware.coffee.model.AppUser;
-import com.bbdsoftware.coffee.model.OrderHistory;
-import com.bbdsoftware.coffee.model.OrderList;
-import com.bbdsoftware.coffee.model.OrderStatus;
+import com.bbdsoftware.coffee.model.*;
 import com.bbdsoftware.coffee.service.AppUserService;
 import com.bbdsoftware.coffee.service.OrderHistoryService;
 import com.bbdsoftware.coffee.service.UserStatusService;
