@@ -7,13 +7,14 @@ import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
 import java.util.List;
 
 public interface OrderListService {
-    public OrderListDTO getOrderDetails(Integer orderID);
+    OrderListDTO getOrderDetails(Integer orderID);
     List<OrderListDTO> getOrderDetailsByOfficeID(Integer officeID); // New method
-    public String updateOrderStatus(Integer orderID);
-    public String createOrder(List<ReceiveOrderDetailDTO> orderDetailDTO);
-    public String cancelOrder(Integer orderID);
-    public String updateOrder(OrderList orderList, Integer orderID);
-    public String deleteOrder(Integer orderID);
-    public OrderList getOrder(Integer orderID);
-    public List<OrderList> getAllOrders();
+    String updateOrderStatus(Integer orderID);
+    String createOrder(List<ReceiveOrderDetailDTO> orderDetailDTO);
+    String cancelOrder(Integer orderID);
+    List<OrderListDTO> pastOrders(Integer userID);
+    String updateOrder(OrderList orderList, Integer orderID);
+    String deleteOrder(Integer orderID);
+    OrderList getOrder(Integer orderID);
+    List<OrderList> getAllOrders();
 }

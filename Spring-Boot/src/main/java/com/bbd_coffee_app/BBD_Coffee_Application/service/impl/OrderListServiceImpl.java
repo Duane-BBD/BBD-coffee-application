@@ -6,14 +6,14 @@ import com.bbd_coffee_app.BBD_Coffee_Application.exception.ResourceNotFoundExcep
 import com.bbd_coffee_app.BBD_Coffee_Application.model.Office;
 import com.bbd_coffee_app.BBD_Coffee_Application.model.OrderList;
 import com.bbd_coffee_app.BBD_Coffee_Application.repository.*;
-import com.bbd_coffee_app.BBD_Coffee_Application.service.AppUserService;
-import com.bbd_coffee_app.BBD_Coffee_Application.service.OfficeService;
-import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderListService;
+import com.bbd_coffee_app.BBD_Coffee_Application.service.*;
 import com.bbd_coffee_app.BBD_Coffee_Application.utils.UtilsFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -37,6 +37,12 @@ public class OrderListServiceImpl implements OrderListService {
 
     @Autowired
     OfficeService officeService;
+
+    @Autowired
+    ProductService productService;
+
+    @Autowired
+    OrderStatusService orderStatusService;
 
     @Autowired
     UtilsFunctions utils;
@@ -112,6 +118,7 @@ public class OrderListServiceImpl implements OrderListService {
 
     @Override
     public String createOrder(List<ReceiveOrderDetailDTO> allOrderDetailDTO) {
+        List<Integer> orderIDs = new ArrayList<>();
         for (ReceiveOrderDetailDTO orderDetailDTO: allOrderDetailDTO) {
             if (utils.isBanned(orderDetailDTO.getUserID())) {
                 return "User is banned!";
@@ -124,23 +131,45 @@ public class OrderListServiceImpl implements OrderListService {
             Office newOffice = new Office(orderDetailDTO.getOfficeID(), officeService.getOffice(orderDetailDTO.getOfficeID()).getOfficeName());
             newOrder.setOffice(newOffice);
             orderListRepository.save(newOrder);
+            orderIDs.add(orderListRepository.findAll().size());
             utils.logHistory(newOrder, orderListRepository.findAll().size());
         }
-        return "Order placed!";
+        return "Order placed at " + orderIDs + "!";
     }
 
     @Override
     public String cancelOrder(Integer orderID) {
         Optional<OrderList> order = orderListRepository.findById(orderID);
         if(order.isEmpty()) {
-            return "Order with orderID " + orderID + "not found!";
+            return "Order with orderID " + orderID + " not found!";
         }
-        if(utils.isPending(order.get().getOrderStatusID())) {
+        if(order.get().getOrderStatusID() == 1) {
             order.get().setOrderStatusID(5);
             utils.logHistory(order.get(), orderID);
             return "Order cancelled!";
         }
         return "Order cannot be cancelled since the order is not in pending state!";
+    }
+
+    @Override
+    public List<OrderListDTO> pastOrders(Integer userID) {
+        List<OrderList> allOrders = orderListRepository.findAll();
+        List<OrderListDTO> userPastOrder = new ArrayList<>();
+        for(OrderList order : allOrders) {
+            if(Objects.equals(order.getUserID(), userID)) {
+                OrderListDTO userOrder = new OrderListDTO();
+                if(order.getOrderStatusID() == 4 || order.getOrderStatusID() == 5) {
+                    userOrder.setOrderID(order.getOrderID());
+                    userOrder.setQuantity(order.getQuantity());
+                    userOrder.setUserName(appUserService.getUser(userID).getFirstName()+" "+appUserService.getUser(userID).getLastName());
+                    userOrder.setProductName(productService.getProduct(order.getProductID()).getProductName());
+                    userOrder.setStatus(orderStatusService.getOrderStatus(order.getOrderStatusID()).getOrderStatusValue());
+                    userPastOrder.add(userOrder);
+                }
+            }
+        }
+
+        return userPastOrder;
     }
 
     @Override

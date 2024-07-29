@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/availability")
+@RequestMapping("/bbd-coffee/availability")
 public class AvailabilityController {
     @Autowired
     AvailabilityService availabilityService;
@@ -33,7 +33,7 @@ public class AvailabilityController {
 //        return availabilityService.getAllAvailability();
 //    }
 
-    @PostMapping
+    @PostMapping("/add-products")
     public ResponseEntity<String> createAvailability(@RequestBody AvailabilityDTO availabilityDTO) {
 //        return ResponseEntity.ok("User created");
         try {
@@ -43,7 +43,7 @@ public class AvailabilityController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/")
+    @GetMapping("/get-all-available")
     public ResponseEntity<List<AvailabilityDTO>> getAllAvailability() {
         try {
             List<AvailabilityDTO> availabilities = availabilityService.getAllAvailability();

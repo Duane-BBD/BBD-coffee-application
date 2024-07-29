@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/bbd-coffee/orders")
 public class OrderDetailController {
     @Autowired
     OrderListService orderListService;
@@ -20,7 +20,7 @@ public class OrderDetailController {
         this.orderListService = orderListService;
     }
 
-    @GetMapping("{orderID}")
+    @GetMapping("/get-order-details/{orderID}")
     public ResponseEntity<OrderListDTO> getOrderDetails(@PathVariable("orderID") Integer orderID) {
         try {
             return new ResponseEntity<>(orderListService.getOrderDetails(orderID), HttpStatus.OK);

@@ -58,9 +58,4 @@ public class UtilsFunctions {
     public Boolean isBanned(Integer userID) {
         return appUserService.getUser(userID).getUserStatusID() == 3;
     }
-
-    public Boolean isPending(Integer orderStatusID) {
-        UserStatus stat = userStatusService.getUserStatus(orderStatusID);
-        return Objects.equals(stat.getStatusValue(), "Pending");
-    }
 }

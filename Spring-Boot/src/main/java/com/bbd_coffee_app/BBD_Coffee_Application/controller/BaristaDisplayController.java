@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("barista-display")
+@RequestMapping("/bbd-coffee/barista-display")
 public class BaristaDisplayController {
     @Autowired
     BaristaDisplayService baristaDisplayService;

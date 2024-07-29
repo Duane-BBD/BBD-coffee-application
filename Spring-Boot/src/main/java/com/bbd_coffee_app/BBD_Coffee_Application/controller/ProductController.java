@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/bbd-coffee/products")
 public class ProductController {
     @Autowired
     ProductService productService;
@@ -21,31 +21,31 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/office/{officeID}")
+    @GetMapping("/office-inventory/{officeID}")
     public ResponseEntity<List<String>> getProductsAvailable(@PathVariable("officeID") Integer officeID) {
         List<String> products = productService.productsAtOffice(officeID);
         return ResponseEntity.ok(products);
     }
 
-    @GetMapping
+    @GetMapping("/get-all-products")
     public ResponseEntity<List<ProductResponseDTO>> getAllProduct() {
         List<ProductResponseDTO> productDTOs = productService.getAllProductDTOs();
         return ResponseEntity.ok(productDTOs);
     }
 
-    @GetMapping("{productID}")
+    @GetMapping("/search-product/{productID}")
     public ResponseEntity<Product> getProduct(@PathVariable("productID") Integer productID) {
         Product product = productService.getProduct(productID);
         return ResponseEntity.ok(product);
     }
 
-    @DeleteMapping("{productID}")
+    @DeleteMapping("/delete-product/{productID}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("productID") Integer productID) {
         productService.deleteProduct(productID);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping
+    @PostMapping("add-product")
     public ResponseEntity<Void> createProduct(@RequestBody ProductCreateDTO productCreateDTO) {
         Product product = new Product();
         product.setProductName(productCreateDTO.getProductName());

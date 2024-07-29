@@ -1,7 +1,6 @@
 package com.bbd_coffee_app.BBD_Coffee_Application.controller;
 
 import com.bbd_coffee_app.BBD_Coffee_Application.DTO.OrderListDTO;
-import com.bbd_coffee_app.BBD_Coffee_Application.repository.OrderListRepository;
 import com.bbd_coffee_app.BBD_Coffee_Application.service.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/order-list")
+@RequestMapping("/bbd-coffee/order-list")
 public class OrderListController {
     @Autowired
     OrderListService orderListService;
@@ -21,7 +20,7 @@ public class OrderListController {
         this.orderListService = orderListService;
     }
 
-    @PatchMapping("{orderID}")
+    @PatchMapping("/update-status/{orderID}")
     public ResponseEntity<String> updateOrderStatus(@PathVariable Integer orderID) {
         try {
             return new ResponseEntity<>(orderListService.updateOrderStatus(orderID), HttpStatus.OK);
@@ -30,10 +29,19 @@ public class OrderListController {
         }
     }
 
-    @GetMapping("office/{officeID}")
+    @GetMapping("/search-office/{officeID}")
     public ResponseEntity<List<OrderListDTO>> getOrderDetailsByOfficeID(@PathVariable("officeID") Integer officeID) {
         try {
             return new ResponseEntity<>(orderListService.getOrderDetailsByOfficeID(officeID), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/past-orders/{userID}")
+    public ResponseEntity<List<OrderListDTO>> getPastOrders(@PathVariable("userID") Integer userID) {
+        try {
+            return new ResponseEntity<>(orderListService.pastOrders(userID), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

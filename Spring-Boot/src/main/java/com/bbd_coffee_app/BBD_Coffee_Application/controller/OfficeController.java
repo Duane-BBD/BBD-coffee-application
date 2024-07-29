@@ -18,13 +18,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/office")
+@RequestMapping("/bbd-coffee/office")
 public class OfficeController {
 
     @Autowired
     private OfficeService officeService;
 
-    @PostMapping
+    @PostMapping("add-location")
     public ResponseEntity<Void> createOffice(@RequestBody OfficeCreateDTO officeCreateDTO) {
         Office office = new Office();
         office.setOfficeName(officeCreateDTO.getOfficeName());
@@ -32,7 +32,7 @@ public class OfficeController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("list-all-office")
     public ResponseEntity<List<OfficeResponseDTO>> getAllOffice() {
         List<OfficeResponseDTO> officeDTOs = officeService.getAllOffice().stream()
                 .map(office -> {

@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/order-history")
+@RequestMapping("/bbd-coffee/order-history")
 public class OrderHistoryController {
     @Autowired
     OrderHistoryService orderHistoryService;
 
-    @GetMapping("/")
+    @GetMapping("/get-all-history")
     public ResponseEntity<List<OrderHistoryDTO>> getAllOrderHistories() {
         try {
             List<OrderHistoryDTO> orderHistories = orderHistoryService.getAllHistory()
@@ -31,8 +31,9 @@ public class OrderHistoryController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/{userID}")
-    public ResponseEntity<List<OrderHistoryDTO>> getorderHistory(@PathVariable("userID") Integer userID){
+
+    @GetMapping("/search-history/{userID}")
+    public ResponseEntity<List<OrderHistoryDTO>> getOrderHistory(@PathVariable("userID") Integer userID){
         try {
             return new ResponseEntity<>(orderHistoryService.getOrderHistory(userID), HttpStatus.OK);
         } catch (Exception e) {

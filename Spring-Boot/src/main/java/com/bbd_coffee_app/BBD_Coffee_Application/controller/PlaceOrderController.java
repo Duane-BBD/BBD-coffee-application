@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/place-order")
+@RequestMapping("bbd-coffee")
 public class PlaceOrderController {
     @Autowired
     OrderListService orderListService;
@@ -22,8 +22,8 @@ public class PlaceOrderController {
         this.orderListService = orderListService;
     }
 
-    @PostMapping()
-    public ResponseEntity<String> createAvailability(@RequestBody List<ReceiveOrderDetailDTO> receiveAllOrderDetailDTO) {
+    @PostMapping("/order-creation")
+    public ResponseEntity<String> placeOrder(@RequestBody List<ReceiveOrderDetailDTO> receiveAllOrderDetailDTO) {
         try {
             return new ResponseEntity<>(orderListService.createOrder(receiveAllOrderDetailDTO), HttpStatus.CREATED);
         } catch (Exception e) {

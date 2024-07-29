@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/bbd-coffee/users")
 public class AppUserController {
     @Autowired
     AppUserService appUserService;
