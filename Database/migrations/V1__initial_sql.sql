@@ -39,6 +39,7 @@ CREATE TABLE appUser (
 CREATE TABLE product(
     productID INT AUTO_INCREMENT NOT NULL,
     productName VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
     PRIMARY KEY(productID),
     UNIQUE(productName)
 );
@@ -49,14 +50,23 @@ CREATE TABLE orderStatus(
     PRIMARY KEY(orderStatusID),
     UNIQUE(orderStatusValue)
 );
+
+CREATE TABLE milkType(
+    milkTypeID INT AUTO_INCREMENT NOT NULL,
+    milkTypeValue VARCHAR(255) NOT NULL,
+    PRIMARY KEY(milkTypeID),
+    UNIQUE(milkTypeValue)
+);
  
 CREATE TABLE orderList(
     orderID INT AUTO_INCREMENT NOT NULL,
     productID INT NOT NULL,
     orderStatusID INT NOT NULL,
     quantity INT NOT NULL,
+    notes VARCHAR(255),
     userID INT NOT NULL,
     officeID INT NOT NULL,
+    milkTypeID INT NOT NULL,
     PRIMARY KEY(orderID),
     CONSTRAINT FK_ProductOrderList FOREIGN KEY (productID) REFERENCES product(productID)	
     ON UPDATE CASCADE,
@@ -65,6 +75,8 @@ CREATE TABLE orderList(
     CONSTRAINT FK_AppUserOrderList FOREIGN KEY (userID) REFERENCES appUser(userID)
     ON UPDATE CASCADE,
     CONSTRAINT FK_OfficeOrderList FOREIGN KEY (officeID) REFERENCES office(officeID)
+    ON UPDATE CASCADE,
+    CONSTRAINT FK_MilkTypeOrderList FOREIGN KEY (milkTypeID) REFERENCES milkType(milkTypeID)
     ON UPDATE CASCADE
 );
 
