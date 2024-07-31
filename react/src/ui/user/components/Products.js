@@ -59,8 +59,7 @@ export default function Products() {
                 src={menus.img}
                 alt="Cappuccino"
                 className="card-img-top"
-            />
-                
+            />     
                 <h5 className="card-title">{menus.name}</h5>
                 <p className="card-text">{menus.description}
                 </p>

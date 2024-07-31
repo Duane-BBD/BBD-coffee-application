@@ -4,12 +4,11 @@ body{
 }
 
 .backroundimg2{
-        height:18vh;
-        width:99vw;
-        /* opacity: 85%; */
-        position: relative;
-        filter: brightness(75%);
-        
+    height:18vh;
+    width:99vw;
+    /* opacity: 85%; */
+    position: relative;
+    filter: brightness(75%);
 }
 
 .logo{
@@ -81,31 +80,25 @@ body{
     }
 
 }
-.card-container{
-    display: flex;
-    gap: 1rem; 
-    /* flex-wrap: wrap-reverse; */
-    flex-direction: row;
-
-
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px; 
 }
+  
 .card-disp {
-    display: flex;
-    /* flex-wrap: wrap; */
-    flex-direction: row;
-    justify-content:space-between;
-    /* gap: 10px;  */
-    max-width: 100%;
-    /* box-sizing: border-box;  */
+  display: flex;
+  justify-content: center;
 }
 .card {
-    flex: 1 1 calc(50% - 20px); 
-    /* max-width: calc(50% - 20px);  */
+    /* flex: 1 1 calc(50% - 20px);  */
+    /* max-width: calc(120% - 20px);  */
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-bottom: 20px;
+    /* padding: 50px; */
 }
     .card img {
     width: 100%;
@@ -125,6 +118,7 @@ body{
     font-size: 0.9em;
     color: #666;
     padding: 2px;
+
 
     }
 

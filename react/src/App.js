@@ -11,9 +11,7 @@ function App() {
             <Route exact path="/" element={<Location/>} />
             <Route exact path="/page1" element={<Products/>} />
             <Route exact path="/user" element={<UserLanding/>}/>
-
         </Routes>
-        
     </BrowserRouter>
   )
 }
