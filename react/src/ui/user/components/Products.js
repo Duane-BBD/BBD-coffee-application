@@ -1,10 +1,10 @@
 import React from 'react'
-import "../static/Products.css"
-import backgroundimg from "../images/coffeebeans.png";
+import "../../static/Products.css"
+import backgroundimg from "../../common/images/coffeeheader.png";
 import { BiSearch } from 'react-icons/bi';
 import {IoIosArrowDown} from 'react-icons/io'
-import coffee from "../images/coffee.png"
-import Logo from "../images/logo2.png"
+import coffee from "../../common/images/coffee.png"
+import Logo from "../../common/images/logo2.png"
 const menu=[
     {
         name: " Cappuccino",
@@ -50,6 +50,7 @@ export default function Products() {
                 </div>
             </div>
         </div>
+      <div className='card-container'>
         {menu.map((menus, index) => (
 
         <div className='card-disp' key={index}>
@@ -67,6 +68,7 @@ export default function Products() {
             </div>
         </div>
         ))}
+        </div>
     </div>
   )
 }

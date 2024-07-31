@@ -1,9 +1,9 @@
 import React from "react";
-import backgroundimg from "../images/logo.png";
-import "../static/Location.css";
+import backgroundimg from "../../common/images/logo.png";
+import "../../static/Location.css";
 import { SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
-import Coffeebean from "../images/coffeebean.png"
+import Coffeebean from "../../common/images/coffeebean.png"
 function Location() {
     const locations = [
         {

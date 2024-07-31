@@ -81,18 +81,26 @@ body{
     }
 
 }
+.card-container{
+    display: flex;
+    gap: 1rem; 
+    /* flex-wrap: wrap-reverse; */
+    flex-direction: row;
+
+
+}
 .card-disp {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     flex-direction: row;
     justify-content:space-between;
-    gap: 2px; 
+    /* gap: 10px;  */
     max-width: 100%;
     /* box-sizing: border-box;  */
 }
 .card {
     flex: 1 1 calc(50% - 20px); 
-    max-width: calc(50% - 20px);
+    /* max-width: calc(50% - 20px);  */
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
