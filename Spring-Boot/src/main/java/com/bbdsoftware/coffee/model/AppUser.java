@@ -1,9 +1,6 @@
 package com.bbdsoftware.coffee.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -12,6 +9,7 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="appUser")
 public class AppUser {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

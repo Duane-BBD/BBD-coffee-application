@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="milkType")
+
 public class MilkType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
