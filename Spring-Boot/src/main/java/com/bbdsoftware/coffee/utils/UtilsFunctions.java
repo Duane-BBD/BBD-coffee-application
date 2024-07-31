@@ -2,6 +2,7 @@ package com.bbdsoftware.coffee.utils;
 
 import com.bbdsoftware.coffee.model.*;
 import com.bbdsoftware.coffee.service.AppUserService;
+import com.bbdsoftware.coffee.service.MilkTypeService;
 import com.bbdsoftware.coffee.service.OrderHistoryService;
 import com.bbdsoftware.coffee.service.UserStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class UtilsFunctions {
 
     @Autowired
     AppUserService appUserService;
+
+    @Autowired
+    MilkTypeService milkTypeService;
 
     @Autowired
     UserStatusService userStatusService;
@@ -57,5 +61,14 @@ public class UtilsFunctions {
 
     public Boolean isBanned(Integer userID) {
         return appUserService.getUser(userID).getUserStatusID() == 3;
+    }
+
+    public Integer getMilkByType(String milkType) {
+        List<MilkType> allMilk = milkTypeService.getAllMilkType();
+        for(MilkType milk:allMilk){
+            if(Objects.equals(milk.getMilkTypeValue(), milkType))
+                return milk.getMilkTypeID();
+        }
+        return null;
     }
 }

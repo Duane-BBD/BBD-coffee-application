@@ -12,11 +12,11 @@ public interface OrderListRepository extends JpaRepository<OrderList, Integer> {
     @Query("SELECT orderID, productID, quantity FROM OrderList ol WHERE ol.userID = :userID")
     List<OrderList> findOrdersByUserId(Integer userID);
 
-    @Query("SELECT new com.bbdsoftware.coffee.DTO.BaristaDisplayDTO(ol.orderID, p.productName, ol.quantity) " +
-            "FROM OrderList ol " +
-            "JOIN Product p ON p.productID = ol.productID " +
-            "JOIN AppUser a ON a.userID = ol.userID " +
-            "JOIN OrderStatus os ON os.orderStatusID = ol.orderStatusID " +
-            "WHERE a.officeID = :officeID AND os.orderStatusValue = :orderStatusValue")
+    @Query("SELECT ol.orderID, p.productName, ol.quantity, ol.notes, mt.milkTypeValue\n" +
+            "FROM OrderList ol \n" +
+            "INNER JOIN Product p ON p.productID = ol.productID\n" +
+            "INNER JOIN MilkType mt ON mt.milkTypeID = ol.milkTypeID\n" +
+            "INNER JOIN OrderStatus os ON os.orderStatusID = ol.orderStatusID \n" +
+            "WHERE ol.office.officeID = :officeID AND os.orderStatusValue = :orderStatusValue")
     List<BaristaDisplayDTO> fetchBaristaDisplayDetails(@Param("officeID") Integer officeID, @Param("orderStatusValue") String orderStatusValue);
 }

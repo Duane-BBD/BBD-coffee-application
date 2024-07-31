@@ -8,4 +8,6 @@ public class BaristaDisplayDTO {
     private Integer orderID;
     private String productName;
     private Integer quantity;
+    private String notes;
+    private String milkTypeValue;
 }

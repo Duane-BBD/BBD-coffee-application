@@ -16,6 +16,8 @@ public class OrderList {
     private Integer quantity;
     private Integer userID;
 //    private Integer officeID;
+    private Integer milkTypeID;
+    private String notes;
 
     @ManyToOne
     @JoinColumn(name = "officeID", nullable = false)

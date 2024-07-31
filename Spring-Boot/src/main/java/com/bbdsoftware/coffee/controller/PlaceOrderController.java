@@ -2,6 +2,8 @@ package com.bbdsoftware.coffee.controller;
 
 import com.bbdsoftware.coffee.DTO.ReceiveOrderDetailDTO;
 import com.bbdsoftware.coffee.service.OrderListService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @RestController
 @RequestMapping("bbd-coffee")
 public class PlaceOrderController {
     @Autowired
     OrderListService orderListService;
-
-    public PlaceOrderController(OrderListService orderListService) {
-        this.orderListService = orderListService;
-    }
 
     @PostMapping("/order-creation")
     public ResponseEntity<String> placeOrder(@RequestBody List<ReceiveOrderDetailDTO> receiveAllOrderDetailDTO) {

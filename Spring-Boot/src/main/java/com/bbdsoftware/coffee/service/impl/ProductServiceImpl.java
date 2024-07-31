@@ -52,6 +52,7 @@ public class ProductServiceImpl  implements ProductService {
                     ProductResponseDTO dto = new ProductResponseDTO();
                     dto.setProductID(product.getProductID());
                     dto.setProductName(product.getProductName());
+                    dto.setDescription(product.getDescription());
                     return dto;
                 }).collect(Collectors.toList());
     }
@@ -80,6 +81,3 @@ public class ProductServiceImpl  implements ProductService {
         return productRepository.findAll();
     }
 }
-
-
-

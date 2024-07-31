@@ -17,6 +17,7 @@ public class Product {
     @SequenceGenerator(name= "product_gen",sequenceName= "product_seq",initialValue = 7, allocationSize = 1)
     private Integer productID;
     private String productName;
+    private String description;
     //new
 //    @ManyToOne
 //    @JoinColumn(name = "orderStatusID")

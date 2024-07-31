@@ -13,4 +13,6 @@ public class ReceiveOrderDetailDTO {
     private Integer quantity;
     private Integer userID;
     private Integer officeID;
+    private String milkTypeValue;
+    private String note;
 }

@@ -15,4 +15,6 @@ public class OrderListDTO {
     private String productName;
     private int quantity;
     private String status;
+    private String note;
+    private String milkTypeValue;
 }

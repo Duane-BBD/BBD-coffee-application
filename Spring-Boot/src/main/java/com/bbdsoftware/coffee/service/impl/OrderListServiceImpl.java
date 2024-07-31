@@ -48,6 +48,9 @@ public class OrderListServiceImpl implements OrderListService {
     OrderStatusService orderStatusService;
 
     @Autowired
+    MilkTypeService milkTypeService;
+
+    @Autowired
     UtilsFunctions utils;
 
     public OrderListServiceImpl(OrderListRepository orderListRepository) {
@@ -133,6 +136,8 @@ public class OrderListServiceImpl implements OrderListService {
             newOrder.setOrderStatusID(1);
             Office newOffice = new Office(orderDetailDTO.getOfficeID(), officeService.getOffice(orderDetailDTO.getOfficeID()).getOfficeName());
             newOrder.setOffice(newOffice);
+            newOrder.setMilkTypeID(utils.getMilkByType(orderDetailDTO.getMilkTypeValue()));
+            newOrder.setNotes(orderDetailDTO.getNote());
             orderListRepository.save(newOrder);
             orderIDs.add(orderListRepository.findAll().size());
             utils.logHistory(newOrder, orderListRepository.findAll().size());
@@ -167,6 +172,8 @@ public class OrderListServiceImpl implements OrderListService {
                     userOrder.setUserName(appUserService.getUser(userID).getFirstName()+" "+appUserService.getUser(userID).getLastName());
                     userOrder.setProductName(productService.getProduct(order.getProductID()).getProductName());
                     userOrder.setStatus(orderStatusService.getOrderStatus(order.getOrderStatusID()).getOrderStatusValue());
+                    userOrder.setNote(order.getNotes());
+                    userOrder.setMilkTypeValue(milkTypeService.getMilkType(order.getMilkTypeID()).getMilkTypeValue());
                     userPastOrder.add(userOrder);
                 }
             }

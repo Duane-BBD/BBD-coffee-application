@@ -6,5 +6,6 @@ import lombok.Data;
 public class ProductResponseDTO {
     private Integer productID;
     private String productName;
+    private String description;
 
 }
