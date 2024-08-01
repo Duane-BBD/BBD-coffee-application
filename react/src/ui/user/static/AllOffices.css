@@ -7,7 +7,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
-    gap: 5.4rem;
+    gap: 5rem;
     color: rgb(95, 92, 92);
     font-weight: 800;
     text-decoration: none;
@@ -20,7 +20,10 @@
 }
 .mapping{
     padding-top: 0.9rem;
-    width: 100%;
+    width: 95%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
 
 }
 
@@ -34,3 +37,10 @@
 .coffeebean{
     width: 2.1rem;
 }
+/* @media screen and (min-width:768px) and (max-width:649px) {
+.alloffices{
+    position: relative;
+    top:0%;
+}
+
+} */

@@ -2,19 +2,46 @@ body{
     background: whitesmoke;
 }
 
-.backgroundimg{
-    position:fixed;
-}
 
+.backgroundimg1{
+    position:relative;
+    width: 100%;
+    filter: brightness(45%);
+}
+.upper-text{
+    position: absolute;
+    top:6%;
+    left:25%;
+    align-content: center;
+    text-align: center;
+    color: rgb(210, 204, 204);
+    font-family: "Montserrat";
+    font-size: 1.3rem;
+}
+.bbdlogo{
+    position: absolute;
+    top:10%;
+    left:22%;
+}
+.background-text{
+    position: absolute;
+    top:27%;
+    left:1%;
+    padding-left: 23%;
+    padding-right: 23%;
+    align-content: center;
+    text-align: center;
+    color: rgb(210, 204, 204);
+    font-family: "Montserrat";
+    font-size: 0.9rem;
+}
 .front-page{
     background: whitesmoke;
     width: 100%;
     padding: 0%;
     margin: 0%;
 }
- img{
-    width:100%;
-}
+
 
 .intro{
     top:26%;
@@ -30,6 +57,161 @@ body{
     opacity: 70%;
 }
 
-/* @media ( < width < 50em) {
+@media screen and (max-width:320px) {
+    .bbdlogo{
+        position: absolute;
+        top:10%;
+        left:26%;
+        width: 50%;
+    }
+    .background-text{
+        position: absolute;
+        top:23%;
+        left:1%;
+        padding-left: 23%;
+        padding-right: 23%;
+        align-content: center;
+        text-align: center;
+        color: rgb(210, 204, 204);
+        font-family: "Montserrat";
+        font-size: 0.8rem;
+    }
+}
 
-} */
+
+@media screen and (min-width:425px) and (max-width:649px) {
+    .bbdlogo{
+        position: absolute;
+        top:12%;
+        left:26%;
+        width: 50%;
+    }
+    .background-text{
+        position: absolute;
+        top:30%;
+        left:1%;
+        padding-left: 23%;
+        padding-right: 23%;
+        align-content: center;
+        text-align: center;
+        color: rgb(210, 204, 204);
+        font-family: "Montserrat";
+        font-size: 1rem;
+    }
+    .upper-text{
+        top:7%;
+        left:26%;
+        font-size: 1.3rem;
+    }
+}
+
+
+@media screen and (min-width:649px) and (max-width:769px) {
+    .bbdlogo{
+        position: absolute;
+        top:22%;
+        left:26%;
+        width: 50%;
+    }
+    .background-text{
+        position: absolute;
+        top:55%;
+        left:1%;
+        padding-left: 23%;
+        padding-right: 23%;
+        align-content: center;
+        text-align: center;
+        color: rgb(210, 204, 204);
+        font-family: "Montserrat";
+        font-size: 1.8rem;
+    }
+    .upper-text{
+        top:12%;
+        left:26%;
+        font-size:2rem;
+    }
+}
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .bbdlogo{
+        top:22%;
+        left:26%;
+        width: 50%;
+    }
+    .background-text{
+        position: absolute;
+        top:55%;
+        left:1%;
+        padding-left: 23%;
+        padding-right: 23%;
+        align-content: center;
+        text-align: center;
+        color: rgb(210, 204, 204);
+        font-family: "Montserrat";
+        font-size: 2.5rem;
+    }
+    .upper-text{
+        top:12%;
+        left:26%;
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width:1440px) and (min-width:1024px) {
+    .bbdlogo{
+        top:22%;
+        left:26%;
+        width: 50%;
+    }
+    .background-text{
+        position: absolute;
+        top:55%;
+        left:1%;
+        padding-left: 23%;
+        padding-right: 23%;
+        align-content: center;
+        text-align: center;
+        color: rgb(210, 204, 204);
+        font-family: "Montserrat";
+        font-size: 2.5rem;
+    }
+    .upper-text{
+        top:12%;
+        left:26%;
+        font-size: 2.5rem;
+    }
+}
+
+
+@media screen and (max-width:2565px) and (min-width:1024px) {
+    .bbdlogo{
+        top:25%;
+        left:32%;
+        width: 35%;
+    }
+    .background-text{
+        position: absolute;
+        top:60%;
+        left:1%;
+        padding-left: 32%;
+        padding-right: 32%;
+        align-content: center;
+        text-align: center;
+        color: rgb(210, 204, 204);
+        font-family: "Montserrat";
+        font-size: 2rem;
+    }
+    .upper-text{
+        top:12%;
+        left:26%;
+        font-size: 2.8rem;
+    }
+    
+
+.backgroundimg1{
+    position:sticky;
+    display: flex;
+    width: 100%;
+    max-height:50rem;
+    filter: brightness(45%);
+}
+}

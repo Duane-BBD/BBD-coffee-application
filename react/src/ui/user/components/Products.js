@@ -8,12 +8,51 @@ import Logo from "../../common/images/logo2.png";
 import allproductService from '../../../services/productService';
 
 export default function Products() {
+    const category=[
+        {
+            name:"All",
+            link:"s"
+        },
+        {
+            name:"Coffee",
+            link:"s"
+        },
+        {
+            name:"Other hot drinks",
+            link:"s"
+        },
+        {
+            name:"Tea",
+            link:"s"
+        },
+        {
+            name:"Ice tea",
+            link:"s"
+        },
+        {
+            name:"Other hot drinks",
+            link:"s"
+        },
+        {
+            name:"Tea",
+            link:"s"
+        },
+        {
+            name:"Ice tea",
+            link:"s"
+        },
+    ]
+
     const [menu, setMenu] = useState([])
+    // const [offices,setOffices]=useState([])
 
     useEffect(() => {
         allproductService(setMenu)
     }, [menu])
+    
+    // useEffect(()=>{
 
+    // })
   return (
     <div>
         <img 
@@ -52,11 +91,11 @@ export default function Products() {
         <div className='card-disp' key={index}>
             <div className="card">
             <img
-                src={menus.img}
+                src={coffee}
                 alt="Cappuccino"
                 className="card-img-top"
             />     
-                <h5 className="card-title">{menus.name}</h5>
+                <h5 className="card-title">{menus.productName}</h5>
                 <p className="card-text">{menus.description}
                 </p>
             

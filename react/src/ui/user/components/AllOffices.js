@@ -33,19 +33,21 @@ export default function AllOffices() {
 
   return (
     <div>
-    <FrontPage/>
-    <h3 className="pick-location">Pick your location</h3>
-        {locations.map((location, index) => (
-            <div className="mapping" key={index}>
-                <Link to={location.link} className="location-option">
-                    <img src={Coffeebean} className="coffeebean" />
-                    <span>{location.officeName}</span>
-                    <div className="arrow">
-                        <SlArrowRight />
+        <FrontPage/>
+        <div className='alloffices'>
+            <h3 className="pick-location">Pick your location</h3>
+                {locations.map((location, index) => (
+                    <div className="mapping" key={index}>
+                        <Link to={location.link} className="location-option">
+                            <img src={Coffeebean} className="coffeebean" />
+                            <span>{location.officeName}</span>
+                            <div className="arrow">
+                                <SlArrowRight />
+                            </div>
+                        </Link>
                     </div>
-                </Link>
-            </div>
-        ))}
+                ))}
+        </div>
     </div>
   )
 }
