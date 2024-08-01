@@ -1,6 +1,6 @@
 import React from "react";
 import backgroundimg from "../../common/images/logo.png";
-import "../../static/FrontPage.css";
+import "../static/FrontPage.css";
 
 function FrontPage() {
   return (

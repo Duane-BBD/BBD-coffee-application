@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../static/Products.css"
+import "../static/Products.css"
 import backgroundimg from "../../common/images/coffeeheader.png";
 import { BiSearch } from 'react-icons/bi';
 import {IoIosArrowDown} from 'react-icons/io'

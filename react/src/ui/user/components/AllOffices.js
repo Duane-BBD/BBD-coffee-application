@@ -3,7 +3,7 @@ import FrontPage from './FrontPage';
 import { SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import Coffeebean from "../../common/images/coffeebean.png"
-import "../../static/AllOffices.css"
+import "../static/AllOffices.css"
 export default function AllOffices() {
     const locations = [
         {
