@@ -1,36 +1,4 @@
-body{
-    background: whitesmoke;
-
-}
-.backgroundimg{
-    position:fixed;
-}
-
-.location{
-    background: whitesmoke;
-    width: 100%;
-    padding: 0%;
-    margin: 0%;
-}
- img{
-    width:100%;
-}
-
-.intro{
-    top:26%;
-    position: absolute;
-    color: white;
-    /* font-size: 0.7rem; */
-    text-align: center;
-    padding: 1rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    font-family: Inter,sans-serif;
-    font-size: clamp(10px,3.2vw,20px);
-    opacity: 70%;
-}
-
-.locationoption{
+.location-option{
     padding: 1rem;
     border-radius: 1rem;
     border-style:solid;
@@ -49,17 +17,14 @@ body{
     .arrow{
         margin-left:auto;
     }
-   
-
-
 }
-.locat{
+.mapping{
     padding-top: 0.9rem;
     width: 100%;
 
 }
 
-.locatpick{
+.pick-location{
     font-size: clamp(17px,2.0vw,28%);
     font-weight: 900;
     color: rgb(95, 92, 92);

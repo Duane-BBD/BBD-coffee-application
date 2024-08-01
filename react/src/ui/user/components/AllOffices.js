@@ -1,10 +1,10 @@
-import React from "react";
-import backgroundimg from "../../common/images/logo.png";
-import "../../static/Location.css";
+import React from 'react'
+import FrontPage from './FrontPage';
 import { SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import Coffeebean from "../../common/images/coffeebean.png"
-function Location() {
+import "../../static/AllOffices.css"
+export default function AllOffices() {
     const locations = [
         {
             name: "Johannesburg",
@@ -23,14 +23,13 @@ function Location() {
             link: "/"
         }
     ];
-
   return (
-    <div className="location">
-        <img className="backroundimg" src={backgroundimg} alt="background" />
-        <h3 className="locatpick">Pick your location</h3>
+    <div>
+    <FrontPage/>
+    <h3 className="pick-location">Pick your location</h3>
         {locations.map((location, index) => (
-            <div className="locat" key={index}>
-                <Link to={location.link} className="locationoption">
+            <div className="mapping" key={index}>
+                <Link to={location.link} className="location-option">
                     <img src={Coffeebean} className="coffeebean" />
                     <span>{location.name}</span>
                     <div className="arrow">
@@ -40,7 +39,5 @@ function Location() {
             </div>
         ))}
     </div>
-  );
+  )
 }
-
-export default Location;
