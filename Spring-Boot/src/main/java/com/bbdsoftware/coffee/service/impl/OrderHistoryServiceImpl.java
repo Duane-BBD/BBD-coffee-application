@@ -10,7 +10,6 @@ import com.bbdsoftware.coffee.repository.OrderListRepository;
 import com.bbdsoftware.coffee.repository.OrderStatusRepository;
 import com.bbdsoftware.coffee.service.OrderHistoryService;
 import com.bbdsoftware.coffee.service.ProductService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +26,6 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 
     @Autowired
     OrderListRepository orderListRepository;
-
-    @Autowired
-    private ModelMapper modelMapper;
 
     @Autowired
     ProductService productService;

@@ -1,87 +1,24 @@
-import React from 'react'
-import "../static/Products.css"
+import React, { useEffect, useState } from 'react';
+import "../static/Products.css";
 import backgroundimg from "../../common/images/coffeeheader.png";
 import { BiSearch } from 'react-icons/bi';
-import {IoIosArrowDown} from 'react-icons/io'
-import coffee from "../../common/images/coffee.png"
-import Logo from "../../common/images/logo2.png"
-const menu=[
-    {
-        name: " Cappuccino",
-        link: "/page1",
-        img:coffee,
-        description:"A description about the drink can go here and can take 2 I..."
-      },
-      {
-        name: " Cappuccino",
-        link: "/page1",
-        img:coffee,
-        description:"A description about the drink can go here and can take 2 I..."
-      },
-      {
-        name: " Cappuccino",
-        link: "/page1",
-        img:coffee,
-        description:"A description about the drink can go here and can take 2 I..."
-      },
-      {
-        name: " Cappuccino",
-        link: "/page1",
-        img:coffee,
-        description:"A description about the drink can go here and can take 2 I..."
-      },
-      {
-        name: " Cappuccino",
-        link: "/page1",
-        img:coffee,
-        description:"A description about the drink can go here and can take 2 I..."
-      },
-      {
-        name: " Cappuccino",
-        link: "/page1",
-        img:coffee,
-        description:"A description about the drink can go here and can take 2 I..."
-      }
-]
-const category=[
-    {
-        name:"All",
-        link:"s"
-    },
-    {
-        name:"Coffee",
-        link:"s"
-    },
-    {
-        name:"Other hot drinks",
-        link:"s"
-    },
-    {
-        name:"Tea",
-        link:"s"
-    },
-    {
-        name:"Ice tea",
-        link:"s"
-    },
-    {
-        name:"Other hot drinks",
-        link:"s"
-    },
-    {
-        name:"Tea",
-        link:"s"
-    },
-    {
-        name:"Ice tea",
-        link:"s"
-    },
-]
+import {IoIosArrowDown} from 'react-icons/io';
+import coffee from "../../common/images/coffee.png";
+import Logo from "../../common/images/logo2.png";
+import allproductService from '../../../services/productService';
+
 export default function Products() {
+    const [menu, setMenu] = useState([])
+
+    useEffect(() => {
+        allproductService(setMenu)
+    }, [menu])
+
   return (
     <div>
-        <img src={backgroundimg}
-        className="backroundimg2"
+        <img 
+            src={backgroundimg}
+            className="backroundimg2"
         />
         <div className='on-backgroundimg'>
             <h5>Office</h5>

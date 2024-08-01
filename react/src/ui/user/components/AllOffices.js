@@ -1,28 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import FrontPage from './FrontPage';
 import { SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
-import Coffeebean from "../../common/images/coffeebean.png"
-import "../static/AllOffices.css"
+import "../static/AllOffices.css";
+import Coffeebean from "../../common/images/coffeebean.png";
+import allLocation from "../../../services/locationService";
+
 export default function AllOffices() {
-    const locations = [
-        {
-            name: "Johannesburg",
-            link: "/page1"
-        },
-        {
-            name: "Pretoria",
-            link: "/page1"
-        },
-        {
-            name: "Cape Town",
-            link: "/page1"
-        },
-        {
-            name: "Pune",
-            link: "/"
-        }
-    ];
+    const [locations, setLocations] = useState([]);
+
+    useEffect(() => {
+        allLocation(setLocations)
+    }, [locations])
+    // const locations = [
+    //     {
+    //         name: "Johannesburg",
+    //         link: "/page1"
+    //     },
+    //     {
+    //         name: "Pretoria",
+    //         link: "/page1"
+    //     },
+    //     {
+    //         name: "Cape Town",
+    //         link: "/page1"
+    //     },
+    //     {
+    //         name: "Pune",
+    //         link: "/"
+    //     }
+    // ];
+
   return (
     <div>
     <FrontPage/>
@@ -31,7 +39,7 @@ export default function AllOffices() {
             <div className="mapping" key={index}>
                 <Link to={location.link} className="location-option">
                     <img src={Coffeebean} className="coffeebean" />
-                    <span>{location.name}</span>
+                    <span>{location.officeName}</span>
                     <div className="arrow">
                         <SlArrowRight />
                     </div>
