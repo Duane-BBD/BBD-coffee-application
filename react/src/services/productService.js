@@ -16,4 +16,15 @@ const allproductService = async (setMenu) => {
     }
 }
 
-export default allproductService
+const productDetails = async (productID, setProduct) => {
+    try {
+        const response = await axios.get(`/products/search-product/${productID}`)
+        if (response.data) {
+            setProduct(response.data);
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export {allproductService, productDetails};

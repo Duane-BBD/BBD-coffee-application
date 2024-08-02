@@ -4,7 +4,7 @@ import { SlArrowRight } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import "../static/AllOffices.css";
 import Coffeebean from "../../common/images/coffeebean.png";
-import allLocation from "../../../services/locationService";
+import { allLocation } from "../../../services/locationService";
 
 export default function AllOffices() {
     const [locations, setLocations] = useState([]);

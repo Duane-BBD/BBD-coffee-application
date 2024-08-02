@@ -12,7 +12,6 @@ import java.sql.Timestamp;
 @Table(name="appUser")
 public class AppUser {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userID;
     private String firstName;
     private String lastName;

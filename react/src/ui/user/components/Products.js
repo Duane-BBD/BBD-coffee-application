@@ -5,7 +5,7 @@ import { BiSearch } from 'react-icons/bi';
 import {IoIosArrowDown} from 'react-icons/io';
 import coffee from "../../common/images/coffee.png";
 import Logo from "../../common/images/logo2.png";
-import allproductService from '../../../services/productService';
+import { allproductService } from '../../../services/productService';
 
 export default function Products() {
     const category=[
@@ -49,10 +49,7 @@ export default function Products() {
     useEffect(() => {
         allproductService(setMenu)
     }, [menu])
-    
-    // useEffect(()=>{
 
-    // })
   return (
     <div>
         <img 
@@ -104,4 +101,3 @@ export default function Products() {
     </div>
   )
 }
-
