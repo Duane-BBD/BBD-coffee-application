@@ -6,7 +6,7 @@ import UserLanding from "./ui/user/UserLanding";
 import AllOffices from "./ui/user/components/AllOffices";
 
 import ProductDetails from "./ui/user/components/ProductDetails";
-import Navbar from "./ui/user/components/Navbar";
+import CombinedOrders from "./ui/user/components/CombinedOrders";
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +14,7 @@ function App() {
             <Route exact path="/" element={<AllOffices/>} />
             <Route exact path="/product" element={<Products/>} />
             <Route exact path="/productdetail" element={<ProductDetails/>}/>
-            <Route exact path="/navbar" element={<Navbar/>}/>
+            <Route exact path="/my-order" element={<CombinedOrders/>}/>
 
         </Routes>
 

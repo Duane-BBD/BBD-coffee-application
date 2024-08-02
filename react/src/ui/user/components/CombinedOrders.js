@@ -1,6 +1,7 @@
+// src/components/CombinedOrders.js
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import Header from '../components/OrdersHeader';
 import '../static/CombinedOrders.css';
 import { IoIosArrowDown } from 'react-icons/io';
 
@@ -52,7 +53,7 @@ const CombinedOrders = () => {
 
   return (
     <div className="order-list">
-
+      <Header /> {/* Use the Header component */}
       <section>
         <h2>Past orders</h2>
         <hr className="section-divider" />
