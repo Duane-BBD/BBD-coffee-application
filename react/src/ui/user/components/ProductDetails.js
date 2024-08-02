@@ -91,9 +91,9 @@ const ProductDetails = () => {
         </div>
         <div className='milkdropdown'>
             <div className='milky'>
-                <TbMilk/>
+                <TbMilk className='bottle-icon'/>
                 <button className='milkdropdown-button'> {selected.milkTypeValue} </button>
-                <IoIosArrowDown/>
+                <IoIosArrowDown className='arrow-down'/>
             </div>
             <div className='milkdropdown-content'>
             {
@@ -106,15 +106,15 @@ const ProductDetails = () => {
             </div>
         </div>
         <div className='search-notes'>
-            <input type='text'  placeholder='Add notes' /> 
-            <div className='notes'>
-                <CgNotes/>
-            </div>
+            <input type='text'  placeholder='Add notes' className='add-notes'/>
+            <CgNotes className='notes'/> 
         </div>
-        <div >
+        <div className='submiting' >
             <button className='submit' onClick={addToCart}> Add to order </button>
         </div>
+        <div className='navbar-spacing'> 
         <Navbar/>
+        </div>
     </div>
   )
 }

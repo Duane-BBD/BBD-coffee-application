@@ -15,6 +15,7 @@ body{
     position: absolute;
     align-items: right;
     padding-right: 0%;
+    padding-left: 0%;
     top: 36%;
     width:7rem;
     height: 3rem;
@@ -208,8 +209,18 @@ body{
     padding: 0px;
     }
 
-@media screen and (max-width:320px) {
-
+@media screen and (max-width:330px) {
+    .backroundimg2{
+        height:18vh;
+        width:100%;
+    }
+    
+    .logo{
+        top: 36%;
+        width:7rem;
+        height: 3rem;
+        left: 10%;
+    }
 }
 
 
@@ -312,8 +323,8 @@ body{
         width:7rem;
         height: 3rem;
         /* left: 10%; */
-        right:0%;
-        
+        padding-right: 0%;
+        padding-left: 100%;
     }
     .dropdown{
     svg{

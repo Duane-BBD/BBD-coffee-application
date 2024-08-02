@@ -58,7 +58,6 @@ export default function Products() {
         />
         <div className='on-backgroundimg'>
             <h5>Office</h5>
-
             <div className='dropdown'>
                 <button className='dropdown-button'> Johannesburg</button>
                 <div className='dropdown-content'>

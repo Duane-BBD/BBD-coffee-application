@@ -89,13 +89,21 @@
     background-color: #EDEDED;
     padding: 0.5rem;
     gap: 6rem;
-    svg{
-        height: 2rem;
+
+}
+.bottle-icon{
+        margin-right: auto;
+        height: 2.2rem;
         width: 1.2rem;
-        /* margin-top: 0%;
-        margin-left: 0.7rem; */
-        color: rgb(92, 92, 92);
-    }
+        color: gray;
+
+}
+.arrow-down{
+    margin-left: auto;
+    height: 2rem;
+    width: 1.2rem;
+    color: grey;
+
 }
 .milkdropdown-content{
     display: none;
@@ -120,32 +128,60 @@
   
 .milkdropdown:hover .milkdropDown-button {background-color: rgb(92, 92, 92);}
 
+.add-notes{
+    background-color: #EDEDED;
+    padding: 1rem;
+    margin-left: 1rem;
+    flex-grow: 1;
+    border: none;
+    font-size: 1rem;
+}
 .search-notes{
+    position: relative;
     display: flex;
     flex-direction: column;
-    width: 85.5%;
-    padding: 1rem;
+    width: 92.5%;
+    /* padding: 1rem; */
     margin: 0.8rem;
     text-align: center;
     color: rgb(92, 92, 92);
     background-color: #EDEDED;
-    border: none;
+    align-items: left;
+    margin-left: 1rem;
     border-radius: 0.5rem;
-    font-size: 1rem;
 }
 
 .notes{
-    flex-grow: 1;
+    position: absolute;
+    top:1rem;
+    left:0.4rem;
+
+}
+.notes svg {
+    color: rgb(92, 92, 92);
+    height: 1rem;
+    width: 1rem;
+}
+.add-notes:focus {
+    outline: none;
+    box-shadow: none;
 }
 .submit{
     flex-direction: column;
     width: 94%;
     padding: 1rem;
-    margin: 0.7rem;
+    margin-left: 0.7rem;
+    margin-bottom: 0.7rem;
     text-align: center;
     color: white;
     background-color: #794D31;
     border: none;
     border-radius: 0.5rem;
     font-size: 1rem;
+}
+
+.submiting{
+    
+    margin: 0%;
+    padding: 0%;
 }
