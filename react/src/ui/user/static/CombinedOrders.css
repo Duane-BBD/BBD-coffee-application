@@ -8,29 +8,45 @@ header {
   margin-bottom: 20px;
 }
 
+.order-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .tab {
-  flex: 1;
-  padding: 10px 0;
+  position: relative; 
+  padding: 10px 2rem; 
   text-align: center;
   background: none;
   border: none;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 16px;
   color: #888;
-  border-bottom: 2px solid transparent;
   cursor: pointer;
-  transition: border-bottom 0.3s ease; 
+  transition: color 0.3s ease;
 }
 
-.tab:hover {
-  border-bottom: 2px solid brown; 
+.tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; 
+  height: 2px; 
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.tab:hover::before,
+.tab.active::before {
+  width: 50%; 
 }
 
 .tab.active {
   color: #555;
-  border-bottom: 2px solid brown; 
 }
- 
+
 section {
   margin-bottom: 20px;
 }
@@ -91,7 +107,7 @@ footer {
   cursor: pointer;
   padding: 10px 0;
   position: relative;
-  padding-right: 40px; /* Space for the icon */
+  padding-right: 40px;
 }
 
 .order-item summary::-webkit-details-marker {
@@ -112,10 +128,10 @@ footer {
 
 .order-item summary::after {
   font-family: 'Font Awesome 6 Thin';
-  font-weight: 400; 
+  font-weight: 400;
   display: inline-block;
   position: absolute;
-  right: 10px; 
+  right: 10px;
   font-size: 16px;
   transition: transform 0.2s ease;
 }
@@ -141,4 +157,49 @@ hr {
   margin-top: 10px;
   margin-bottom: 20px;
   border-top: 2px solid #ddd;
+}
+
+.order-header {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  .tab {
+    font-size: 2rem;
+    padding: 1rem 4rem; 
+  }
+
+  .nav-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .order-item summary {
+    font-size: 1.5rem; 
+  }
+
+  .status {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tab {
+    font-size: 3rem;
+    padding: 2rem 6rem;
+  }
+
+  .order-item summary {
+    font-size: 2rem; 
+  }
+
+  .nav-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .status {
+    font-size: 18px;
+  }
 }
