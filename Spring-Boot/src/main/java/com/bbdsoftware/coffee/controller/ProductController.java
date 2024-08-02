@@ -1,7 +1,6 @@
 package com.bbdsoftware.coffee.controller;
 
 import com.bbdsoftware.coffee.DTO.ProductCreateDTO;
-import com.bbdsoftware.coffee.DTO.ProductResponseDTO;
 import com.bbdsoftware.coffee.model.Product;
 import com.bbdsoftware.coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,9 @@ public class ProductController {
     }
 
     @GetMapping("/get-all-products")
-    public ResponseEntity<List<ProductResponseDTO>> getAllProduct() {
-        List<ProductResponseDTO> productDTOs = productService.getAllProductDTOs();
-        return ResponseEntity.ok(productDTOs);
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> product = productService.getAllProduct();
+        return ResponseEntity.ok(product);
     }
 
     @GetMapping("/search-product/{productID}")

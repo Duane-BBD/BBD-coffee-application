@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="product")
-
 public class Product {
     @Id
     @GeneratedValue(generator = "product_gen",strategy = GenerationType.AUTO)

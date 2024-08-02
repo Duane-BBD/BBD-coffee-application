@@ -1,6 +1,5 @@
 package com.bbdsoftware.coffee.service.impl;
 
-import com.bbdsoftware.coffee.DTO.ProductResponseDTO;
 import com.bbdsoftware.coffee.model.Availability;
 import com.bbdsoftware.coffee.model.Product;
 import com.bbdsoftware.coffee.repository.AvailabilityRepository;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl  implements ProductService {
@@ -23,10 +21,6 @@ public class ProductServiceImpl  implements ProductService {
 
     @Autowired
     OfficeRepository officeRepository;
-
-    public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     @Override
     public List<String> productsAtOffice(Integer officeID) {
@@ -44,22 +38,8 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public List<ProductResponseDTO> getAllProductDTOs() {
-        List<Product> products = getAllProduct();
-        return products.stream()
-                .sorted(Comparator.comparingInt(Product::getProductID))
-                .map(product -> {
-                    ProductResponseDTO dto = new ProductResponseDTO();
-                    dto.setProductID(product.getProductID());
-                    dto.setProductName(product.getProductName());
-                    dto.setDescription(product.getDescription());
-                    return dto;
-                }).collect(Collectors.toList());
-    }
-
-    @Override
-    public Product createProduct(Product product) {
-        return productRepository.save(product);
+    public void createProduct(Product product) {
+        productRepository.save(product);
     }
 
     @Override
@@ -71,9 +51,11 @@ public class ProductServiceImpl  implements ProductService {
 //    public void deleteProduct(String productName) {
 //        productRepository.deleteProduct(productName);
 //    }
+
     @Override
     public Product getProduct(Integer productID) {
-        return productRepository.findById(productID).get();
+        Optional<Product> product = productRepository.findById(productID);
+        return product.orElse(null);
     }
 
     @Override

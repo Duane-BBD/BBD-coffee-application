@@ -16,4 +16,4 @@ const allLocation = async (setLocations) => {
     }
 }
 
-export default allLocation
+export {allLocation}

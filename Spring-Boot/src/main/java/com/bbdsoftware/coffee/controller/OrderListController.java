@@ -2,6 +2,8 @@ package com.bbdsoftware.coffee.controller;
 
 import com.bbdsoftware.coffee.DTO.OrderListDTO;
 import com.bbdsoftware.coffee.service.OrderListService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,16 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @RestController
 @RequestMapping("/bbd-coffee/order-list")
 public class OrderListController {
     @Autowired
     OrderListService orderListService;
-
-    public OrderListController(OrderListService orderListService) {
-        this.orderListService = orderListService;
-    }
 
     @PatchMapping("/update-status/{orderID}")
     public ResponseEntity<String> updateOrderStatus(@PathVariable Integer orderID) {

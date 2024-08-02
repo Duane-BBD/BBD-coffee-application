@@ -42,6 +42,4 @@ public class OfficeController {
                 .collect(Collectors.toList());
         return new ResponseEntity<>(officeDTOs, HttpStatus.OK);
     }
-
-
 }
