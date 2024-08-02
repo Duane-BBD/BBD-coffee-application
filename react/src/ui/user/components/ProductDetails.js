@@ -9,9 +9,12 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import {IoIosArrowDown} from 'react-icons/io';
 import { CgNotes } from "react-icons/cg";
 import Navbar from './Navbar';
+import { useLocation } from 'react-router-dom';
 
 const ProductDetails = () => {
-    let productID = 1;
+    const location = useLocation()
+    const searchParams = new URLSearchParams(location.search)
+    let productID = searchParams.get('productID');
     let officeID = 1;
     let updatedCart = []
     const [flag, setFlag] = useState(false)
@@ -58,24 +61,6 @@ const ProductDetails = () => {
         // localStorage.removeItem("cart")
     }
 
-    // const drinks=[
-    //     {
-    //         name: "cappucino",
-    //         img:{drink},
-    //         description:"sedfsfsd dfsfsfssf sesfffs sdfsdffsd sfdfdsfdfds dsfsdfdsdfs fsddfdff dsfsfdfddf dfsfddfddfs dffdfd fdsdffdfd ffdsdfd sfsdf dsfds fdsfsd f fdf dfds  fdfd fdfdsfds fds sfd s ffds sfddfs"
-    //     }
-    // ]
-    // const milktype =[
-    //     {
-    //         name:"milk",
-    //     },
-    //     {
-    //         name:"almond milk",
-    //     }, 
-    //     {
-    //         name:"lactose milk",
-    //     },
-    // ]
   return (
     <div className='productdetails'> 
         <div className='top-nav'>
@@ -106,8 +91,10 @@ const ProductDetails = () => {
             </div>
         </div>
         <div className='search-notes'>
-            <input type='text'  placeholder='Add notes' className='add-notes'/>
-            <CgNotes className='notes'/> 
+            <input type='text'  placeholder='Add notes' onChange={e => setNote(e.target.value)}/> 
+            <div className='notes'>
+                <CgNotes/>
+            </div>
         </div>
         <div className='submiting' >
             <button className='submit' onClick={addToCart}> Add to order </button>

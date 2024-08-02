@@ -5,7 +5,7 @@ import com.bbdsoftware.coffee.model.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<String> productsAtOffice(Integer officeID);
+    List<Product> productsAtOffice(Integer officeID);
     void createProduct(Product Product);
     void deleteProduct(Integer productID);
 //    void deleteProduct(String productName);

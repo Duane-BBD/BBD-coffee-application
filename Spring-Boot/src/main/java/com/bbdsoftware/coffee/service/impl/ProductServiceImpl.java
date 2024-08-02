@@ -23,15 +23,15 @@ public class ProductServiceImpl  implements ProductService {
     OfficeRepository officeRepository;
 
     @Override
-    public List<String> productsAtOffice(Integer officeID) {
+    public List<Product> productsAtOffice(Integer officeID) {
         List<Availability> allAvailabilities = availabilityRepository.findAll();
-        List<String> productsAvailable = new ArrayList<String>();
+        List<Product> productsAvailable = new ArrayList<>();
 
         for (Availability A : allAvailabilities) {
             if (Objects.equals(A.getOfficeID().getOfficeID(), officeID)) {
                 Integer prod = A.getProductID().getProductID();
                 Optional<Product> optional = productRepository.findById(prod);
-                optional.ifPresent(product -> productsAvailable.add(product.getProductName()));
+                optional.ifPresent(productsAvailable::add);
             }
         }
         return productsAvailable;

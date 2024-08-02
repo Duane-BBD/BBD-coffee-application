@@ -1,6 +1,6 @@
 import axios from "../api/axios"
 
-const allLocation = async (setLocations) => {
+const allLocation = async (setOffices) => {
     let locations = []
 
     try {
@@ -9,7 +9,7 @@ const allLocation = async (setLocations) => {
             response.data.map(item => {
                 locations.push(item)
             })
-            setLocations(locations);
+            setOffices(locations);
         }
     } catch (error) {
         console.log(error)

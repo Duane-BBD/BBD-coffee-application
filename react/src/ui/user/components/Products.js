@@ -5,9 +5,21 @@ import { BiSearch } from 'react-icons/bi';
 import {IoIosArrowDown} from 'react-icons/io';
 import coffee from "../../common/images/coffee.png";
 import Logo from "../../common/images/logo2.png";
-import { allproductService } from '../../../services/productService';
+import { productsAvailable } from '../../../services/productService';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { allLocation } from '../../../services/locationService';
 
 export default function Products() {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const searchParams = new URLSearchParams(location.search)
+    const [offices, setOffices] = useState([])
+    const officeID = searchParams.get('officeID')
+
+    useEffect(() => {
+        allLocation(setOffices)
+    }, [offices])
+
     const category=[
         {
             name:"All",
@@ -47,7 +59,7 @@ export default function Products() {
     // const [offices,setOffices]=useState([])
 
     useEffect(() => {
-        allproductService(setMenu)
+        productsAvailable(officeID, setMenu)
     }, [menu])
 
   return (
@@ -61,9 +73,9 @@ export default function Products() {
             <div className='dropdown'>
                 <button className='dropdown-button'> Johannesburg</button>
                 <div className='dropdown-content'>
-                    <a href="#">Pune</a>
-                    <a href="#">Cape town</a>
-                    <a href="#">Link 3</a>
+                    {offices.map((office, index) => (
+                        <a href={`/product?officeID=${encodeURIComponent(office.officeID)}`} key={index}>{office.officeName}</a>
+                    ))}
                 </div>
                 <IoIosArrowDown/>
             </div>
@@ -82,7 +94,7 @@ export default function Products() {
         </div>
       <div className='card-container'>
         {menu.map((menus, index) => (
-        <div className='card-disp' key={index}>
+        <div className='card-disp' key={index} onClick={e => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
             <div className="card">
             <img
                 src={coffee}

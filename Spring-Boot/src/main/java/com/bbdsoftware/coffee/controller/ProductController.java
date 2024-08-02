@@ -21,8 +21,8 @@ public class ProductController {
     }
 
     @GetMapping("/office-inventory/{officeID}")
-    public ResponseEntity<List<String>> getProductsAvailable(@PathVariable("officeID") Integer officeID) {
-        List<String> products = productService.productsAtOffice(officeID);
+    public ResponseEntity<List<Product>> getProductsAvailable(@PathVariable("officeID") Integer officeID) {
+        List<Product> products = productService.productsAtOffice(officeID);
         return ResponseEntity.ok(products);
     }
 
