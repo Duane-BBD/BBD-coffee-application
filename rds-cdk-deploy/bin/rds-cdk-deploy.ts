@@ -5,7 +5,7 @@ import * as cdk from '@aws-cdk/core';
 import { RdsInitStackExample } from '../spring-backend/rds-init-fn-code/rds-init';
 
 const app = new cdk.App();
-new RdsInitStackExample(app, 'RdsInitStackExample', {
+new RdsInitStackExample(app, 'RdsInitExample', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

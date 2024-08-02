@@ -81,11 +81,11 @@ export default function Products() {
                 <input type='text' className='search-baris' placeholder='Search drinks' />
             </div>
         </div>
-        <div class="scrollable-menu">
+        {/* <div class="scrollable-menu">
             {category.map( (category,index)=>(
             <button key={index} >{category.name}</button>
             ))}
-        </div>
+        </div> */}
       <div className='card-container'>
         {menu.map((menus, index) => (
         <div className='card-disp' key={index}>
