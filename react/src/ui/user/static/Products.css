@@ -5,18 +5,20 @@ body{
 
 .backroundimg2{
     height:18vh;
-    width:99vw;
+    width:100%;
     /* opacity: 85%; */
     position: relative;
-    filter: brightness(75%);
+    filter: brightness(35%);
 }
 
 .logo{
     position: absolute;
+    align-items: right;
+    padding-right: 0%;
     top: 36%;
     width:7rem;
     height: 3rem;
-    left: 125%;
+    /* left: 125%; */
 
 }
 /* .search-bar{
@@ -84,7 +86,8 @@ body{
   
 .dropdown:hover .dropdown-content {display: block;}
   
-.dropdown:hover .dropDown-button {background-color: #3e8e41;}
+.dropdown:hover .dropDown-button {background-color:  #794D31;}
+
 
 .scrollable-menu{
     overflow:scroll;
@@ -181,7 +184,7 @@ body{
     border-radius: 10px;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     /* padding: 50px; */
 }
     .card img {
@@ -200,10 +203,171 @@ body{
     }
     
     .card-text {
-    font-size: 0.9em;
+    font-size: 0.8rem;
     color: #666;
-    padding: 2px;
-
-
+    padding: 0px;
     }
 
+@media screen and (max-width:320px) {
+
+}
+
+
+@media screen and (min-width:348px) and (max-width:390px) {
+    
+.backroundimg2{
+    height:18vh;
+    width:100%;
+}
+
+.logo{
+    top: 36%;
+    width:7rem;
+    height: 3rem;
+    left: 130%;
+}
+
+
+}
+
+@media screen and (min-width:390px) and (max-width:430px) {
+    .logo{
+        top: 36%;
+        width:7rem;
+        height: 3rem;
+        left: 135%;
+    }
+}
+
+@media screen and (min-width:430px) and (max-width:487px) {
+    .logo{
+        top: 36%;
+        width:7rem;
+        height: 3rem;
+        left: 165%;
+        
+    }
+    .dropdown{
+
+    svg{
+        height: 2rem;
+        width: 1.3rem;
+        margin-top: -5%;
+        margin-left: 0.2rem;
+        color: white;
+        
+    }
+}
+
+.dropdown-button{
+    color: white;
+    font-size: 0.9rem;
+    border: none;
+}
+.search-baris { 
+    padding: 15px;
+    border-radius: 0.7rem;
+    font-size: 15px;
+}
+.scrollable-menu button {
+    height: 40px;
+    padding: 0px 10px;
+    font-size: 16px;
+    margin: 5px;
+  }
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0%;
+    text-align: center;
+    }
+    
+    .card-text {
+    font-size: 0.9rem;
+    color: #666;
+    padding: 0px;
+    }
+}
+@media screen and (min-width:487px) and (max-width:540px) {
+    .logo{
+        top: 36%;
+        width:7rem;
+        height: 3rem;
+        left: 175%;
+        
+    }
+    .dropdown{
+    svg{
+        height: 2rem;
+        width: 1.3rem;
+        margin-top: -5%;
+        margin-left: 0.2rem;
+        color: white;
+        
+    }
+}
+@media screen and (min-width:540px) and (max-width:600px) {
+    .logo{
+        top: 36%;
+        width:7rem;
+        height: 3rem;
+        /* left: 10%; */
+        right:0%;
+        
+    }
+    .dropdown{
+    svg{
+        height: 2rem;
+        width: 1.3rem;
+        margin-top: -5%;
+        margin-left: 0.2rem;
+        color: white;
+        
+    }
+}}
+
+.dropdown-button{
+    color: white;
+    font-size: 0.9rem;
+    border: none;
+}
+.search-baris { 
+    padding: 15px;
+    border-radius: 0.7rem;
+    font-size: 15px;
+}
+.scrollable-menu button {
+    height: 40px;
+    padding: 0px 10px;
+    font-size: 16px;
+    margin: 5px;
+  }
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0%;
+    text-align: center;
+    }
+    
+    .card-text {
+    font-size: 0.9rem;
+    color: #666;
+    padding: 0px;
+    }
+}
+
+@media screen and (min-width:649px) and (max-width:769px) {
+
+}
+@media screen and (min-width:874px) and (max-width:900px) {
+
+}
+
+@media screen and (max-width:1000px) and (min-width:900px) {
+
+}
+
+
+@media screen and (max-width:2565px) and (min-width:1001px) {
+
+}

@@ -122,6 +122,7 @@
 .milkdropdown:hover .milkdropDown-button {background-color: rgb(92, 92, 92);}
 
 .search-notes{
+    display: flex;
     flex-direction: column;
     width: 85.5%;
     padding: 1rem;
@@ -135,10 +136,7 @@
 }
 
 .notes{
-    position: absolute;
-    top:71%;
     flex-grow: 1;
-    left: 6%;
 }
 .submit{
     flex-direction: column;

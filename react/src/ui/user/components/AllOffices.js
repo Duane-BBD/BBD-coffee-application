@@ -32,21 +32,25 @@ export default function AllOffices() {
     // ];
 
   return (
-    <div>
-        <FrontPage/>
-        <div className='alloffices'>
-            <h3 className="pick-location">Pick your location</h3>
-                {locations.map((location, index) => (
-                    <div className="mapping" key={index}>
-                        <Link to={location.link} className="location-option">
-                            <img src={Coffeebean} className="coffeebean" />
-                            <span>{location.officeName}</span>
-                            <div className="arrow">
-                                <SlArrowRight />
-                            </div>
-                        </Link>
-                    </div>
-                ))}
+    <div className="container">
+        <div className="frontpage-container">
+            <FrontPage/>
+        </div>
+        <div className="alloffices-container">
+            <div className='alloffices'>
+                <h3 className="pick-location">Pick your location</h3>
+                    {locations.map((location, index) => (
+                        <div className="mapping" key={index}>
+                            <Link to={location.link} className="location-option">
+                                <img src={Coffeebean} className="coffeebean" />
+                                <span>{location.officeName}</span>
+                                <div className="arrow">
+                                    <SlArrowRight />
+                                </div>
+                            </Link>
+                        </div>
+                    ))}
+            </div>
         </div>
     </div>
   )

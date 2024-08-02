@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../static/Products.css";
-import backgroundimg from "../../common/images/coffeeheader.png";
+import backgroundimg from "../../common/images/front-page-backgroundimg.png";
 import { BiSearch } from 'react-icons/bi';
 import {IoIosArrowDown} from 'react-icons/io';
 import coffee from "../../common/images/coffee.png";
@@ -71,9 +71,7 @@ export default function Products() {
                 </div>
                 <IoIosArrowDown/>
             </div>
-        <div >
-          <img src={Logo} className='logo'/>
-        </div>
+        <img src={Logo} className='logo'/>
         </div>
         <div className='search-bar-wrapper'>
             <div className='search-bar'>
@@ -81,11 +79,11 @@ export default function Products() {
                 <input type='text' className='search-baris' placeholder='Search drinks' />
             </div>
         </div>
-        {/* <div class="scrollable-menu">
+        <div class="scrollable-menu">
             {category.map( (category,index)=>(
             <button key={index} >{category.name}</button>
             ))}
-        </div> */}
+        </div>
       <div className='card-container'>
         {menu.map((menus, index) => (
         <div className='card-disp' key={index}>

@@ -1,7 +1,7 @@
 import React from "react";
 import backgroundimg from "../../common/images/front-page-backgroundimg.png";
 import "../static/FrontPage.css";
-import bbdlogo from "../../common/images/logo2.png"
+import bbdlogo from "../../common/images/bbdlogo.png"
 function FrontPage() {
   return (
     <div className="Front-page">

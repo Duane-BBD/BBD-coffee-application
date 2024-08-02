@@ -55,8 +55,8 @@ export default function ProductDetails() {
             }   
             </div>
         </div>
-        <div>
-            <input type='text' className='search-notes' placeholder='Add notes' /> 
+        <div className='search-notes'>
+            <input type='text'  placeholder='Add notes' /> 
             <div className='notes'>
                 <CgNotes/>
             </div>
