@@ -348,7 +348,7 @@
     }
     }
     
-    @media screen and (min-width: 900px) and (max-width: 2190px) {
+    @media screen and (min-width: 900px) and (max-width: 1198px) {
     .product-container {
         display: flex;
         flex-direction: row;
@@ -363,14 +363,12 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-top: 12%;
     }
 
     .productimg {
         width: 80%;
-        margin-left: 10%;
+        margin-top: 3rem;
+        /* margin-left: 10%; */
     }
 
     .product-content h2 {
@@ -420,12 +418,113 @@
         width: 1.3rem;
     }
     .search-notes{
-        margin-top: 3rem;
-        margin-bottom: 3rem;
+        /* margin-top: 3rem; */
+        /* margin-bottom: 3rem; */
     }
     .submit {
         margin-left: 0.7rem;
-        margin-bottom: 0.7rem;
+        margin-bottom: 5rem;
+        font-size: 1.2rem;
+    }
+
+    .top-nav h4 {
+        margin: 0;
+        color: rgb(92, 92, 92);
+        font-size: 1.9rem;
+    }
+    .top-nav{
+        margin-bottom: 1rem;
+    }
+
+    .arrow-left svg {
+        height: 2.9rem;
+        width: 3rem;
+        color: rgb(92, 92, 92);
+    }
+    /* .navbar-spacing{
+        margin-bottom: 1%;
+    } */
+    
+
+}
+
+  
+@media screen and (min-width:1198px) and (max-width:2000px ) {
+    .product-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .product-content{
+        flex: 1.5;
+        text-align: center;
+    }
+
+    .product-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .productimg {
+        width: 80%;
+        margin-top: 3rem;
+        /* margin-left: 10%; */
+    }
+
+    .product-content h2 {
+        padding-top: 1rem;
+        padding-left: 0rem;
+        padding-bottom: 1rem;
+        font-size: 1.7rem;
+    }
+    .product-content p {
+        font-size: 1.5rem;
+    }
+
+    .milky {
+        padding: 0.5rem;
+        gap: 3rem;
+        /* margin-bottom: 3rem; */
+    }
+
+    .bottle-icon {
+        height: 2.5rem;
+        width: 1.5rem;
+    }
+
+    .milkdropdown-button {
+        font-size: 1.1rem;
+    }
+
+    .arrow-down {
+        height: 2.5rem;
+        width: 1.7rem;
+    }
+
+    .add-notes {
+        padding-left: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .notes {
+        position: absolute;
+        top: 1rem;
+        left: 0.4rem;
+    }
+
+    .notes svg {
+        color: rgb(92, 92, 92);
+        height: 1.3rem;
+        width: 1.3rem;
+    }
+    .search-notes{
+        /* margin-top: 3rem; */
+        /* margin-bottom: 3rem; */
+    }
+    .submit {
+        margin-left: 0.7rem;
+        margin-bottom: 5rem;
         font-size: 1.2rem;
     }
 

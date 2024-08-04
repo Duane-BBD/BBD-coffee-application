@@ -7,8 +7,13 @@ export default function Navbar() {
   return (
     <div className='nav'>
         <div className='navbar'>
-            <PiHouseFill/>
-            <IoBag/>
+            <button className='home-button'>
+                <PiHouseFill/> 
+            </button>
+            <button className='cart-button'>
+                <IoBag/>
+            </button>
+            
         </div>
     </div>
   )

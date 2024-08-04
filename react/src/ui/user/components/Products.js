@@ -84,6 +84,7 @@ export default function Products() {
             src={backgroundimg}
             className="backroundimg2"
         />
+        <img src={Logo} className='logo'/>
         <div className='on-backgroundimg'>
             <h5>Office</h5>
             <div className='dropdown'>
@@ -95,7 +96,6 @@ export default function Products() {
                 </div>
                 <IoIosArrowDown/>
             </div>
-        <img src={Logo} className='logo'/>
         </div>
         <div className='search-bar-wrapper'>
             <div className='search-bar'>

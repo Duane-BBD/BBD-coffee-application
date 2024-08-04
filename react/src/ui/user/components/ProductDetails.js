@@ -75,10 +75,14 @@ const ProductDetails = () => {
         <div className='product-container'>
             <div className='product-content'>
                 <img className='productimg' src={drink}/>
-                <h2> {product.productName} </h2>
-                <p> {product.description} </p> 
+                {/* <h2> {product.productName} </h2>
+                <p> {product.description} </p>  */}
             </div>
             <div className='product-right'>
+                <div className='product-content'>
+                    <h2> {product.productName} </h2>
+                    <p> {product.description} </p> 
+                </div>
                 <div className='milkdropdown'>
                     <div className='milky'>
                         <TbMilk className='bottle-icon'/>

@@ -1,20 +1,29 @@
 .navbar{
     /* position: absolute; */
-    /* bottom: 1%; */
+    bottom: auto;
     width:auto;
     display: flex;
     padding: 1rem;
     /* border: solid; */
     border-radius: 1rem;
     margin-left: 0.7rem;
-    margin-right: 1.4rem;
+    margin-right: 0.7rem;
     box-shadow: 0 2px 5px rgb(95, 92, 92);
     z-index: 1000;
     justify-content: center;
     gap: 6rem;
     align-content: center;
     svg{
-        color:  #794D31;
         font-size: 1.5rem;
+        color: gray;
     }
+}
+.home-button{
+    background-color:transparent;
+    border: none;
+}
+.cart-button{
+    border: none;
+    background-color:transparent;
+
 }
