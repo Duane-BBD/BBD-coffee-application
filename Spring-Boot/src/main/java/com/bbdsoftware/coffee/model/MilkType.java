@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class MilkType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer milkTypeID;
-    String milkTypeValue;
+    private Integer milkTypeID;
+    private String milkTypeValue;
 }

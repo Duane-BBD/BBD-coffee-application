@@ -65,7 +65,7 @@ public class UtilsFunctions {
 
     public Integer getMilkByType(String milkType) {
         List<MilkType> allMilk = milkTypeService.getAllMilkType();
-        for(MilkType milk:allMilk){
+        for(MilkType milk : allMilk){
             if(Objects.equals(milk.getMilkTypeValue(), milkType))
                 return milk.getMilkTypeID();
         }
