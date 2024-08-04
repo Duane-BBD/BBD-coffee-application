@@ -6,15 +6,20 @@ import {IoIosArrowDown} from 'react-icons/io';
 import coffee from "../../common/images/coffee.png";
 import Logo from "../../common/images/logo2.png";
 import { productsAvailable } from '../../../services/productService';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { allLocation } from '../../../services/locationService';
 
 export default function Products() {
     const navigate = useNavigate()
     const location = useLocation()
-    const searchParams = new URLSearchParams(location.search)
+    let office = location.state
+    // const searchParams = new URLSearchParams(location.search)
     const [offices, setOffices] = useState([])
-    const officeID = searchParams.get('officeID')
+    // const officeID = searchParams.get('officeID')
+
+    useEffect(() => {
+        if (!office) navigate("/");
+    }, [])
 
     useEffect(() => {
         allLocation(setOffices)
@@ -60,7 +65,9 @@ export default function Products() {
     // const [offices,setOffices]=useState([])
 
     useEffect(() => {
-        productsAvailable(officeID, setMenu)
+        if (office) {
+            productsAvailable(office.officeID, setMenu)
+        }
     }, [menu])
 
     const searchProducts=(searchParam)=>{
@@ -79,28 +86,30 @@ export default function Products() {
         setDummyMenu(prod)
     }
   return ( 
-    <div>
-        <img 
-            src={backgroundimg}
-            className="backroundimg2"
-        />
-        <img src={Logo} className='logo'/>
+    <>
+        {office.officeID != null
+            ? <div>
+                <img 
+                    src={backgroundimg}
+                    className="backroundimg2"
+                />
+                <img src={Logo} className='logo'/>
         <div className='on-backgroundimg'>
-            <h5>Office</h5>
-            <div className='dropdown'>
-                <button className='dropdown-button'> Johannesburg</button>
-                <div className='dropdown-content'>
-                    {offices.map((office, index) => (
-                        <a href={`/product?officeID=${encodeURIComponent(office.officeID)}`} key={index}>{office.officeName}</a>
-                    ))}
-                </div>
-                <IoIosArrowDown/>
-            </div>
-        </div>
-        <div className='search-bar-wrapper'>
-            <div className='search-bar'>
-                <BiSearch className='search-icon' />
-                <input 
+                    <h5>Office</h5>
+                    <div className='dropdown'>
+                        <button className='dropdown-button'> {office.officeName}</button>
+                        <div className='dropdown-content'>
+                            {offices.map((off, index) => (
+                                <Link to={`/product`} state={off} key={index}>{off.officeName}</Link>
+                            ))}
+                        </div>
+                        <IoIosArrowDown/>
+                    </div>
+                        </div>
+                <div className='search-bar-wrapper'>
+                    <div className='search-bar'>
+                        <BiSearch className='search-icon' />
+                        <input 
                     type='text' 
                     className='search-baris' 
                     placeholder='Search drinks' 
@@ -110,30 +119,33 @@ export default function Products() {
                         searchProducts(e.target.value)
                     }}
                 />
-            </div>
+                    </div>
+                </div>
+                <div class="scrollable-menu">
+                    {category.map((category,index)=>(
+                        <button key={index} >{category.name}</button>
+                    ))}
+                </div>
+            <div className='card-container'>
+                {menu.map((menus, index) => (
+                <div className='card-disp' key={index} onClick={e => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
+                    <div className="card">
+                    <img
+                        src={coffee}
+                        alt="Cappuccino"
+                        className="card-img-top"
+                    />     
+                        <h5 className="card-title">{menus.productName}</h5>
+                        <p className="card-text">{menus.description}
+                        </p>
+                    
+                    </div>
+                </div>
+                ))}
+                </div>
         </div>
-        <div class="scrollable-menu">
-            {category.map( (category,index)=>(
-            <button key={index} >{category.name}</button>
-            ))}
-        </div>
-      <div className='card-container'>
-        {menu.map((menus, index) => (
-        <div className='card-disp' key={index} onClick={e => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
-            <div className="card">
-            <img
-                src={coffee}
-                alt="Cappuccino"
-                className="card-img-top"
-            />     
-                <h5 className="card-title">{menus.productName}</h5>
-                <p className="card-text">{menus.description}
-                </p>
-            
-            </div>
-        </div>
-        ))}
-        </div>
-    </div>
+            : <div>Something!</div>
+        }
+    </>
   )
 }
