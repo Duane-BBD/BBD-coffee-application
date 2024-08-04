@@ -1,57 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../static/OrderHistory.css';
 
-const orders = [
-  {
-    id: 1,
-    reference: "Order number/reference",
-    status: "Complete",
-    details: [
-      { item: "1 Espresso", milk: "No milk", notes: "Notes: example note for complete order." }
-    ],
-    isInProgress: false,
-  },
-  {
-    id: 2,
-    reference: "Order number/reference",
-    status: "Complete",
-    details: [
-      { item: "2 Cappuccinos", milk: "Whole milk", notes: "Notes: example note for complete order." }
-    ],
-    isInProgress: false,
-  },
-  {
-    id: 3,
-    reference: "Order number/reference",
-    status: "Complete",
-    details: [
-      { item: "1 Latte", milk: "Soy milk", notes: "Notes: example note for complete order." }
-    ],
-    isInProgress: false,
-  },
-  {
-    id: 4,
-    reference: "Order number/reference",
-    status: "Failed",
-    details: [
-      { item: "1 Hot chocolate", milk: "Oat milk", notes: "Notes: example note for failed order." }
-    ],
-    isInProgress: false,
-  },
-  {
-    id: 5,
-    reference: "Order number/reference",
-    status: "In progress",
-    details: [
-      { item: "1 Cappuccino", milk: "Oat milk", notes: "Notes: whatever note was added will be placed here." },
-      { item: "3 Hot chocolate", milk: "Oat milk", notes: "Notes: whatever note was added will be placed here." },
-    ],
-    isInProgress: true,
-  }
-];
-
-const OrderHistory = () => {
+const OrderHistory = ({ officeID, orderStatusValue="" }) => {
+  const [orders, setOrders] = useState([]);
   const [expandedOrderId, setExpandedOrderId] = useState(null);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/bbd-coffee/barista-display/3/Pending`);
+        const data = await response.json();
+        
+        // Debugging: Check the API response
+        console.log('Fetched data:', data);
+        
+        // Ensure the fetched data is an array
+        if (Array.isArray(data)) {
+          setOrders(data);
+        } else {
+          console.error('Unexpected data format:', data);
+        }
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
+    fetchOrders();
+  }, [officeID, orderStatusValue]);
 
   const toggleOrderDetails = (id) => {
     setExpandedOrderId(expandedOrderId === id ? null : id);
@@ -65,44 +40,20 @@ const OrderHistory = () => {
       </div>
 
       <div className="order-section">
-        <div className="order-section-title">Past orders</div>
-        {orders.filter(order => !order.isInProgress).map(order => (
-          <div className="order-item" key={order.id}>
-            <div className="order-header" onClick={() => toggleOrderDetails(order.id)}>
-              <span>{order.reference}</span>
-              <div className={`order-status ${order.status === 'Failed' ? 'failed' : 'complete'}`}>{order.status}</div>
-              <button>{expandedOrderId === order.id ? '▾' : '▸'}</button>
+        <div className="order-section-title">Orders</div>
+        {orders.map(order => (
+          <div className="order-item" key={order.orderID}>
+            <div className="order-header" onClick={() => toggleOrderDetails(order.orderID)}>
+              <span>{`Order #${order.orderID}`}</span>
+              <div className={`order-status ${orderStatusValue.toLowerCase()}`}>{orderStatusValue}</div>
+              <button>{expandedOrderId === order.orderID ? '▾' : '▸'}</button>
             </div>
-            <div className={`order-details ${expandedOrderId === order.id ? 'show' : ''}`}>
-              {order.details.map((detail, index) => (
-                <div key={index}>
-                  <p>{detail.item}</p>
-                  <p>Milk: {detail.milk}</p>
-                  <p>{detail.notes}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="order-section">
-        <div className="order-section-title">In progress</div>
-        {orders.filter(order => order.isInProgress).map(order => (
-          <div className="order-item" key={order.id}>
-            <div className="order-header" onClick={() => toggleOrderDetails(order.id)}>
-              <span>{order.reference}</span>
-              <div className="order-status in-progress">In progress</div>
-              <button>{expandedOrderId === order.id ? '▾' : '▸'}</button>
-            </div>
-            <div className={`order-details ${expandedOrderId === order.id ? 'show' : ''}`}>
-              {order.details.map((detail, index) => (
-                <div key={index}>
-                  <p>{detail.item}</p>
-                  <p>Milk: {detail.milk}</p>
-                  <p>{detail.notes}</p>
-                </div>
-              ))}
+            <div className={`order-details ${expandedOrderId === order.orderID ? 'show' : ''}`}>
+              <div>
+                <p>{`${order.quantity} x ${order.productName}`}</p>
+                <p>Milk: {order.milkTypeValue}</p>
+                <p>{order.notes ? `Notes: ${order.notes}` : ''}</p>
+              </div>
             </div>
           </div>
         ))}
