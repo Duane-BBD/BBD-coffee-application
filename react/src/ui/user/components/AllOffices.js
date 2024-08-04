@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import FrontPage from './FrontPage';
 import { SlArrowRight } from "react-icons/sl";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../static/AllOffices.css";
 import Coffeebean from "../../common/images/coffeebean.png";
 import { allLocation } from "../../../services/locationService";
 
 export default function AllOffices() {
+    const navigate = useNavigate()
     const [offices, setOffices] = useState([]);
 
     useEffect(() => {
@@ -24,7 +25,8 @@ export default function AllOffices() {
                     {offices.map((locate, index) => (
                         <div className="mapping" key={index}>
                             <Link 
-                                to={`/product?officeID=${encodeURIComponent(locate.officeID)}`} 
+                                to={`/product`}
+                                state={locate}
                                 className="location-option"
                             >
                                 <img src={Coffeebean} className="coffeebean" />
