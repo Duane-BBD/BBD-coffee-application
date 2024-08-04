@@ -5,7 +5,7 @@ import AllOffices from "./ui/user/components/AllOffices";
 import ProductDetails from "./ui/user/components/ProductDetails";
 import CheckOut from "./ui/user/components/CheckOut";
 import CombinedOrders from "./ui/user/components/CombinedOrders";
-
+import HomePage from "./ui/barista/components/HomePage";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +15,7 @@ function App() {
             <Route exact path="/product-details" element={<ProductDetails/>}/>
             <Route exact path="/check-out" element={<CheckOut/>}/>
             <Route exact path="/my-orders" element={<CombinedOrders/>}/>
+            <Route exact path="/Home-page" element={<HomePage/>} />
         </Routes>
     </BrowserRouter>
   );

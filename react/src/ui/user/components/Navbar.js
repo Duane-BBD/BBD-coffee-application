@@ -5,9 +5,11 @@ import { IoBag } from "react-icons/io5";
 
 export default function Navbar() {
   return (
-    <div className='navbar'>
-        <PiHouseFill/>
-        <IoBag/>
+    <div className='nav'>
+        <div className='navbar'>
+            <PiHouseFill/>
+            <IoBag/>
+        </div>
     </div>
   )
 }

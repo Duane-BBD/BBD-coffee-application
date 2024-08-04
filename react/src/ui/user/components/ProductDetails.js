@@ -10,8 +10,11 @@ import {IoIosArrowDown} from 'react-icons/io';
 import { CgNotes } from "react-icons/cg";
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
+import AllOffices from './AllOffices';
+import { useNavigate } from 'react-router-dom';
 
 const ProductDetails = () => {
+    const navigate =useNavigate();
     const location = useLocation()
     const searchParams = new URLSearchParams(location.search)
     let productID = searchParams.get('productID');
@@ -64,41 +67,45 @@ const ProductDetails = () => {
   return (
     <div className='productdetails'> 
         <div className='top-nav'>
-            <div className='arrow-left'>  
+            <button className='arrow-left' >  
                 <MdKeyboardArrowLeft/>
-            </div>  
+            </button>  
             <h4>ProductDetails</h4>
         </div>
-        <div className='product-content'>
-            <img className='productimg' src={drink}/>
-            <h2> {product.productName} </h2>
-            <p> {product.description} </p> 
-        </div>
-        <div className='milkdropdown'>
-            <div className='milky'>
-                <TbMilk className='bottle-icon'/>
-                <button className='milkdropdown-button'> {selected.milkTypeValue} </button>
-                <IoIosArrowDown className='arrow-down'/>
+        <div className='product-container'>
+            <div className='product-content'>
+                <img className='productimg' src={drink}/>
+                <h2> {product.productName} </h2>
+                <p> {product.description} </p> 
             </div>
-            <div className='milkdropdown-content'>
-            {
-                milkType.map((types, index) => (
-                    <div className='milk-dropdown' key={index}>
-                        <a onClick={() => {searchMilkType(types, setSelected)}}>{types.milkTypeValue}</a>
+            <div className='product-right'>
+                <div className='milkdropdown'>
+                    <div className='milky'>
+                        <TbMilk className='bottle-icon'/>
+                        <button className='milkdropdown-button'> {selected.milkTypeValue} </button>
+                        <IoIosArrowDown className='arrow-down'/>
                     </div>
-                ))
-            }   
+                    <div className='milkdropdown-content'>
+                    {
+                        milkType.map((types, index) => (
+                            <div className='milk-dropdown' key={index}>
+                                <a onClick={() => {searchMilkType(types, setSelected)}}>{types.milkTypeValue}</a>
+                            </div>
+                        ))
+                    }   
+                    </div>
+                </div>
+                <div className='search-notes'>
+                    <input type='text'  placeholder='Add notes' className='add-notes' onChange={e => setNote(e.target.value)}/> 
+                        <div className='notes'>
+                            <CgNotes/>
+                        </div>
+                    </div>
+                    <div className='submiting' >
+                        <button className='submit' onClick={addToCart}> Add to order </button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div className='search-notes'>
-            <input type='text'  placeholder='Add notes' onChange={e => setNote(e.target.value)}/> 
-            <div className='notes'>
-                <CgNotes/>
-            </div>
-        </div>
-        <div className='submiting' >
-            <button className='submit' onClick={addToCart}> Add to order </button>
-        </div>
         <div className='navbar-spacing'> 
         <Navbar/>
         </div>

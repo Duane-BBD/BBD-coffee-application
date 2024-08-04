@@ -56,13 +56,29 @@ export default function Products() {
     ]
 
     const [menu, setMenu] = useState([])
+    const [dummyMenu,setDummyMenu] = useState([])
     // const [offices,setOffices]=useState([])
 
     useEffect(() => {
         productsAvailable(officeID, setMenu)
     }, [menu])
 
-  return (
+    const searchProducts=(searchParam)=>{
+        // if(searchParam==''){
+        //     setDummyMenu(menu)
+        //     return
+        // }
+        let prod = []
+        for(let item in menu) {
+            let name = item.productName
+            console.log(name)
+            // if(name.indexOf(searchParam) !== -1){
+            //     prod.push(item);
+            // }
+        }
+        setDummyMenu(prod)
+    }
+  return ( 
     <div>
         <img 
             src={backgroundimg}
@@ -84,7 +100,16 @@ export default function Products() {
         <div className='search-bar-wrapper'>
             <div className='search-bar'>
                 <BiSearch className='search-icon' />
-                <input type='text' className='search-baris' placeholder='Search drinks' />
+                <input 
+                    type='text' 
+                    className='search-baris' 
+                    placeholder='Search drinks' 
+                    // value=""
+                    onChange={e => {
+                        e.preventDefault()
+                        searchProducts(e.target.value)
+                    }}
+                />
             </div>
         </div>
         <div class="scrollable-menu">

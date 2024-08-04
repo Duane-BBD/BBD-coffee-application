@@ -224,21 +224,18 @@ body{
 }
 
 
-@media screen and (min-width:348px) and (max-width:390px) {
-    
-.backroundimg2{
-    height:18vh;
-    width:100%;
-}
+@media screen and (min-width:348px) and (max-width:390px) {     
+    .backroundimg2{
+        height:18vh;
+        width:100%;
+    }
 
-.logo{
-    top: 36%;
-    width:7rem;
-    height: 3rem;
-    left: 130%;
-}
-
-
+    .logo{
+        top: 36%;
+        width:7rem;
+        height: 3rem;
+        left: 130%;
+    }
 }
 
 @media screen and (min-width:390px) and (max-width:430px) {
@@ -259,7 +256,6 @@ body{
         
     }
     .dropdown{
-
     svg{
         height: 2rem;
         width: 1.3rem;
@@ -269,35 +265,34 @@ body{
         
     }
 }
-
-.dropdown-button{
-    color: white;
-    font-size: 0.9rem;
-    border: none;
-}
-.search-baris { 
-    padding: 15px;
-    border-radius: 0.7rem;
-    font-size: 15px;
-}
-.scrollable-menu button {
-    height: 40px;
-    padding: 0px 10px;
-    font-size: 16px;
-    margin: 5px;
-  }
-  .card-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-bottom: 0%;
-    text-align: center;
+    .dropdown-button{
+        color: white;
+        font-size: 0.9rem;
+        border: none;
     }
-    
-    .card-text {
-    font-size: 0.9rem;
-    color: #666;
-    padding: 0px;
+    .search-baris { 
+        padding: 15px;
+        border-radius: 0.7rem;
+        font-size: 15px;
     }
+    .scrollable-menu button {
+        height: 40px;
+        padding: 0px 10px;
+        font-size: 16px;
+        margin: 5px;
+    }
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 0%;
+        text-align: center;
+        }
+        
+        .card-text {
+        font-size: 0.9rem;
+        color: #666;
+        padding: 0px;
+        }
 }
 @media screen and (min-width:487px) and (max-width:540px) {
     .logo{
@@ -334,37 +329,37 @@ body{
         margin-left: 0.2rem;
         color: white;
         
-    }
-}}
+    }}
+}
 
-.dropdown-button{
-    color: white;
-    font-size: 0.9rem;
-    border: none;
-}
-.search-baris { 
-    padding: 15px;
-    border-radius: 0.7rem;
-    font-size: 15px;
-}
-.scrollable-menu button {
-    height: 40px;
-    padding: 0px 10px;
-    font-size: 16px;
-    margin: 5px;
-  }
-  .card-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-bottom: 0%;
-    text-align: center;
+    .dropdown-button{
+        color: white;
+        font-size: 0.9rem;
+        border: none;
     }
-    
-    .card-text {
-    font-size: 0.9rem;
-    color: #666;
-    padding: 0px;
+    .search-baris { 
+        padding: 15px;
+        border-radius: 0.7rem;
+        font-size: 15px;
     }
+    .scrollable-menu button {
+        height: 40px;
+        padding: 0px 10px;
+        font-size: 16px;
+        margin: 5px;
+    }
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 0%;
+        text-align: center;
+        }
+        
+        .card-text {
+        font-size: 0.9rem;
+        color: #666;
+        padding: 0px;
+        }
 }
 
 @media screen and (min-width:649px) and (max-width:769px) {

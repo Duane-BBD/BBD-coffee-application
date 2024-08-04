@@ -1,13 +1,15 @@
 .navbar{
-    /* position: fixed; */
-    bottom: 1%;
-    width:85%;
+    /* position: absolute; */
+    /* bottom: 1%; */
+    width:auto;
     display: flex;
     padding: 1rem;
     /* border: solid; */
     border-radius: 1rem;
     margin-left: 0.7rem;
+    margin-right: 1.4rem;
     box-shadow: 0 2px 5px rgb(95, 92, 92);
+    z-index: 1000;
     justify-content: center;
     gap: 6rem;
     align-content: center;
@@ -16,4 +18,3 @@
         font-size: 1.5rem;
     }
 }
-
