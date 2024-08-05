@@ -417,10 +417,6 @@
         height: 1.3rem;
         width: 1.3rem;
     }
-    .search-notes{
-        /* margin-top: 3rem; */
-        /* margin-bottom: 3rem; */
-    }
     .submit {
         margin-left: 0.7rem;
         margin-bottom: 5rem;
@@ -517,10 +513,6 @@
         color: rgb(92, 92, 92);
         height: 1.3rem;
         width: 1.3rem;
-    }
-    .search-notes{
-        /* margin-top: 3rem; */
-        /* margin-bottom: 3rem; */
     }
     .submit {
         margin-left: 0.7rem;

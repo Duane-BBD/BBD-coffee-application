@@ -3,9 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Products from "./ui/user/components/Products";
 import AllOffices from "./ui/user/components/AllOffices";
 import ProductDetails from "./ui/user/components/ProductDetails";
+import CombinedOrders from "./ui/user/components/CombinedOrders";
 import CheckOut from "./ui/user/components/CheckOut";
-// import CombinedOrders from "./ui/user/components/CombinedOrders";
-import OrdersPage from "./ui/user/components/OrdersPage";
 import OrderHistory from "./ui/user/components/OrderHistory";
 import HomePage from "./ui/barista/components/HomePage";
 import MyOrders from "./ui/user/components/MyOrders";
@@ -17,10 +16,9 @@ function App() {
             <Route exact path="/" element={<AllOffices/>} />
             <Route exact path="/product" element={<Products/>} />
             <Route exact path="/product-details" element={<ProductDetails/>}/>
-            <Route exact path="/check-out" element={<CheckOut/>}/>
             {/* <Route exact path="/my-orders" element={<CombinedOrders/>}/> */}
             <Route exact path="/Home-page" element={<HomePage/>} />
-            <Route path="/order-page" element={<OrdersPage/>}/>
+            <Route path="/check-out" element={<CheckOut/>}/>
             <Route path="/order-history" element={<OrderHistory/>}/>
             <Route path="/place-order" element={<PlaceOrder/>}/>
             <Route path="/my-orders" element={<MyOrders/>}/>

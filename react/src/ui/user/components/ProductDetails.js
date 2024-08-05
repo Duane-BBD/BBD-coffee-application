@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { SlArrowRight } from 'react-icons/sl'
 import "../static/ProductDetails.css"
 import { productDetails } from '../../../services/productService'
 import { allMilkType, searchMilkType } from '../../../services/milkTypeService';
@@ -10,17 +9,15 @@ import {IoIosArrowDown} from 'react-icons/io';
 import { CgNotes } from "react-icons/cg";
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
-import AllOffices from './AllOffices';
 import { useNavigate } from 'react-router-dom';
 
 const ProductDetails = () => {
-    const navigate =useNavigate();
+    const navigate = useNavigate();
     const location = useLocation()
     const searchParams = new URLSearchParams(location.search)
     let productID = searchParams.get('productID');
     let officeID = 1;
-    let updatedCart = []
-    const [flag, setFlag] = useState(false)
+
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
     const [product, setProduct] = useState({})
     const [milkType, setMilkType] = useState([])
@@ -36,38 +33,36 @@ const ProductDetails = () => {
     }, [milkType]);
 
     const addToCart = () => {
-        for (let i = 0; i < cart.length; i++) {
-            if(cart[i].milkTypeValue == selected.milkTypeValue && cart[i].note == note && !flag) {
-                cart[i].quantity += 1;
-                setFlag(true);
+        let updatedCart = [...cart];
+        let itemFound = false;
+    
+        for (let i = 0; i < updatedCart.length; i++) {
+            if (updatedCart[i].milkTypeValue === selected.milkTypeValue && updatedCart[i].note === note) {
+                updatedCart[i].quantity += 1;
+                itemFound = true;
+                break;
             }
         }
-        const toAdd = {
-            productName: product.productName,
-            quantity: 1,
-            userID: 1056,
-            officeID: officeID,
-            milkTypeValue: selected.milkTypeValue,
-            note: note
-        };
-
-        updatedCart = flag ? [...cart] : [...cart, toAdd];
+    
+        if (!itemFound) {
+            updatedCart.push({
+                productName: product.productName,
+                quantity: 1,
+                userID: 1056,
+                officeID: officeID,
+                milkTypeValue: selected.milkTypeValue,
+                note: note
+            });
+        }
+        
         localStorage.setItem("cart", JSON.stringify(updatedCart));
-        console.log('\nupdatedCart: ')
-        console.log(JSON.stringify(updatedCart))
-        console.log('\nCart: ')
-        console.log(cart)
-        console.log('\nTo Add:')
-        console.log(toAdd)
-        setCart(JSON.parse(localStorage.getItem("cart")))
-        setFlag(false)
-        // localStorage.removeItem("cart")
+        setCart(updatedCart);
     }
-
+    
   return (
     <div className='productdetails'> 
         <div className='top-nav'>
-            <button className='arrow-left' onClick={e=> navigate(`/product`, {state: {officeID:1, officeName:'Pune'}})} >  
+            <button className='arrow-left' onClick={e => navigate(`/product`, {state: {officeID: 1, officeName:'Pune'}})} >  
                 <MdKeyboardArrowLeft/>
             </button>  
             <h4>ProductDetails</h4>

@@ -21,40 +21,45 @@
     border-bottom: 2px solid #8B5E34;
 }
   
-  .order-item {
+.order-item {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
   
-  .item-image {
+.item-image {
     width: 50px;
     height: 50px;
     border-radius: 8px;
     margin-right: 20px;
-  }
+}
   
-  .item-details {
+.item-details {
     flex: 1;
-  }
+}
   
-  .item-name {
+.item-name {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
-  }
-  
-  .item-note {
+}
+
+.item-note {
     font-size: 14px;
     color: #777;
-  }
-  
-  .item-counter {
+}
+
+.item-milk-type {
+    font-size: 12px;
+    color: #777;
+}
+
+.item-counter {
     display: flex;
     align-items: center;
-  }
+}
   
-  .item-counter button {
+.item-counter button {
     background-color: #F7F7F7;
     border: none;
     width: 30px;
@@ -66,14 +71,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
   
-  .item-counter span {
+.item-counter span {
     margin: 0 10px;
     font-size: 18px;
-  }
+}
   
-  .place-order {
+.place-order {
     background-color: #8B5E34;
     color: #FFF;
     padding: 15px;
@@ -83,24 +88,22 @@
     width: 100%;
     margin-top: 20px;
     cursor: pointer;
-  }
+}
   
-  .footer {
+.footer {
     display: flex;
     justify-content: space-around;
     padding: 20px 0;
-  }
+}
   
-  .footer-icon {
+.footer-icon {
     width: 30px;
     height: 30px;
     background-color: #F7F7F7;
     border-radius: 50%;
     cursor: pointer;
-  }
+}
   
-  .footer-icon.active {
+.footer-icon.active {
     background-color: #8B5E34;
-  }
-
-  
+}
