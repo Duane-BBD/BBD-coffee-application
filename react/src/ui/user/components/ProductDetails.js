@@ -67,7 +67,7 @@ const ProductDetails = () => {
   return (
     <div className='productdetails'> 
         <div className='top-nav'>
-            <button className='arrow-left' >  
+            <button className='arrow-left' onClick={e=> navigate(`/product`, {state: {officeID:1, officeName:'Pune'}})} >  
                 <MdKeyboardArrowLeft/>
             </button>  
             <h4>ProductDetails</h4>

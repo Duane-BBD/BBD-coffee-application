@@ -449,7 +449,7 @@
 }
 
   
-@media screen and (min-width:1198px) and (max-width:2000px ) {
+@media screen and (min-width:1198px) and (max-width:2826px ) {
     .product-container {
         display: flex;
         flex-direction: row;
