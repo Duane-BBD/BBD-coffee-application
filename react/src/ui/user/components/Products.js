@@ -15,6 +15,7 @@ export default function Products() {
     let office = location.state
     // const searchParams = new URLSearchParams(location.search)
     const [offices, setOffices] = useState([])
+    const [search, setSearch] = useState(false)
     // const officeID = searchParams.get('officeID')
 
     useEffect(() => {
@@ -61,29 +62,33 @@ export default function Products() {
     ]
 
     const [menu, setMenu] = useState([])
-    const [dummyMenu,setDummyMenu] = useState([])
+    const [dummyMenu,setDummyMenu] = useState(menu)
     // const [offices,setOffices]=useState([])
 
     useEffect(() => {
         if (office) {
             productsAvailable(office.officeID, setMenu)
+            if (!search) setDummyMenu(menu)
         }
     }, [menu])
 
     const searchProducts=(searchParam)=>{
-        // if(searchParam==''){
-        //     setDummyMenu(menu)
-        //     return
-        // }
+        if(searchParam==''){
+            setDummyMenu(menu)
+            setSearch(false)
+            return
+        }
+        setSearch(true)
         let prod = []
-        for(let item in menu) {
-            let name = item.productName
-            console.log(name)
-            // if(name.indexOf(searchParam) !== -1){
-            //     prod.push(item);
-            // }
+        for (let i = 0; i < menu.length; i++) {
+            let name = menu[i].productName;
+            if (name.toLowerCase().indexOf(searchParam.toLowerCase()) !== -1) {
+                // console.log('Avail: ' + name);
+                prod.push(menu[i]);
+            }
         }
         setDummyMenu(prod)
+        // console.log("Dummy: "+dummyMenu)
     }
   return ( 
     <>
@@ -94,10 +99,11 @@ export default function Products() {
                     className="backroundimg2"
                 />
                 <img src={Logo} className='logo'/>
-        <div className='on-backgroundimg'>
+
+                <div className='on-backgroundimg'>
                     <h5>Office</h5>
                     <div className='dropdown'>
-                        <button className='dropdown-button'> {office.officeName}</button>
+                        <button className='dropdown-button'> {office.officeName} </button>
                         <div className='dropdown-content'>
                             {offices.map((off, index) => (
                                 <Link to={`/product`} state={off} key={index}>{off.officeName}</Link>
@@ -105,7 +111,8 @@ export default function Products() {
                         </div>
                         <IoIosArrowDown/>
                     </div>
-                        </div>
+                </div>
+
                 <div className='search-bar-wrapper'>
                     <div className='search-bar'>
                         <BiSearch className='search-icon' />
@@ -127,20 +134,19 @@ export default function Products() {
                     ))}
                 </div>
             <div className='card-container'>
-                {menu.map((menus, index) => (
-                <div className='card-disp' key={index} onClick={e => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
-                    <div className="card">
-                    <img
-                        src={coffee}
-                        alt="Cappuccino"
-                        className="card-img-top"
-                    />     
-                        <h5 className="card-title">{menus.productName}</h5>
-                        <p className="card-text">{menus.description}
-                        </p>
-                    
+                {dummyMenu.map((menus, index) => (
+                    <div className='card-disp' key={index} onClick={e => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
+                        <div className="card">
+                        <img
+                            src={coffee}
+                            alt="Cappuccino"
+                            className="card-img-top"
+                        />
+                            <h5 className="card-title">{menus.productName}</h5>
+                            <p className="card-text">{menus.description}
+                            </p>
+                        </div>
                     </div>
-                </div>
                 ))}
                 </div>
         </div>

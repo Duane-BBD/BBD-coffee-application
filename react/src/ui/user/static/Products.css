@@ -41,7 +41,7 @@ body{
     }
 }
 .dropdown{
-    position: relative;
+    position: absolute;
     display: inline-block;
     flex-direction: row;
     display: flex;
@@ -61,6 +61,7 @@ body{
 }
 
 .dropdown-button{
+    position: absolute;
     background-color: transparent;
     color: white;
     font-size: 0.8rem;
