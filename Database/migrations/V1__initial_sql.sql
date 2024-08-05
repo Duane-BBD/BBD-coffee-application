@@ -48,6 +48,7 @@ CREATE TABLE product(
     productName VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     associatedTags VARCHAR(255) NOT NULL,
+    imageURL VARCHAR(2048) NOT NULL,
     PRIMARY KEY(productID),
     UNIQUE(productName)
 );

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import "../static/ProductDetails.css"
 import { productDetails } from '../../../services/productService'
 import { allMilkType, searchMilkType } from '../../../services/milkTypeService';
-import drink from "../../common/images/coffee.png"
 import { TbMilk } from "react-icons/tb";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import {IoIosArrowDown} from 'react-icons/io';
@@ -62,21 +61,21 @@ const ProductDetails = () => {
   return (
     <div className='productdetails'> 
         <div className='top-nav'>
-            <button className='arrow-left' onClick={e => navigate(`/product`, {state: {officeID: 1, officeName:'Pune'}})} >  
+            <button className='arrow-left' onClick={() => navigate(`/product`, {state: {officeID: 1, officeName:'Pune'}})} >  
                 <MdKeyboardArrowLeft/>
             </button>  
             <h4>ProductDetails</h4>
         </div>
         <div className='product-container'>
             <div className='product-content'>
-                <img className='productimg' src={drink}/>
+                <img className='productimg' src={product.imageURL}/>
                 {/* <h2> {product.productName} </h2>
                 <p> {product.description} </p>  */}
             </div>
             <div className='product-right'>
                 <div className='product-content'>
                     <h2> {product.productName} </h2>
-                    <p> {product.description} </p> 
+                    <p> {product.description} </p>
                 </div>
                 <div className='milkdropdown'>
                     <div className='milky'>

@@ -18,6 +18,7 @@ public class Product {
     private String productName;
     private String description;
     private String associatedTags;
+    private String imageURL;
     //new
 //    @ManyToOne
 //    @JoinColumn(name = "orderStatusID")

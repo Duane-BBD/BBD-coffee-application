@@ -3,7 +3,6 @@ import "../static/Products.css";
 import backgroundimg from "../../common/images/front-page-backgroundimg.png";
 import { BiSearch } from 'react-icons/bi';
 import {IoIosArrowDown} from 'react-icons/io';
-import coffee from "../../common/images/coffee.png";
 import Logo from "../../common/images/logo2.png";
 import { productsAvailable } from '../../../services/productService';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -120,7 +119,7 @@ export default function Products() {
                     <div className='card-disp' key={index} onClick={e => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
                         <div className="card">
                         <img
-                            src={coffee}
+                            src={menus.imageURL}
                             alt="Cappuccino"
                             className="card-img-top"
                         />
