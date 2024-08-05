@@ -17,6 +17,7 @@ public class Product {
     private Integer productID;
     private String productName;
     private String description;
+    private String associatedTags;
     //new
 //    @ManyToOne
 //    @JoinColumn(name = "orderStatusID")

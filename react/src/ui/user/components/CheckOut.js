@@ -24,7 +24,7 @@ const CheckOut = () => {
         } else {
             let newCart = []
             for(let i = 0; i < cart.length; i++) {
-                if (cart[i] != cart[index]) newCart.push(cart[i])
+                if (cart[i] != cart[index]) newCart.push(cart[i]);
             }
             cart = newCart
         }

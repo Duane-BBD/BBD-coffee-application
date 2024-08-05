@@ -1,6 +1,5 @@
 package com.bbdsoftware.coffee.controller;
 
-import com.bbdsoftware.coffee.DTO.ReceiveOrderDetailDTO;
 import com.bbdsoftware.coffee.model.MilkType;
 import com.bbdsoftware.coffee.service.MilkTypeService;
 import lombok.AllArgsConstructor;

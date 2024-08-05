@@ -36,10 +36,18 @@ CREATE TABLE appUser (
 	ON UPDATE CASCADE
 );
 
+CREATE TABLE tags(
+    tagID INT AUTO_INCREMENT NOT NULL,
+    tagName VARCHAR(255) NOT NULL,
+    PRIMARY KEY(tagID),
+    UNIQUE(tagName)
+);
+
 CREATE TABLE product(
     productID INT AUTO_INCREMENT NOT NULL,
     productName VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
+    associatedTags VARCHAR(255) NOT NULL,
     PRIMARY KEY(productID),
     UNIQUE(productName)
 );

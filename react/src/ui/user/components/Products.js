@@ -9,15 +9,16 @@ import { productsAvailable } from '../../../services/productService';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { allLocation } from '../../../services/locationService';
 import Navbar from './Navbar';
+import { allTags } from '../../../services/tagService';
 
 export default function Products() {
     const navigate = useNavigate()
     const location = useLocation()
     let office = location.state
-    // const searchParams = new URLSearchParams(location.search)
     const [offices, setOffices] = useState([])
     const [search, setSearch] = useState(false)
-    // const officeID = searchParams.get('officeID')
+    const [tags, setTags] = useState([])
+    const [selectedTag, setSelectedTag] = useState({tagID: 0, tagName: 'none'})
 
     useEffect(() => {
         if (!office) navigate("/");
@@ -27,53 +28,34 @@ export default function Products() {
         allLocation(setOffices)
     }, [offices])
 
-    const category=[
-        {
-            name:"All",
-            link:"s"
-        },
-        {
-            name:"Coffee",
-            link:"s"
-        },
-        {
-            name:"Other hot drinks",
-            link:"s"
-        },
-        {
-            name:"Tea",
-            link:"s"
-        },
-        {
-            name:"Ice tea",
-            link:"s"
-        },
-        {
-            name:"Other hot drinks",
-            link:"s"
-        },
-        {
-            name:"Tea",
-            link:"s"
-        },
-        {
-            name:"Ice tea",
-            link:"s"
-        },
-    ]
+    useEffect(() => {
+        allTags(setTags);
+    }, [tags])
 
     const [menu, setMenu] = useState([])
     const [dummyMenu,setDummyMenu] = useState(menu)
-    // const [offices,setOffices]=useState([])
 
     useEffect(() => {
         if (office) {
             productsAvailable(office.officeID, setMenu)
-            if (!search) setDummyMenu(menu)
+            if (!search && selectedTag.tagID === 0) setDummyMenu(menu)
         }
     }, [menu])
 
-    const searchProducts=(searchParam)=>{
+    
+    useEffect(() => {
+        if (selectedTag.tagID !== 0) {
+            const filteredMenu = menu.filter(item => {
+                const tagsArray = JSON.parse(item.associatedTags);
+                return tagsArray.includes(selectedTag.tagID);
+            });
+            setDummyMenu(filteredMenu);
+        } else {
+            setDummyMenu(menu);
+        }
+    }, [selectedTag])
+
+    const searchProducts=(searchParam) => {
         if(searchParam==''){
             setDummyMenu(menu)
             setSearch(false)
@@ -84,13 +66,12 @@ export default function Products() {
         for (let i = 0; i < menu.length; i++) {
             let name = menu[i].productName;
             if (name.toLowerCase().indexOf(searchParam.toLowerCase()) !== -1) {
-                // console.log('Avail: ' + name);
                 prod.push(menu[i]);
             }
         }
         setDummyMenu(prod)
-        // console.log("Dummy: "+dummyMenu)
     }
+    
   return ( 
     <>
         {office.officeID != null
@@ -130,8 +111,8 @@ export default function Products() {
                     </div>
                 </div>
                 <div class="scrollable-menu">
-                    {category.map((category,index)=>(
-                        <button key={index} >{category.name}</button>
+                    {tags.map((tag,index) => (
+                        <button key={index} onClick={e => setSelectedTag(tag)}>{tag.tagName}</button>
                     ))}
                 </div>
             <div className='card-container'>
