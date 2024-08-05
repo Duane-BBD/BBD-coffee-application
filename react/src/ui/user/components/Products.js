@@ -8,6 +8,7 @@ import Logo from "../../common/images/logo2.png";
 import { productsAvailable } from '../../../services/productService';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { allLocation } from '../../../services/locationService';
+import Navbar from './Navbar';
 
 export default function Products() {
     const navigate = useNavigate()
@@ -103,13 +104,13 @@ export default function Products() {
                 <div className='on-backgroundimg'>
                     <h5>Office</h5>
                     <div className='dropdown'>
-                        <button className='dropdown-button'> {office.officeName} </button>
+                        <button className='dropdown-button'> {office.officeName}<IoIosArrowDown /></button>
                         <div className='dropdown-content'>
                             {offices.map((off, index) => (
                                 <Link to={`/product`} state={off} key={index}>{off.officeName}</Link>
                             ))}
                         </div>
-                        <IoIosArrowDown/>
+                      
                     </div>
                 </div>
 
@@ -148,7 +149,8 @@ export default function Products() {
                         </div>
                     </div>
                 ))}
-                </div>
+            </div>
+        <Navbar/>
         </div>
             : <div>Something!</div>
         }
