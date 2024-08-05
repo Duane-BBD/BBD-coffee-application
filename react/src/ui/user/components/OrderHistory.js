@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+// import EmptyOrderMessage from './EmptyOrderMessage';
 import '../static/OrderHistory.css';
+import PlaceOrder from '../components/PlaceOrder';
+import OrdersHeader from '../components/OrdersHeader';
 
-const OrderHistory = ({ officeID, orderStatusValue="" }) => {
+const OrderHistory = ({ officeID, orderStatusValue = "" }) => {
   const [orders, setOrders] = useState([]);
   const [expandedOrderId, setExpandedOrderId] = useState(null);
 
@@ -10,11 +13,10 @@ const OrderHistory = ({ officeID, orderStatusValue="" }) => {
       try {
         const response = await fetch(`http://localhost:8080/bbd-coffee/barista-display/3/Pending`);
         const data = await response.json();
-        
-        // Debugging: Check the API response
-        console.log('Fetched data:', data);
-        
-        // Ensure the fetched data is an array
+        console.log(data);
+        // const data=[];
+
+        // Check for the fetched data is an array
         if (Array.isArray(data)) {
           setOrders(data);
         } else {
@@ -32,13 +34,13 @@ const OrderHistory = ({ officeID, orderStatusValue="" }) => {
     setExpandedOrderId(expandedOrderId === id ? null : id);
   };
 
+  if (orders.length === 0) {
+    return <PlaceOrder />;
+  }
+
   return (
     <div className="order-history">
-      <div className="header">
-        <div className="header-item">Place an order</div>
-        <div className="header-item active">My orders</div>
-      </div>
-
+      <OrdersHeader/>
       <div className="order-section">
         <div className="order-section-title">Orders</div>
         {orders.map(order => (
