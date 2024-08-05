@@ -51,7 +51,7 @@ const CheckOut = () => {
         : <div>
             {cart.map((order, index) => 
                 <div className="order-item">
-                    <img src={Coffee} className="item-image" />
+                    <img src={order.imageURL} className="item-image" />
                     <div className="item-details">
                         <div className="item-name">{order.productName}</div>
                         <div className="item-milk-type">{order.milkTypeValue}</div>

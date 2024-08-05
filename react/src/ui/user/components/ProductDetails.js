@@ -50,7 +50,8 @@ const ProductDetails = () => {
                 userID: 1056,
                 officeID: officeID,
                 milkTypeValue: selected.milkTypeValue,
-                note: note
+                note: note,
+                imageURL: product.imageURL
             });
         }
         
