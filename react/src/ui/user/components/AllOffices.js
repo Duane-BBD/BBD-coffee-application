@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import FrontPage from '../../common/components/FrontPage';
 import { SlArrowRight } from "react-icons/sl";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../static/AllOffices.css";
 import Coffeebean from "../../common/images/coffeebean.png";
 import { allLocation } from "../../../services/locationService";
+import useUserDetails from "../../../hooks/useUserDetails";
  
 export default function AllOffices() {
-    const navigate = useNavigate()
+    const { userDetails } = useUserDetails()
     const [offices, setOffices] = useState([]);
  
     useEffect(() => {
         allLocation(setOffices)
+        console.log(userDetails);
     }, [offices])
  
   return (

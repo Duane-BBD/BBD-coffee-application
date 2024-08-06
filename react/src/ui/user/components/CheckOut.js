@@ -5,7 +5,6 @@ import Navbar from '../../common/components/Navbar';
 import { placeOrders } from '../../../services/orderListService';
 
 const CheckOut = () => {
-    const userID = 1056;
     const navigate = useNavigate();
     const location = useLocation();
     const [isEmpty, setIsEmpty] = useState(false);
@@ -28,7 +27,7 @@ const CheckOut = () => {
         } else {
             let newCart = []
             for(let i = 0; i < cart.length; i++) {
-                if (cart[i] != cart[index]) newCart.push(cart[i]);
+                if (cart[i] !== cart[index]) newCart.push(cart[i]);
             }
             cart = newCart
         }
@@ -73,7 +72,7 @@ const CheckOut = () => {
             )}
             
             <button className="place-order" onClick={() => {
-                if (cart != [] && cart !=null) {
+                if (cart !== null) {
                     placeOrders(cart);
                     localStorage.removeItem("cart");
                     setIsEmpty(true)

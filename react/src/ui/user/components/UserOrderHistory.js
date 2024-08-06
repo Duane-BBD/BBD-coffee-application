@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../../api/axios';
 import '../static/OrderHistory.css';
-import PlaceOrder from '../components/PlaceOrder';
 import OrdersHeader from '../components/OrdersHeader';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Navbar from '../../common/components/Navbar';
 import MyOrders from './MyOrders';
+import useUserDetails from '../../../hooks/useUserDetails';
 
 const UserOrderHistory = ({ userIDx = 1056, orderStatusValue = "" }) => {
     const [orders, setOrders] = useState([]);
     const [expandedOrderID, setExpandedOrderID] = useState(null);
+    const { userDetails } = useUserDetails();
 
     useEffect(() => {
         const fetchOrders = async () => {

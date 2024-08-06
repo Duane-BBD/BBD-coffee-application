@@ -9,6 +9,7 @@ import { CgNotes } from "react-icons/cg";
 import Navbar from '../../common/components/Navbar';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import useUserDetails from '../../../hooks/useUserDetails';
 
 const ProductDetails = () => {
     const navigate = useNavigate();
@@ -16,6 +17,7 @@ const ProductDetails = () => {
     const searchParams = new URLSearchParams(location.search)
     let productID = searchParams.get('productID');
     let officeID = 1;
+    const { userDetails } = useUserDetails();
 
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
     const [product, setProduct] = useState({})
@@ -47,7 +49,7 @@ const ProductDetails = () => {
             updatedCart.push({
                 productName: product.productName,
                 quantity: 1,
-                userID: 1056,
+                userID: userDetails.userID,
                 officeID: officeID,
                 milkTypeValue: selected.milkTypeValue,
                 note: note,

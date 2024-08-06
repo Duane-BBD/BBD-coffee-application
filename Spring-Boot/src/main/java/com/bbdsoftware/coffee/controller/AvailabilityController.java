@@ -39,6 +39,7 @@ public class AvailabilityController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping("/get-all-available")
     public ResponseEntity<List<AvailabilityDTO>> getAllAvailability() {
         try {

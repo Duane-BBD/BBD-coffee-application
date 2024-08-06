@@ -13,26 +13,29 @@ import TakeOrders from "./ui/barista/components/TakeOrders";
 import OrderDetails from "./ui/barista/components/OrderDetails";
 import PastOrders from "./ui/barista/components/PastOrders";
 import Login from "./ui/common/components/Login";
+import { UserDetailsProvider } from "./context/UserDetailsProvider";
 
 function App() {
   return (
     <BrowserRouter>
-        <Routes>
-            <Route path="/login" element={<Login/>} />
-            <Route exact path="/" element={<AllOffices/>} />
-            <Route exact path="/product" element={<Products/>} />
-            <Route exact path="/product-details" element={<ProductDetails/>}/>
-            {/* <Route exact path="/my-orders" element={<CombinedOrders/>}/> */}
-            <Route exact path="/home-page" element={<HomePage/>} />
-            <Route path="/check-out" element={<CheckOut/>}/>
-            <Route path="/order-history" element={<OrderHistory/>}/>
-            <Route path="/place-order" element={<PlaceOrder/>}/>
-            <Route path="/my-orders" element={<MyOrders/>}/>
-            <Route path="/take-orders" element={<TakeOrders/>}/>
-            <Route path="/order-details" element={<OrderDetails />}/>
-            <Route path="/user-order-history" element={<UserOrderHistory/>}/>
-            <Route path="/past-orders" element={<PastOrders/>} />
-        </Routes>
+        <UserDetailsProvider>
+            <Routes>
+                <Route path="/login" element={<Login/>} />
+                <Route exact path="/" element={<AllOffices/>} />
+                <Route exact path="/product" element={<Products/>} />
+                <Route exact path="/product-details" element={<ProductDetails/>}/>
+                {/* <Route exact path="/my-orders" element={<CombinedOrders/>}/> */}
+                <Route exact path="/home-page" element={<HomePage/>} />
+                <Route path="/check-out" element={<CheckOut/>}/>
+                <Route path="/order-history" element={<OrderHistory/>}/>
+                <Route path="/place-order" element={<PlaceOrder/>}/>
+                <Route path="/my-orders" element={<MyOrders/>}/>
+                <Route path="/take-orders" element={<TakeOrders/>}/>
+                <Route path="/order-details" element={<OrderDetails />}/>
+                <Route path="/user-order-history" element={<UserOrderHistory/>}/>
+                <Route path="/past-orders" element={<PastOrders/>} />
+            </Routes>
+        </UserDetailsProvider>
     </BrowserRouter>
   );
 }
