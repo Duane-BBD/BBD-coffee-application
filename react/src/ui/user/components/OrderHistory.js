@@ -13,7 +13,7 @@ const OrderHistory = ({ officeID, orderStatusValue = "" }) => {
     const fetchOrders = async () => {
       try {
         const orderIDs = [1, 2, 3, 4]; // Replace with dynamic order IDs as needed
-        const requests = orderIDs.map(orderID => axios.get(`http://localhost:8080/bbd-coffee/orders/get-order-details/${orderID}`));
+        const requests = orderIDs.map(orderID => axios.get(`/orders/get-order-details/${orderID}`));
         const responses = await Promise.all(requests);
         const fetchedOrders = responses.map(response => response.data);
         setOrders(fetchedOrders);

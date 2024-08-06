@@ -5,6 +5,7 @@ import PlaceOrder from '../components/PlaceOrder';
 import OrdersHeader from '../components/OrdersHeader';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Navbar from '../../common/components/Navbar';
+import MyOrders from './MyOrders';
 
 const UserOrderHistory = ({ userIDx = 1056, orderStatusValue = "" }) => {
     const [orders, setOrders] = useState([]);
@@ -48,7 +49,7 @@ const UserOrderHistory = ({ userIDx = 1056, orderStatusValue = "" }) => {
     };
 
     if (orders.length === 0) {
-        return <PlaceOrder />;
+        return <MyOrders />;
     }
 
     return (
