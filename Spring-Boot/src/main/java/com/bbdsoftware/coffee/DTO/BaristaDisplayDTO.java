@@ -16,6 +16,6 @@ public class BaristaDisplayDTO {
     private Integer quantity;
     private String notes;
     private String milkTypeValue;
-//    @JsonFormat(pattern = "HH:mm:ss, dd-MM-yyyy")
-//    private Timestamp orderTime;
+    @JsonFormat(pattern = "HH:mm:ss, dd-MM-yyyy")
+    private Timestamp orderTime;
 }

@@ -119,6 +119,8 @@ public class OrderListServiceImpl implements OrderListService {
         item.setProductName(productRepository.findById(order.getProductID()).get().getProductName());
         item.setQuantity(order.getQuantity());
         item.setStatus(orderStatusRepository.findById(order.getOrderStatusID()).get().getOrderStatusValue());
+        item.setNote(orderListRepository.findById(order.getOrderID()).get().getNotes());
+        item.setMilkTypeValue(milkTypeService.getMilkType(orderListRepository.findById(order.getOrderID()).get().getMilkTypeID()).getMilkTypeValue());
         return item;
     }
 
