@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../static/OrderDetails.css';
 import Navbar from '../../common/components/Navbar';
+import { useFetcher, useLocation } from 'react-router-dom';
 const OrderDetails = () => {
+    const location=useLocation();
+    const order = location.state || { name: '', quantity: 0 }; 
+    useEffect(()=>{
+      console.log(order,'name')  
+    },[])
     return (
-        <div className="order-details-container">
+        <div className="orderdetails-container">
             <div className="order-header">
                 <button className="back-button">&lt;</button>
                 <span className="order-number">Order number</span>
@@ -12,21 +18,15 @@ const OrderDetails = () => {
 
             <div className="order-items">
                 <div className="list-item">
-                    <h3>1 Cappuccino</h3>
-                    <p><strong>Milk:</strong> Oat milk</p>
-                    <p><strong>Notes:</strong> whatever note was added will be placed here.</p>
-                </div>
-
-                <div className="list-item">
-                    <h3>3 Hot chocolate</h3>
-                    <p><strong>Milk:</strong>ha Oat milk</p>
-                    <p><strong>Notes:</strong> whatever note was added will be placed here.</p>
+                    <h3>{order.quantity} {order.productName}</h3>
+                    <p><strong>Milk:</strong> {order.milkTypeValue}</p>
+                    <p><strong>Notes:</strong> {order.notes}</p>
                 </div>
             </div>
 
             <div className="order-history">
                 <h4>Order history</h4>
-                <p>Time received: 12:02pm</p>
+                <p>Time received: {order.orderTime}</p>
             </div>
 
             <div className="order-actions">

@@ -26,7 +26,7 @@ function App() {
             <Route path="/place-order" element={<PlaceOrder/>}/>
             <Route path="/my-orders" element={<MyOrders/>}/>
             <Route path="/take-orders" element={<TakeOrders/>}/>
-            <Route path="/order-details" element={<OrderDetails quantity={2} productName='Mocha' milkTypeValue='almond milk' notes='no sugar'/>}/>
+            <Route path="/order-details" element={<OrderDetails />}/>
             <Route path="/user-order-history" element={<UserOrderHistory/>}/>
         </Routes>
     </BrowserRouter>
