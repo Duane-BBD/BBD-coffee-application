@@ -6,7 +6,7 @@ import OrdersHeader from '../components/OrdersHeader';
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Navbar from '../../common/components/Navbar';
 
-const UserOrderHistory = ({ userIDx = 1025, orderStatusValue = "" }) => {
+const UserOrderHistory = ({ userIDx = 1056, orderStatusValue = "" }) => {
     const [orders, setOrders] = useState([]);
     const [expandedOrderID, setExpandedOrderID] = useState(null);
 

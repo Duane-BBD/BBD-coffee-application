@@ -12,10 +12,13 @@ import UserOrderHistory from "./ui/user/components/UserOrderHistory";
 import TakeOrders from "./ui/barista/components/TakeOrders";
 import OrderDetails from "./ui/barista/components/OrderDetails";
 import PastOrders from "./ui/barista/components/PastOrders";
+import Login from "./ui/common/components/Login";
+
 function App() {
   return (
     <BrowserRouter>
         <Routes>
+            <Route path="/login" element={<Login/>} />
             <Route exact path="/" element={<AllOffices/>} />
             <Route exact path="/product" element={<Products/>} />
             <Route exact path="/product-details" element={<ProductDetails/>}/>

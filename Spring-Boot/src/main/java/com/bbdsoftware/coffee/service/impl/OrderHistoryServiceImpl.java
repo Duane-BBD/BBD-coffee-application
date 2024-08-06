@@ -13,6 +13,7 @@ import com.bbdsoftware.coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -90,5 +91,17 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 //                .map(order -> modelMapper.map(order, OrderHistoryDTO.class))
 //                .collect(Collectors.toList());
         return userHistory;
+    }
+
+    @Override
+    public List<OrderHistory> getOrderTime(Integer orderID) {
+        List<OrderHistory> history = getAllHistory();
+        List<OrderHistory> orderTime = new ArrayList<>();
+        for(OrderHistory hist : history) {
+            if (Objects.equals(hist.getOrderID(), orderID)) {
+                orderTime.add(hist);
+            }
+        }
+        return orderTime;
     }
 }

@@ -1,22 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../static/OrderDetails.css';
 import Navbar from '../../common/components/Navbar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { cancelOrders, progressStatus } from '../../../services/updateStatusService';
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { getTimeDetails } from '../../../services/orderHistoryService';
 
 const OrderDetails = () => {
     const location=useLocation();
     const navigate = useNavigate();
-    const order = location.state;
+    const order = location.state || {};
     const searchParams = new URLSearchParams(location.search);
-    let status = searchParams.get('status') || 'Pending';
+    let status = searchParams.get('status') || '';
+
+    const [timeDetails, setTimeDetails] = useState([])
+
+    useEffect(() => {
+        if (order.orderID == null) navigate(-1)
+        getTimeDetails(order.orderID, setTimeDetails)
+        console.log(timeDetails)
+    }, [])
 
     return (
         <div className="orderdetails-container">
             <div className="orderdetail-header">
                 <button className="back-button" onClick={() => navigate(-1)}><MdKeyboardArrowLeft/></button>
-                <span className="order-number">OrderNumber {order.orderID}</span>
+                <span className="order-number">Order Number {order.orderID}</span>
                 <span className="order-status">{status}</span>
             </div>
 
@@ -30,30 +39,54 @@ const OrderDetails = () => {
 
             <div className="order-history">
                 <h4>Order history</h4>
-                <p>Time received: {order.orderTime}</p>
+                {timeDetails.map((time) => <>
+                    <p>{time.orderStatusID.orderStatusValue}: {time.orderTime}</p>
+                </>)}
+                {/* <p>Time received: {order.orderTime}</p> */}
             </div>
 
-            <div className="order-actions">
-                <button 
-                    className="decline-button"
-                    onClick={() => {
-                        cancelOrders(order.orderID)
-                        navigate(`/take-orders`)
-                    }}
-                >Decline order</button>
-                <button 
-                    className="accept-button"
-                    onClick={() => {
-                        progressStatus(order.orderID)
-                        navigate(`/take-orders`)
-                    }}
-                >Accept order</button>
-            </div>
+            {status === "Pending"
+                ? <div className="order-actions">
+                    <button 
+                        className="decline-button"
+                        onClick={() => {
+                            cancelOrders(order.orderID)
+                            navigate(`/take-orders`)
+                        }}
+                    >Decline order</button>
+        
+                    <button 
+                        className="accept-button"
+                        onClick={() => {
+                            progressStatus(order.orderID)
+                            navigate(`/take-orders`)
+                        }}
+                    >Accept order</button>
+                </div>
+                : status === "In progress"
+                    ? <div className="order-actions">
+                        <button 
+                            className="decline-button"
+                            onClick={() => {
+                                cancelOrders(order.orderID)
+                                navigate(`/take-orders`)
+                            }}
+                        >Incomplete</button>
+
+                        <button 
+                            className="accept-button"
+                            onClick={() => {
+                                progressStatus(order.orderID)
+                                navigate(`/take-orders`)
+                            }}
+                        >Order ready</button>
+                    </div>
+                    : <></>
+            }
+
             <div className='content'>
                 <Navbar />
             </div>
-            
-     
         </div>
     );
 };

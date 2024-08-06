@@ -1,5 +1,6 @@
 package com.bbdsoftware.coffee.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import java.sql.Timestamp;
@@ -17,6 +18,6 @@ public class OrderHistory {
     @ManyToOne
     @JoinColumn(name="orderStatusID",referencedColumnName = "orderStatusID", nullable=false)
     private OrderStatus orderStatusID;
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "HH:mm:ss, dd-MM-yyyy")
     private Timestamp orderTime;
 }

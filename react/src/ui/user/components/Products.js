@@ -13,14 +13,14 @@ import { allTags } from '../../../services/tagService';
 export default function Products() {
     const navigate = useNavigate()
     const location = useLocation()
-    let office = location.state
+    let office = location.state || {}
     const [offices, setOffices] = useState([])
     const [search, setSearch] = useState(false)
     const [tags, setTags] = useState([])
     const [selectedTag, setSelectedTag] = useState({tagID: 0, tagName: 'none'})
 
     useEffect(() => {
-        if (!office) navigate("/");
+        if (office.officeID == null) navigate("/");
     }, [])
 
     useEffect(() => {
@@ -72,32 +72,30 @@ export default function Products() {
     }
     
   return ( 
-    <>
-        {office.officeID != null
-            ? <div>
-                <img 
-                    src={backgroundimg}
-                    className="backroundimg2"
-                />
-                <img src={Logo} className='logo'/>
-
-                <div className='on-backgroundimg'>
-                    <h5>Office</h5>
-                    <div className='dropdown'>
-                        <button className='dropdown-button'> {office.officeName}<IoIosArrowDown /></button>
-                        <div className='dropdown-content'>
-                            {offices.map((off, index) => (
-                                <Link to={`/product`} state={off} key={index}>{off.officeName}</Link>
-                            ))}
-                        </div>
-                      
-                    </div>
+    <div>
+        <img 
+            src={backgroundimg}
+            className="backroundimg2"
+        />
+        <img src={Logo} className='logo'/>
+        
+        <div className='on-backgroundimg'>
+            <h5>Office</h5>
+            <div className='dropdown'>
+                <button className='dropdown-button'> {office.officeName}<IoIosArrowDown /></button>
+                <div className='dropdown-content'>
+                    {offices.map((off, index) => (
+                        <Link to={`/product`} state={off} key={index}>{off.officeName}</Link>
+                    ))}
                 </div>
+                
+            </div>
+        </div>
 
-                <div className='search-bar-wrapper'>
-                    <div className='search-bar'>
-                        <BiSearch className='search-icon' />
-                        <input 
+        <div className='search-bar-wrapper'>
+            <div className='search-bar'>
+                <BiSearch className='search-icon' />
+                <input 
                     type='text' 
                     className='search-baris' 
                     placeholder='Search drinks' 
@@ -107,36 +105,33 @@ export default function Products() {
                         searchProducts(e.target.value)
                     }}
                 />
-                    </div>
-                </div>
-                <div class="scrollable-menu">
-                    {tags.map((tag,index) => (
-                        <button key={index} onClick={e => setSelectedTag(tag)}>{tag.tagName}</button>
-                    ))}
-                </div>
-            <div className='card-container'>
-                {dummyMenu.map((menus, index) => (
-                    <div className='card-disp' key={index} onClick={e => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
-                        <div className="card">
-                        <img
-                            src={menus.imageURL}
-                            alt="Cappuccino"
-                            className="card-img-top"
-                        />
-                            <h5 className="card-title">{menus.productName}</h5>
-                            <p className="card-text">{menus.description}
-                            </p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <div className="content">
-            <Navbar/>
-
             </div>
         </div>
-            : <div>Something!</div>
-        }
-    </>
+        <div class="scrollable-menu">
+            {tags.map((tag,index) => (
+                <button key={index} onClick={() => setSelectedTag(tag)}>{tag.tagName}</button>
+            ))}
+        </div>
+        <div className='card-container'>
+            {dummyMenu.map((menus, index) => (
+                <div className='card-disp' key={index} onClick={() => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
+                    <div className="card">
+                    <img
+                        src={menus.imageURL}
+                        alt="Cappuccino"
+                        className="card-img-top"
+                    />
+                        <h5 className="card-title">{menus.productName}</h5>
+                        <p className="card-text">{menus.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div className="content">
+        <Navbar/>
+
+        </div>
+    </div>
   )
 }
