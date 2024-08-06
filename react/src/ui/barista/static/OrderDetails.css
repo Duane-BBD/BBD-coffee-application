@@ -1,7 +1,6 @@
 .orderdetails-container {
-    padding: 16px;
-    font-family: 'Arial', sans-serif;
-    background-color: #fff;
+    padding: 1rem;
+    /* background-color: #fff; */
     color: #333;
     display: flex;
     flex-direction: column;
@@ -9,15 +8,15 @@
     justify-content: space-between;
 }
 
-.order-header {
+.orderdetail-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 }
 
 .back-button {
-    font-size: 24px;
+    font-size: 2rem;
     background: none;
     border: none;
     color: #333;
@@ -25,8 +24,10 @@
 }
 
 .order-number {
-    font-size: 18px;
+    font-size: 1.6rem;
     font-weight: bold;
+    color: #5B5B5B;
+
 }
 
 .order-status {
@@ -39,35 +40,40 @@
 
 .order-items {
     flex-grow: 1;
-    margin-bottom: 16px;
+    /* margin-bottom: 1rem; */
+    padding: 0.5rem;
 }
 
 .list-item {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #E3E3E3;
+
 }
 
 .list-item h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 1.4rem;
     font-weight: normal;
 }
 
 .list-item p {
-    margin: 4px 0;
-    font-size: 16px;
-    color: #666;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color:#5B5B5B;
 }
 
 .order-history h4 {
     margin: 0;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
+    color:#5B5B5B;
+
 }
 
 .order-history p {
     margin: 4px 0;
     font-size: 14px;
-    color: #666;
+    color:#5B5B5B;
 }
 
 .order-actions {
@@ -96,4 +102,80 @@
     background-color: #8b5e3c;
     color: #fff;
     margin-left: 8px;
+}
+
+@media screen and (min-width:300px) and (max-width:375px) {    
+    .back-button {
+        font-size: 1.7rem;
+    }
+
+    .order-number {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .order-status {
+        background-color: #d3d3d3;
+        border-radius: 0.4rem;
+        padding: 0.4rem 1px;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width:375px) and (max-width:439px) {    
+    .back-button {
+        font-size: 1.7rem;
+    }
+
+    .order-number {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width:900px) and (max-width:1500px) {    
+    .back-button {
+        font-size: 2.2rem;
+    }
+
+    .order-number {
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .list-item h3 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: normal;
+    }
+    
+    .list-item p {
+        margin: 0.5rem 0;
+        font-size: 1.3rem;
+        color: #666;
+    }
+    
+    .order-history h4 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+    
+    .order-history p {
+        margin: 4px 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+    .order-number {
+        font-size: 1.7rem;
+    }
+    
+    .order-status {
+        background-color: #d3d3d3;
+        border-radius: 1rem;
+        padding: 1rem 0.5rem;
+        text-align: center;
+        font-size: 1rem;
+        color: #fff;
+    }
+    
 }

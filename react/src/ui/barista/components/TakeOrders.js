@@ -21,7 +21,6 @@ const TakeOrders = () => {
                 <button 
                     className={`orders-tab ${tab === 'incoming' ? 'active' : ''}`} 
                     onClick={() => incomingpage()  }
-
                 >
                     Incoming orders
                 </button>

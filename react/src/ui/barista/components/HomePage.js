@@ -6,20 +6,24 @@ export default function HomePage() {
     const [isAcceptingOrders,setIsAcceptingOrders]=useState(true);
     const navigate=useNavigate();
 
-    const changeCss=()=>{
+    const openTakeOrders=()=>{
         setIsAcceptingOrders(!isAcceptingOrders);
         navigate(`/take-orders`);
     };
+    const openClosedOrders =()=>{
+        setIsAcceptingOrders(!isAcceptingOrders);
+        navigate(`/`);
+    }
   return (
     <div className='homepage-container'>
         <div className='left-homepage'>
             <FrontPage/>
         </div>
         <div className='right-homepage'>
-            <button className={isAcceptingOrders?'barista-avail':'change-color'} onClick={changeCss}>
+            <button className={isAcceptingOrders?'barista-avail':'change-color'} onClick={openTakeOrders}>
                 {isAcceptingOrders? 'Accepting orders': 'Closed for orders'} 
             </button>
-            <button className='barista-not-avail' onClick={changeCss}>
+            <button className='barista-not-avail' onClick={openClosedOrders}>
                 {isAcceptingOrders? 'Closed for orders': 'Open for orders'} 
             </button>
         </div>

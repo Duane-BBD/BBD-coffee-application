@@ -16,8 +16,10 @@ const OrderLists = ({status}) => {
             <h3>{status} acceptance</h3>
             {orderDetails.map((order, index) => 
             <button className="orderitem" key={index} onClick={() => navigate('/order-details', { state: order })}>
-                <p>Order number: {order.orderID}</p>
-                <p className="ordertime">Received at {order.orderTime}</p>
+                <div>
+                    <p className="ordernumber">Order number: {order.orderID}</p>
+                    <p className="ordertime">Received at {order.orderTime}</p>
+                </div>
                 <span className="order-arrow"><SlArrowRight/></span>
             </button>)}
         </div>

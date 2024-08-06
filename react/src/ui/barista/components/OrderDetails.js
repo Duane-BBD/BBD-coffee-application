@@ -14,9 +14,9 @@ const OrderDetails = () => {
 
     return (
         <div className="orderdetails-container">
-            <div className="order-header">
+            <div className="orderdetail-header">
                 <button className="back-button" onClick={() => navigate(-1)}><MdKeyboardArrowLeft/></button>
-                <span className="order-number">{order.orderID}</span>
+                <span className="order-number">OrderNumber {order.orderID}</span>
                 <span className="order-status">{status}</span>
             </div>
 
