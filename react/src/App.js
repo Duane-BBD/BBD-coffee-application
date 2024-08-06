@@ -11,7 +11,7 @@ import PlaceOrder from "./ui/user/components/PlaceOrder";
 import UserOrderHistory from "./ui/user/components/UserOrderHistory";
 import TakeOrders from "./ui/barista/components/TakeOrders";
 import OrderDetails from "./ui/barista/components/OrderDetails";
-
+import PastOrders from "./ui/barista/components/PastOrders";
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +28,7 @@ function App() {
             <Route path="/take-orders" element={<TakeOrders/>}/>
             <Route path="/order-details" element={<OrderDetails />}/>
             <Route path="/user-order-history" element={<UserOrderHistory/>}/>
+            <Route path="/past-orders" element={<PastOrders/>} />
         </Routes>
     </BrowserRouter>
   );
