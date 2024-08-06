@@ -62,7 +62,7 @@ const ProductDetails = () => {
   return (
     <div className='productdetails'> 
         <div className='top-nav'>
-            <button className='arrow-left' onClick={() => navigate(`/product`, {state: {officeID: 1, officeName:'Pune'}})} >  
+            <button className='arrow-left' onClick={e => navigate(-1)} >  
                 <MdKeyboardArrowLeft/>
             </button>  
             <h4>ProductDetails</h4>
@@ -105,7 +105,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
-        <div className='navbar-spacing'> 
+        <div className='content'> 
         <Navbar/>
         </div>
     </div>

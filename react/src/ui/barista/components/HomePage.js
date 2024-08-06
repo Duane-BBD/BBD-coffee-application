@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import FrontPage from '../../user/components/FrontPage'
 import "../static/HomePage.css"
-
+import { Navigate, useNavigate } from 'react-router-dom';
 export default function HomePage() {
     const [isAcceptingOrders,setIsAcceptingOrders]=useState(true);
+    const navigate=useNavigate();
 
     const changeCss=()=>{
         setIsAcceptingOrders(!isAcceptingOrders);
+        navigate(`/take-orders`);
     };
-    
   return (
     <div className='homepage-container'>
         <div className='left-homepage'>

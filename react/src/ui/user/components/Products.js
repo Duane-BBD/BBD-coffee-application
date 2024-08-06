@@ -130,7 +130,10 @@ export default function Products() {
                     </div>
                 ))}
             </div>
-        <Navbar/>
+            <div className="content">
+            <Navbar/>
+
+            </div>
         </div>
             : <div>Something!</div>
         }

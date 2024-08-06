@@ -72,7 +72,7 @@
   }
   
   .order-details.show {
-    max-height: 500px; /* Adjust this value based on the expected content height */
+    max-height: 500px; 
     margin-top: 10px;
   }
   

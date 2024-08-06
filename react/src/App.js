@@ -9,6 +9,8 @@ import OrderHistory from "./ui/user/components/OrderHistory";
 import HomePage from "./ui/barista/components/HomePage";
 import MyOrders from "./ui/user/components/MyOrders";
 import PlaceOrder from "./ui/user/components/PlaceOrder";
+import TakeOrders from "./ui/barista/components/TakeOrders";
+import OrderDetails from "./ui/barista/components/OrderDetails";
 function App() {
   return (
     <BrowserRouter>
@@ -17,12 +19,13 @@ function App() {
             <Route exact path="/product" element={<Products/>} />
             <Route exact path="/product-details" element={<ProductDetails/>}/>
             {/* <Route exact path="/my-orders" element={<CombinedOrders/>}/> */}
-            <Route exact path="/Home-page" element={<HomePage/>} />
+            <Route exact path="/home-page" element={<HomePage/>} />
             <Route path="/check-out" element={<CheckOut/>}/>
             <Route path="/order-history" element={<OrderHistory/>}/>
             <Route path="/place-order" element={<PlaceOrder/>}/>
             <Route path="/my-orders" element={<MyOrders/>}/>
-
+            <Route path="/take-orders" element={<TakeOrders/>}/>
+            <Route path="/order-details" element={<OrderDetails quantity={2} productName='Mocha' milkTypeValue='almond milk' notes='no sugar'/>}/>
         </Routes>
     </BrowserRouter>
   );

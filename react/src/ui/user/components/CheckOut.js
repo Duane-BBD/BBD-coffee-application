@@ -73,8 +73,9 @@ const CheckOut = () => {
             }}}>Place order</button>
         </div>}
         
-        
-        <Navbar/>
+        <div className='content'>
+            <Navbar/>     
+        </div>
     </div>
   );
 };

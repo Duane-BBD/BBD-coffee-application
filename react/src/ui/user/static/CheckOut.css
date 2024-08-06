@@ -1,3 +1,7 @@
+body{
+margin: 0%;
+padding: 0%;
+}
 .order-page {
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -79,13 +83,15 @@
 }
   
 .place-order {
+    position: fixed;
+    bottom: 12%;
     background-color: #8B5E34;
     color: #FFF;
     padding: 15px;
     font-size: 18px;
     border: none;
     border-radius: 8px;
-    width: 100%;
+    width: 97%;
     margin-top: 20px;
     cursor: pointer;
 }
