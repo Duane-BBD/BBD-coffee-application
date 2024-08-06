@@ -6,7 +6,7 @@ import { TbMilk } from "react-icons/tb";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import {IoIosArrowDown} from 'react-icons/io';
 import { CgNotes } from "react-icons/cg";
-import Navbar from './Navbar';
+import Navbar from '../../common/components/Navbar';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 

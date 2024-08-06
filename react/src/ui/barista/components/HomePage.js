@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import FrontPage from '../../user/components/FrontPage'
+import FrontPage from '../../common/components/FrontPage'
 import "../static/HomePage.css"
 import { Navigate, useNavigate } from 'react-router-dom';
 export default function HomePage() {

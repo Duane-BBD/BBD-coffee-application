@@ -7,7 +7,7 @@ import Logo from "../../common/images/logo2.png";
 import { productsAvailable } from '../../../services/productService';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { allLocation } from '../../../services/locationService';
-import Navbar from './Navbar';
+import Navbar from '../../common/components/Navbar';
 import { allTags } from '../../../services/tagService';
 
 export default function Products() {

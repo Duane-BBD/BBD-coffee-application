@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
-import Navbar from './Navbar';
+import Navbar from '../../common/components/Navbar';
 import "../static/MyOrders.css";
 import Header from './OrdersHeader';
 

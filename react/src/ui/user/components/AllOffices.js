@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FrontPage from './FrontPage';
+import FrontPage from '../../common/components/FrontPage';
 import { SlArrowRight } from "react-icons/sl";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../static/AllOffices.css";

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../static/CheckOut.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from '../../common/components/Navbar';
 import { placeOrders } from '../../../services/orderListService';
 
 const CheckOut = () => {

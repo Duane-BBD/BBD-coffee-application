@@ -20,7 +20,7 @@ const OrderDetails = () => {
 
                 <div className="list-item">
                     <h3>3 Hot chocolate</h3>
-                    <p><strong>Milk:</strong> Oat milk</p>
+                    <p><strong>Milk:</strong>ha Oat milk</p>
                     <p><strong>Notes:</strong> whatever note was added will be placed here.</p>
                 </div>
             </div>
