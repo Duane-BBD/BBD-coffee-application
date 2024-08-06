@@ -1,99 +1,8 @@
 .order-history {
-    font-family: 'Arial', sans-serif;
-    padding: 20px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .header-item {
-    flex: 1;
-    text-align: center;
-    font-size: 18px;
-    padding: 10px 0;
-    cursor: pointer;
-  }
-  
-  .header-item.active {
-    border-bottom: 2px solid #8B5E34;
-  }
-  
-  .order-section {
-    margin-bottom: 20px;
-  }
-  
-  .order-section-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .order-item {
-    border-top: 1px solid #ccc;
-    padding: 10px 0;
-  }
-  
-  .order-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .order-status {
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-  }
-  
-  .order-status.complete {
-    background-color: #4CAF50;
-  }
-  
-  .order-status.failed {
-    background-color: #F44336;
-  }
-  
-  .order-status.in-progress {
-    background-color: #2196F3;
-  }
-  
-  .order-details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    font-size: 14px;
-    color: #555;
-    padding-left: 20px;
-  }
-  
-  .order-details.show {
-    max-height: 500px; 
-    margin-top: 10px;
-  }
-  
-  .footer {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px 0;
-  }
-  
-  .footer-icon {
-    width: 30px;
-    height: 30px;
-    background-color: #F7F7F7;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .footer-icon.active {
-    background-color: #8B5E34;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -118,8 +27,8 @@
 
 .order-section-title {
   font-size: 20px;
-  font-weight: bold;
   margin-bottom: 10px;
+  color: gray;
 }
 
 .order-item {
@@ -149,6 +58,7 @@
   color: #fff;
   font-size: 14px;
   width: 7rem;
+  margin-right: 10px;
 }
 
 .order-status.complete {

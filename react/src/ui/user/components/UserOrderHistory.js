@@ -4,17 +4,18 @@ import '../static/OrderHistory.css';
 import PlaceOrder from '../components/PlaceOrder';
 import OrdersHeader from '../components/OrdersHeader';
 import { RiArrowDropDownLine } from "react-icons/ri";
+import Navbar from '../../common/components/Navbar';
 
 const UserOrderHistory = ({ userIDx = 1025, orderStatusValue = "" }) => {
     const [orders, setOrders] = useState([]);
-    const [expandedUserID, setExpandedUserID] = useState(null);
+    const [expandedOrderID, setExpandedOrderID] = useState(null);
 
     useEffect(() => {
         const fetchOrders = async () => {
             try {
                 if (!userIDx) return;
 
-                const response = await axios.get(`http://localhost:8080/bbd-coffee/order-list/past-orders/${userIDx}`);
+                const response = await axios.get(`/order-list/past-orders/${userIDx}`);
                 setOrders(response.data);
             } catch (error) {
                 console.error('Error fetching orders:', error);
@@ -25,7 +26,7 @@ const UserOrderHistory = ({ userIDx = 1025, orderStatusValue = "" }) => {
     }, [userIDx, orderStatusValue]);
 
     const toggleOrderDetails = (id) => {
-        setExpandedUserID(expandedUserID === id ? null : id);
+        setExpandedOrderID(expandedOrderID === id ? null : id);
     };
 
     const getStatusColor = (status) => {
@@ -60,18 +61,20 @@ const UserOrderHistory = ({ userIDx = 1025, orderStatusValue = "" }) => {
                     {orders.map(order => (
                         <React.Fragment key={order.ID}>
                             <div className="order-item">
-                                <div className="order-header" onClick={() => toggleOrderDetails(order.userName)}>
+                                <div className="order-header" onClick={() => toggleOrderDetails(order.orderID)}>
                                     <span>{`Order Number: ${order.orderID}`}</span>
-                                    <button
-                                        className="order-status"
-                                        style={{ backgroundColor: getStatusColor(order.status) }}
-                                    >
-                                        {order.status || 'Unknown'}
-                                    </button>
-                                    <RiArrowDropDownLine className="dropdown-arrow" />
+                                    <div className="order-summary">
+                                        <button
+                                            className="order-status"
+                                            style={{ backgroundColor: getStatusColor(order.status) }}
+                                        >
+                                            {order.status || 'Unknown'}
+                                        </button>
+                                        <RiArrowDropDownLine className="dropdown-arrow" />
+                                    </div>
                                 </div>
                             </div>
-                            <div className={`order-details ${expandedUserID === order.userName ? 'show' : ''}`}>
+                            <div className={`order-details ${expandedOrderID === order.orderID ? 'show' : ''}`}>
                                 <div>
                                     <li>{`${order.quantity} ${order.productName}`}</li>
                                     <p>Milk: {order.milkTypeValue || 'None'}</p>
@@ -82,10 +85,7 @@ const UserOrderHistory = ({ userIDx = 1025, orderStatusValue = "" }) => {
                     ))}
                 </div>
             </div>
-            <div className="footer">
-                <div className="footer-icon home-icon"></div>
-                <div className="footer-icon order-icon active"></div>
-            </div>
+            <Navbar />
         </div>
     );
 };

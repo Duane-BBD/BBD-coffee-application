@@ -10,10 +10,10 @@ const Header = () => {
   return (
     <header>
         <Link to="/place-order">
-            <button className={`tab ${isActive('/place-order') ? 'active' : ''}`}>Place an order</button>
+            <button className={`tab ${isActive('/place-order') ? 'active' : ''}`}><strong>Place an order</strong></button>
         </Link>
         <Link to="/my-orders">
-            <button className={`tab ${isActive('/my-orders') ? 'active' : ''}`}>My orders</button>
+            <button className={`tab ${isActive('/my-orders') ? 'active' : ''}`}><strong>My orders</strong></button>
         </Link>
     </header>
   );
