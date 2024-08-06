@@ -3,14 +3,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Products from "./ui/user/components/Products";
 import AllOffices from "./ui/user/components/AllOffices";
 import ProductDetails from "./ui/user/components/ProductDetails";
-import CombinedOrders from "./ui/user/components/CombinedOrders";
 import CheckOut from "./ui/user/components/CheckOut";
 import OrderHistory from "./ui/user/components/OrderHistory";
 import HomePage from "./ui/barista/components/HomePage";
 import MyOrders from "./ui/user/components/MyOrders";
 import PlaceOrder from "./ui/user/components/PlaceOrder";
+import UserOrderHistory from "./ui/user/components/UserOrderHistory";
 import TakeOrders from "./ui/barista/components/TakeOrders";
 import OrderDetails from "./ui/barista/components/OrderDetails";
+
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
             <Route path="/my-orders" element={<MyOrders/>}/>
             <Route path="/take-orders" element={<TakeOrders/>}/>
             <Route path="/order-details" element={<OrderDetails quantity={2} productName='Mocha' milkTypeValue='almond milk' notes='no sugar'/>}/>
+            <Route path="/user-order-history" element={<UserOrderHistory/>}/>
         </Routes>
     </BrowserRouter>
   );

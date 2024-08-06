@@ -5,10 +5,9 @@ import "../static/MyOrders.css";
 import Header from './OrdersHeader';
 
 const MyOrders = () => {
-  const location = useLocation(); // Use useLocation to access passed state
+  const location = useLocation(); 
 
-  console.log(location.state); // Optional: for debugging, check what is being passed
-
+  console.log(location.state);
   return (
     <div>
         <Header />
