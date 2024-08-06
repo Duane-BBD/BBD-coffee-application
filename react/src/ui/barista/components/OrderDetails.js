@@ -1,7 +1,6 @@
 import React from 'react';
 import '../static/OrderDetails.css';
-import Navbar from '../../user/components/Navbar';
-
+import Navbar from '../../common/components/Navbar';
 const OrderDetails = () => {
     return (
         <div className="order-details-container">

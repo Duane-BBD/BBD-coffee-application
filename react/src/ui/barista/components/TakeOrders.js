@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../static/TakeOrders.css';
-import Navbar from '../../user/components/Navbar';
-
+import Navbar from '../../common/components/Navbar';
 const TakeOrders = () => {
     const [tab, setTab] = useState('incoming');
 
