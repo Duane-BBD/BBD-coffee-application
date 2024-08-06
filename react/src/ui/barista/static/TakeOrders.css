@@ -58,7 +58,7 @@
     font-weight: bold;
 }
 
-.order-item {
+.orderitem {
     padding: 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -71,13 +71,13 @@
     width: 100%;
 }
 
-.order-item p {
+.orderitem p {
     margin: 0;
     font-size: 16px;
     color: #333;
 }
 
-.order-time {
+.ordertime {
     color: #666;
     font-size: 14px;
 }

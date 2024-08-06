@@ -15,9 +15,9 @@ const OrderLists = ({status}) => {
         <div className="order-section">
             <h3>{status} acceptance</h3>
             {orderDetails.map((order, index) => 
-            <button className="order-item" key={index} onClick={() => navigate('/order-details', { state: order })}>
+            <button className="orderitem" key={index} onClick={() => navigate('/order-details', { state: order })}>
                 <p>Order number: {order.orderID}</p>
-                <p className="order-time">Received at {order.orderTime}</p>
+                <p className="ordertime">Received at {order.orderTime}</p>
                 <span className="order-arrow"><SlArrowRight/></span>
             </button>)}
         </div>
