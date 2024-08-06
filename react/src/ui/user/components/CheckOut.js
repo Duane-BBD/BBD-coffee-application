@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../static/CheckOut.css';
-import Coffee from "../../common/images/coffee.png"
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import { placeOrders } from '../../../services/orderListService';
@@ -9,8 +8,13 @@ const CheckOut = () => {
     const userID = 1056;
     const navigate = useNavigate();
     const location = useLocation();
+    const [isEmpty, setIsEmpty] = useState(false);
 
     let cart = JSON.parse(localStorage.getItem("cart")) || []
+
+    useEffect(() => {
+        if (cart.length === 0) setIsEmpty(true)
+    }, [])
 
     const increaseCount = (index) => {
         cart[index].quantity += 1;
@@ -30,6 +34,9 @@ const CheckOut = () => {
         }
         localStorage.removeItem("cart");
         localStorage.setItem("cart", JSON.stringify(cart));
+        if (JSON.parse(localStorage.getItem("cart")).lenghth === 0) {
+            setIsEmpty(true)
+        }
         navigate(location.path)
     };
 
@@ -40,12 +47,12 @@ const CheckOut = () => {
             <div className="header-item">My orders</div>
         </div>
 
-        {localStorage.getItem('cart') === '' || cart === null
+        {isEmpty
         ? <div className="empty-order">
             <p><strong>Your order is empty!</strong></p>
-            <p>Add drinks to your order to get started!</p>
+            <p>Add items to your order to get started!</p>
             <Link to="/">
-            <button className="view-menu-button">View drinks menu</button>
+                <button className="view-menu-button">View drinks menu</button>
             </Link>
         </div>
         : <div>
@@ -69,6 +76,7 @@ const CheckOut = () => {
                 if (cart != [] && cart !=null) {
                     placeOrders(cart);
                     localStorage.removeItem("cart");
+                    setIsEmpty(true)
                     navigate(location.path)
             }}}>Place order</button>
         </div>}
