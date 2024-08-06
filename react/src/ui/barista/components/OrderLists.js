@@ -13,14 +13,13 @@ const OrderLists = ({status}) => {
   return (
     <div>
         <div className="order-section">
-                    <h3>{status} acceptance</h3>
-                    {orderDetails.map((order, index) => <>
-                        <button className="order-item" onClick={() => navigate('/order-details', { state: order })}>
-                        <p>Order number: {order.orderID}</p>
-                        <p className="order-time">Received at {order.orderTime}</p>
-                        <span className="order-arrow"><SlArrowRight/></span>
-                    </button>
-                    </>)}
+            <h3>{status} acceptance</h3>
+            {orderDetails.map((order, index) => 
+            <button className="order-item" key={index} onClick={() => navigate('/order-details', { state: order })}>
+                <p>Order number: {order.orderID}</p>
+                <p className="order-time">Received at {order.orderTime}</p>
+                <span className="order-arrow"><SlArrowRight/></span>
+            </button>)}
         </div>
     </div>
   )
