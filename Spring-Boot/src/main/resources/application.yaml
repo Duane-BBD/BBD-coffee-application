@@ -1,11 +1,20 @@
 spring:
   datasource:
+<<<<<<< Updated upstream
 #    url: jdbc:mysql://bbdcoffeeapp.c6kdmrjteyms.us-east-1.rds.amazonaws.com:3306/bbdcoffee
 #    username: admin
 #    password: VIRUS666
     url: jdbc:mysql://localhost:3306/bbdcoffee
     username: root
     password: swizelantao2002
+=======
+#    url: jdbc:mysql://localhost:3306/bbdcoffee
+#    username: root
+#    password: Mypassword2002
+    url: jdbc:mysql://bbdcoffeeapp.c6kdmrjteyms.us-east-1.rds.amazonaws.com:3306/bbdcoffee
+    username: admin
+    password: VIRUS666
+>>>>>>> Stashed changes
 
   #Jpa Settings
   jpa:
