@@ -6,50 +6,50 @@ import OrdersHeader from '../components/OrdersHeader';
 import { RiArrowDropDownLine } from "react-icons/ri";
 
 const OrderHistory = ({ officeID, orderStatusValue = "" }) => {
-  const [orders, setOrders] = useState([]);
-  const [expandedOrderId, setExpandedOrderId] = useState(null);
+    const [orders, setOrders] = useState([]);
+    const [expandedOrderId, setExpandedOrderId] = useState(null);
 
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const orderIDs = [1, 2, 3, 4];
-        const requests = orderIDs.map(orderID => axios.get(`/orders/get-order-details/${orderID}`));
-        const responses = await Promise.all(requests);
-        const fetchedOrders = responses.map(response => response.data);
-        setOrders(fetchedOrders);
-      } catch (error) {
-        console.error('Error fetching orders:', error);
-      }
+    useEffect(() => {
+        const fetchOrders = async () => {
+        try {
+            const orderIDs = [1, 2, 3, 4];
+            const requests = orderIDs.map(orderID => axios.get(`/orders/get-order-details/${orderID}`));
+            const responses = await Promise.all(requests);
+            const fetchedOrders = responses.map(response => response.data);
+            setOrders(fetchedOrders);
+        } catch (error) {
+            console.error('Error fetching orders:', error);
+        }
+        };
+
+        fetchOrders();
+    }, [officeID, orderStatusValue]);
+
+    const toggleOrderDetails = (id) => {
+        setExpandedOrderId(expandedOrderId === id ? null : id);
     };
 
-    fetchOrders();
-  }, [officeID, orderStatusValue]);
+    const getStatusColor = (status) => {
+        if (!status) return 'gray';
+        switch (status.toLowerCase()) {
+        case 'pending':
+            return 'gray';
+        case 'in progress':
+            return 'lightblue';
+        case 'complete':
+            return 'green';
+        case 'cancelled':
+            return 'red';
+        case 'prepared':
+            return 'green';
+        default:
+            return 'gray';
+        }
+    };
 
-  const toggleOrderDetails = (id) => {
-    setExpandedOrderId(expandedOrderId === id ? null : id);
-  };
-
-  const getStatusColor = (status) => {
-    if (!status) return 'gray';
-    switch (status.toLowerCase()) {
-      case 'pending':
-        return 'gray';
-      case 'in progress':
-        return 'lightblue';
-      case 'complete':
-        return 'green';
-      case 'cancelled':
-        return 'red';
-      case 'prepared':
-        return 'green';
-      default:
-        return 'gray';
+    if (orders.length === 0) {
+        return <PlaceOrder />;
     }
-  };
-
-  if (orders.length === 0) {
-    return <PlaceOrder />;
-  }
 
   return (
     <div className="order-history">

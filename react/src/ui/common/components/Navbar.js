@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <div className='nav'>
         <div className='navbar'>
-            <button className='home-button' onClick={() => navigate('/')}>
+            <button className='home-button' onClick={() => navigate('/all-office')}>
                 <PiHouseFill/> 
             </button>
             <button className='cart-button' onClick={() => navigate('/check-out')}>

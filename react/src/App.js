@@ -23,11 +23,10 @@ function App() {
     <BrowserRouter>
         <UserDetailsProvider>
             <Routes>
-                <Route path="/login" element={<Login/>} />
-                <Route exact path="/" element={<AllOffices/>} />
+                <Route path="/" element={<Login/>} />
+                <Route exact path="/all-office" element={<AllOffices/>} />
                 <Route exact path="/product" element={<Products/>} />
                 <Route exact path="/product-details" element={<ProductDetails/>}/>
-                {/* <Route exact path="/my-orders" element={<CombinedOrders/>}/> */}
                 <Route exact path="/home-page" element={<HomePage/>} />
                 <Route path="/check-out" element={<CheckOut/>}/>
                 <Route path="/order-history" element={<OrderHistory/>}/>
@@ -41,7 +40,6 @@ function App() {
                 <Route path="/register-user" element={<RegisterUser/>} />
                 <Route path="/add-availproducts" element={<AddAvailProduct/>} />
                 <Route path="/add-location" element={<Addlocation/>} />
-
             </Routes>
         </UserDetailsProvider>
     </BrowserRouter>

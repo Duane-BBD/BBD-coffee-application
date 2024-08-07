@@ -12,7 +12,7 @@ const Login = () => {
     const handleLogin = () => {
         if (userID) {
             getUserDetails(userID, setUserDetails)
-            navigate("/")
+            navigate("/all-office")
         }
     }
 
