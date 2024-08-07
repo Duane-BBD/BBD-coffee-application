@@ -9,8 +9,8 @@ const Header = () => {
 
   return (
     <header>
-        <Link to="/place-order">
-            <button className={`tab ${isActive('/place-order') ? 'active' : ''}`}><strong>Place an order</strong></button>
+        <Link to="/check-out">
+            <button className={`tab ${isActive('/check-out') ? 'active' : ''}`}><strong>Place an order</strong></button>
         </Link>
         <Link to="/my-orders">
             <button className={`tab ${isActive('/my-orders') ? 'active' : ''}`}><strong>My orders</strong></button>

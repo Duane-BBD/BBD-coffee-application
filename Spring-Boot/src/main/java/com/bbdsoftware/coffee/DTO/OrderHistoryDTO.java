@@ -16,6 +16,8 @@ public class OrderHistoryDTO {
     private Integer orderID;
     private String productName;
     private String orderStatusValue;
+    private String note;
+    private String milkTypeValue;
     private int quantity;
     @JsonFormat(pattern = "HH:mm:ss, dd-MM-yyyy")
     private Timestamp orderTime;

@@ -20,4 +20,6 @@ public class OrderHistory {
     private OrderStatus orderStatusID;
     @JsonFormat(pattern = "HH:mm:ss, dd-MM-yyyy")
     private Timestamp orderTime;
+//    private String note;
+//    private String milkTypeValue;
 }

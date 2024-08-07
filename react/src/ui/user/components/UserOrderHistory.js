@@ -17,7 +17,7 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
             try {
                 if (!userDetails) return;
 
-                const response = await axios.get(`/order-list/past-orders/${userDetails.userID}`);
+                const response = await axios.get(`/order-history/search-history/${userDetails.userID}`);
                 setOrders(response.data);
             } catch (error) {
                 console.error('Error fetching orders:', error);
@@ -60,31 +60,64 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                 <div className="order-section">
                     <div className="order-section-title">In Progress</div>
                     <hr />
-                    {orders.map(order => (
-                        <React.Fragment key={order.ID}>
-                            <div className="order-item">
-                                <div className="order-header" onClick={() => toggleOrderDetails(order.orderID)}>
-                                    <span>{`Order Number: ${order.orderID}`}</span>
-                                    <div className="order-summary">
-                                        <button
-                                            className="order-status"
-                                            style={{ backgroundColor: getStatusColor(order.status) }}
-                                        >
-                                            {order.status || 'Unknown'}
-                                        </button>
-                                        <RiArrowDropDownLine className="dropdown-arrow" />
+                    {orders
+                        .filter(order => order.orderStatusValue && order.orderStatusValue.toLowerCase() === 'in progress')
+                        .map(order => (
+                            <React.Fragment key={order.orderID}>
+                                <div className="order-item">
+                                    <div className="order-header" onClick={() => toggleOrderDetails(order.orderID)}>
+                                        <span>{`Order Number: ${order.orderID}`}</span>
+                                        <div className="order-summary">
+                                            <button
+                                                className="order-status"
+                                                style={{ backgroundColor: getStatusColor(order.orderStatusValue) }}
+                                            >
+                                                {order.orderStatusValue || 'Unknown'}
+                                            </button>
+                                            <RiArrowDropDownLine className="dropdown-arrow" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={`order-details ${expandedOrderID === order.orderID ? 'show' : ''}`}>
-                                <div>
-                                    <li>{`${order.quantity} ${order.productName}`}</li>
-                                    <p>Milk: {order.milkTypeValue || 'None'}</p>
-                                    {order.note && <p>Notes: {order.note}</p>}
+                                <div className={`order-details ${expandedOrderID === order.orderID ? 'show' : ''}`}>
+                                    <div>
+                                        <li>{`${order.quantity} ${order.productName}`}</li>
+                                        <p>Milk: {order.milkTypeValue || 'None'}</p>
+                                        {order.note && <p>Notes: {order.note}</p>}
+                                    </div>
                                 </div>
-                            </div>
-                        </React.Fragment>
-                    ))}
+                            </React.Fragment>
+                        ))}
+                </div>
+                <div className="order-section">
+                    <div className="order-section-title">Past Orders</div>
+                    <hr />
+                    {orders
+                        .filter(order => order.orderStatusValue && order.orderStatusValue.toLowerCase() === 'complete')
+                        .map(order => (
+                            <React.Fragment key={order.orderID}>
+                                <div className="order-item">
+                                    <div className="order-header" onClick={() => toggleOrderDetails(order.orderID)}>
+                                        <span>{`Order Number: ${order.orderID}`}</span>
+                                        <div className="order-summary">
+                                            <button
+                                                className="order-status"
+                                                style={{ backgroundColor: getStatusColor(order.orderStatusValue) }}
+                                            >
+                                                {order.orderStatusValue || 'Unknown'}
+                                            </button>
+                                            <RiArrowDropDownLine className="dropdown-arrow" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={`order-details ${expandedOrderID === order.orderID ? 'show' : ''}`}>
+                                    <div>
+                                        <li>{`${order.quantity} ${order.productName}`}</li>
+                                        <p>Milk: {order.milkTypeValue || 'None'}</p>
+                                        {order.note && <p>Notes: {order.note}</p>}
+                                    </div>
+                                </div>
+                            </React.Fragment>
+                        ))}
                 </div>
             </div>
             <Navbar />

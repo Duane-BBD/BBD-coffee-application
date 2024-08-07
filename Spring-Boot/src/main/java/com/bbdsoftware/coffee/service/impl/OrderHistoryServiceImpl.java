@@ -8,6 +8,7 @@ import com.bbdsoftware.coffee.model.Product;
 import com.bbdsoftware.coffee.repository.OrderHistoryRepository;
 import com.bbdsoftware.coffee.repository.OrderListRepository;
 import com.bbdsoftware.coffee.repository.OrderStatusRepository;
+import com.bbdsoftware.coffee.service.MilkTypeService;
 import com.bbdsoftware.coffee.service.OrderHistoryService;
 import com.bbdsoftware.coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 
     @Autowired
     OrderStatusRepository orderStatusRepository;
+
+    @Autowired
+    MilkTypeService milkTypeService;
 
     public OrderHistoryServiceImpl(OrderHistoryRepository orderHistoryRepository) {
         this.orderHistoryRepository = orderHistoryRepository;
@@ -80,6 +84,8 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
             hist.setOrderID(order.getOrderID());
             hist.setProductName(prod.getProductName());
             hist.setQuantity(order.getQuantity());
+            hist.setNote(order.getNotes());
+            hist.setMilkTypeValue(milkTypeService.getMilkType(order.getMilkTypeID()).getMilkTypeValue());
             Optional<OrderStatus> optional = orderStatusRepository.findById(order.getOrderStatusID());
             if (optional.isEmpty()) {
                 return null;
