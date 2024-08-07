@@ -7,7 +7,7 @@ import Navbar from '../../common/components/Navbar';
 import MyOrders from './MyOrders';
 import useUserDetails from '../../../hooks/useUserDetails';
 
-const UserOrderHistory = ({ userIDx = 1056, orderStatusValue = "" }) => {
+const UserOrderHistory = ({ orderStatusValue = "" }) => {
     const [orders, setOrders] = useState([]);
     const [expandedOrderID, setExpandedOrderID] = useState(null);
     const { userDetails } = useUserDetails();
@@ -15,9 +15,9 @@ const UserOrderHistory = ({ userIDx = 1056, orderStatusValue = "" }) => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                if (!userIDx) return;
+                if (!userDetails) return;
 
-                const response = await axios.get(`/order-list/past-orders/${userIDx}`);
+                const response = await axios.get(`/order-list/past-orders/${userDetails.userID}`);
                 setOrders(response.data);
             } catch (error) {
                 console.error('Error fetching orders:', error);
@@ -25,7 +25,7 @@ const UserOrderHistory = ({ userIDx = 1056, orderStatusValue = "" }) => {
         };
 
         fetchOrders();
-    }, [userIDx, orderStatusValue]);
+    }, [userDetails.userID, orderStatusValue]);
 
     const toggleOrderDetails = (id) => {
         setExpandedOrderID(expandedOrderID === id ? null : id);

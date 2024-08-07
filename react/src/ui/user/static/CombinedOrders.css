@@ -6,7 +6,6 @@ header {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  gap: 10rem;
   padding-top: 20px;
 }
 
@@ -169,12 +168,17 @@ hr {
   padding-right: 2rem;
 }
 
+@media (min-width: 425px) {
+header{
+  gap:0;
+}
+}
 @media (min-width: 768px) {
-  /* .tab {
-    font-size: 2rem;
-    padding: 1rem 4rem; 
-  } */
 
+header{
+  gap: 10rem;
+
+}
   .nav-button {
     width: 40px;
     height: 40px;
@@ -190,11 +194,11 @@ hr {
 }
 
 @media (min-width: 1024px) {
-  /* .tab {
-    font-size: 3rem;
-    padding: 2rem 6rem;
-  } */
 
+  header{
+    gap: 10rem;
+  
+  }
   .order-item summary {
     font-size: 2rem; 
   }

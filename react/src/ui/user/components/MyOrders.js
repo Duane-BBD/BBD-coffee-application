@@ -6,16 +6,18 @@ import "../static/MyOrders.css";
 import "../static/CombinedOrders.css";
 import "../static/OrderHistory.css";
 import OrdersHeader from './OrdersHeader';
-import UserOrderHistory from './UserOrderHistory'; // Import the UserOrderHistory component
+import UserOrderHistory from './UserOrderHistory';
+import useUserDetails from '../../../hooks/useUserDetails';
 
-const MyOrders = ({ userIDx = 1025 }) => {
+const MyOrders = () => {
+    const { userDetails } = useUserDetails()
     const [orders, setOrders] = useState([]);
     const location = useLocation();
 
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get(`/order-list/past-orders/${userIDx}`);
+                const response = await axios.get(`/order-list/past-orders/${userDetails.userID}`);
                 setOrders(response.data);
             } catch (error) {
                 console.error('Error fetching orders:', error);
@@ -23,10 +25,10 @@ const MyOrders = ({ userIDx = 1025 }) => {
         };
 
         fetchOrders();
-    }, [userIDx]);
+    }, [userDetails.userID]);
 
     if (orders.length != 0) {
-        return <UserOrderHistory userIDx={userIDx} />;
+        return <UserOrderHistory/>;
     }
 
     return (
@@ -39,7 +41,7 @@ const MyOrders = ({ userIDx = 1025 }) => {
                     <button className="view-menu-button">View drinks menu</button>
                 </Link>
             </div>
-            <div className='navbar-spacing'>
+            <div className='content'>
                 <Navbar />
             </div>
         </div>
