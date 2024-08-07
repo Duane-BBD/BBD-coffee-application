@@ -14,7 +14,10 @@ import OrderDetails from "./ui/barista/components/OrderDetails";
 import PastOrders from "./ui/barista/components/PastOrders";
 import Login from "./ui/common/components/Login";
 import { UserDetailsProvider } from "./context/UserDetailsProvider";
-
+import AdminHome from "./ui/admin/components/AdminHome";
+import RegisterUser from "./ui/admin/components/RegisterUser";
+import AddAvailProduct from "./ui/admin/components/AddAvailProduct";
+import Addlocation from "./ui/admin/components/Addlocation"
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +37,11 @@ function App() {
                 <Route path="/order-details" element={<OrderDetails />}/>
                 <Route path="/user-order-history" element={<UserOrderHistory/>}/>
                 <Route path="/past-orders" element={<PastOrders/>} />
+                <Route path="/admin-home" element={<AdminHome/>} />
+                <Route path="/register-user" element={<RegisterUser/>} />
+                <Route path="/add-availproducts" element={<AddAvailProduct/>} />
+                <Route path="/add-location" element={<Addlocation/>} />
+
             </Routes>
         </UserDetailsProvider>
     </BrowserRouter>

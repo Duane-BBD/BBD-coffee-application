@@ -37,16 +37,6 @@
     border: none;
     background-color:transparent;
 }
-/* @media screen and (min-width:300px)and (max-width:900px) {
-    .navbar{
-        position: relative;
-        width: 85%;
-        bottom: 0;
-
-    }
-
-} */
-
 .content {
     padding-bottom: 5rem; 
 }

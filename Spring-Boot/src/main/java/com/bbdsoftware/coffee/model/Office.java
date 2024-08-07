@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name="office")
 public class Office {
     @Id
-    @GeneratedValue(generator = "office_gen",strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name= "office_gen",sequenceName= "office_seq",allocationSize = 1)
     private Integer officeID;
     @OneToMany(mappedBy="officeID")
