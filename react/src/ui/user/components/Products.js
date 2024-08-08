@@ -42,7 +42,6 @@ export default function Products() {
             if (!search && selectedTag.tagID === 0) setDummyMenu(menu)
         }
     }, [menu])
-
     
     useEffect(() => {
         if (selectedTag.tagID !== 0) {
@@ -105,7 +104,6 @@ export default function Products() {
                     type='text' 
                     className='search-baris' 
                     placeholder='Search drinks' 
-                    // value=""
                     onChange={e => {
                         e.preventDefault()
                         searchProducts(e.target.value)
@@ -139,7 +137,7 @@ export default function Products() {
             ))}
         </div>
         <div className="content">
-        <Navbar/>
+        <Navbar colorChange={true}/>
 
         </div>
     </div>

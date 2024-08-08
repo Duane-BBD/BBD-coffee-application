@@ -5,6 +5,8 @@ import Login from "./ui/common/components/Login";
 import BaristaLanding from "./ui/barista/BaristaLanding";
 import AdminLanding from "./ui/admin/AdminLanding";
 
+import Missing from "./ui/common/components/Missing";
+
 function App() {
   return (
     <Routes>

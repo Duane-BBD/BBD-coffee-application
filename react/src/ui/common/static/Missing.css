@@ -1,0 +1,24 @@
+.missing-container{
+    display: flex;
+    justify-content: center;
+}
+.missing-head{
+    text-align: center;
+    align-content: center;
+    svg{
+        width: 3rem;
+        height: 2rem;
+    }
+}
+.missing-content{
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    margin-top: 15%;
+    border-radius: 1rem;
+
+}
+.missing-head {
+    text-decoration: none;
+    color: #794D31;
+    font-size: 1rem;
+}

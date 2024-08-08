@@ -17,7 +17,6 @@
     align-content: center;
     svg{
         font-size: 1.5rem;
-        color: gray;
     }
     background-color: white;
 
@@ -32,6 +31,16 @@
 .home-button{
     background-color:transparent;
     border: none;
+
+}
+.home-change{
+    border: none;
+    color: #794D31;  
+
+}
+.home{
+    border: none;
+    color: gray;  
 }
 .cart-button{
     border: none;

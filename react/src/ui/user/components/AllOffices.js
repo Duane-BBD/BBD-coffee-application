@@ -8,7 +8,7 @@ import { allLocation } from "../../../services/locationService";
  
 export default function AllOffices() {
     const [offices, setOffices] = useState([]);
- 
+
     useEffect(() => {
         allLocation(setOffices)
     }, [offices])

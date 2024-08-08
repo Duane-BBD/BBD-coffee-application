@@ -78,7 +78,7 @@ const CheckOut = () => {
         </div>}
         
         <div className='content'>
-            <Navbar/>     
+            <Navbar colorChange={false}/>     
         </div>
     </div>
   );

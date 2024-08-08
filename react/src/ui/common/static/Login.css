@@ -10,7 +10,7 @@
 .login-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     height: 100vh;
 }
   
@@ -67,4 +67,9 @@
 
 .sign-out-button:hover {
     background-color: #543D39;
+}
+
+.office-div{
+    color:#333;
+    margin-left: 20%;
 }
