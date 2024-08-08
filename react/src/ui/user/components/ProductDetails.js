@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import "../static/ProductDetails.css"
-import { productDetails } from '../../../services/productService'
+import React, { useEffect, useState } from 'react';
+import "../static/ProductDetails.css";
+import { productDetails } from '../../../services/productService';
 import { allMilkType, searchMilkType } from '../../../services/milkTypeService';
 import { TbMilk } from "react-icons/tb";
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -13,8 +13,8 @@ import useUserDetails from '../../../hooks/useUserDetails';
 
 const ProductDetails = () => {
     const navigate = useNavigate();
-    const location = useLocation()
-    const searchParams = new URLSearchParams(location.search)
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
     let productID = searchParams.get('productID');
     let officeID = 1;
     const { userDetails } = useUserDetails();

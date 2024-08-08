@@ -12,15 +12,15 @@ const AdminHome = () => {
         <div>
             <img src={backgroundimg} className='adminbackgroundimg' alt="Background" />
             <div className="flex-container">
-                <button className="flex-item" onClick={() => navigate("/add-location")}>
+                <button className="flex-item" onClick={() => navigate("/admin/add-location")}>
                     <PiBuildingOfficeBold />
                     <h3>Add new office</h3>
                 </button>
-                <button className="flex-item" onClick={() => navigate("/add-availproducts")}>
+                <button className="flex-item" onClick={() => navigate("/admin/add-availproducts")}>
                     <MdProductionQuantityLimits />
                     <h3>Add more products</h3>
                 </button>
-                <button className="flex-item" onClick={() => navigate("/register-user")}>
+                <button className="flex-item" onClick={() => navigate("/admin/register-user")}>
                     <GiArchiveRegister />
                     <h3>Register user</h3>
                 </button>

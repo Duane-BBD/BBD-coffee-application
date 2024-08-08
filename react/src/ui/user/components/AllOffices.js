@@ -24,7 +24,7 @@ export default function AllOffices() {
                     {offices.map((locate, index) => (
                         <div className="mapping" key={index}>
                             <Link
-                                to={`/product`}
+                                to="/user/product"
                                 state={locate}
                                 className="location-option"
                             >

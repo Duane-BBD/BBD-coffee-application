@@ -9,10 +9,10 @@ export default function Navbar() {
   return (
     <div className='nav'>
         <div className='navbar'>
-            <button className='home-button' onClick={() => navigate('/all-office')}>
+            <button className='home-button' onClick={() => navigate('/user/all-office')}>
                 <PiHouseFill/> 
             </button>
-            <button className='cart-button' onClick={() => navigate('/check-out')}>
+            <button className='cart-button' onClick={() => navigate('/user/check-out')}>
                 <IoBag/>
             </button>
             

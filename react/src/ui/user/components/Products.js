@@ -10,6 +10,8 @@ import { allLocation } from '../../../services/locationService';
 import Navbar from '../../common/components/Navbar';
 import { allTags } from '../../../services/tagService';
 
+const BASE_URL = "http://localhost:3000"
+
 export default function Products() {
     const navigate = useNavigate()
     const location = useLocation()
@@ -20,7 +22,7 @@ export default function Products() {
     const [selectedTag, setSelectedTag] = useState({tagID: 0, tagName: 'none'})
 
     useEffect(() => {
-        if (office.officeID == null) navigate("/");
+        if (office.officeID == null) navigate("/user/all-office");
     }, [])
 
     useEffect(() => {
@@ -85,7 +87,11 @@ export default function Products() {
                 <button className='dropdown-button'> {office.officeName}<IoIosArrowDown /></button>
                 <div className='dropdown-content'>
                     {offices.map((off, index) => (
-                        <Link to={`/product`} state={off} key={index}>{off.officeName}</Link>
+                        <Link 
+                            to="/user/product" state={off} key={index}
+                        >
+                            {off.officeName}
+                        </Link>
                     ))}
                 </div>
                 
@@ -114,7 +120,11 @@ export default function Products() {
         </div>
         <div className='card-container'>
             {dummyMenu.map((menus, index) => (
-                <div className='card-disp' key={index} onClick={() => navigate(`/product-details?productID=${encodeURIComponent(menus.productID)}`)}>
+                <div 
+                    className='card-disp' 
+                    key={index} 
+                    onClick={() => navigate(`/user/product-details?productID=${encodeURIComponent(menus.productID)}`)}
+                >
                     <div className="card">
                     <img
                         src={menus.imageURL}

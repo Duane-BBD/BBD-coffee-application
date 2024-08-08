@@ -3,7 +3,7 @@ import "../../common/static/Login.css";
 import { useNavigate } from "react-router-dom";
 import { newLocationService } from "../../../services/newLocationService";
 
-function Addlocation() {
+function AddLocation() {
     const [offices, setOffices] = useState([]);
     const navigate = useNavigate()
     const [officeName,setOfficeName]= useState("")
@@ -37,5 +37,5 @@ function Addlocation() {
   );
 }
 
-export default Addlocation
+export default AddLocation
 

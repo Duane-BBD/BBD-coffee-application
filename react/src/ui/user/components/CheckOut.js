@@ -42,10 +42,6 @@ const CheckOut = () => {
 
   return (
     <div className="order-page">
-        {/* <div className="header">
-            <div className="header-item active">Place an order</div>
-            <div className="header-item">My orders</div>
-        </div> */}
         <Header />
         {isEmpty
         ? <div className="empty-order">
