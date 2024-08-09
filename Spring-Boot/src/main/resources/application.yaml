@@ -1,28 +1,17 @@
 spring:
+  application:
+    name: BBD-Coffee-Application
   datasource:
-<<<<<<< Updated upstream
-#    url: jdbc:mysql://bbdcoffeeapp.c6kdmrjteyms.us-east-1.rds.amazonaws.com:3306/bbdcoffee
-#    username: admin
-#    password: VIRUS666
-    url: jdbc:mysql://localhost:3306/bbdcoffee
-    username: root
-    password: swizelantao2002
-=======
-#    url: jdbc:mysql://localhost:3306/bbdcoffee
-#    username: root
-#    password: Mypassword2002
     url: jdbc:mysql://bbdcoffeeapp.c6kdmrjteyms.us-east-1.rds.amazonaws.com:3306/bbdcoffee
-    username: admin
-    password: VIRUS666
->>>>>>> Stashed changes
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
 
   #Jpa Settings
   jpa:
-#    hibernate.ddl_auto: update
-
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
     show-sql: false
-#    database-platform: org.hibernate.dialect.H2Dialect
+server:
+  port: 5000
