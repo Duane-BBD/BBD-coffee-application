@@ -12,36 +12,41 @@ const Login = () => {
     const { userDetails, setUserDetails } = useUserDetails();
 
     useEffect(() => {
-        if (location.pathname === '/')
-            navigate('/user/all-office');
-    })
+        console.log(userDetails)
+        if (isLogged && location.pathname === '/')
+            switch (userDetails.userTypeID) {
+                case 1:
+                    navigate('/user/all-office');
+                    break;
+                case 2:
+                    navigate('/barista/home-page');
+                    break;
+                case 3:
+                    navigate('/admin/admin-home');
+                    break;
+                default:
+                    navigate('/');
+                    // window.location.reload()
+            }
+    }, [isLogged, location.pathname])
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (userID) {
-            getUserDetails(userID, setUserDetails)
-            setIsLogged("true")
-            localStorage.setItem('logged', "true");
-            if (location.pathname === '/')
-                switch (userDetails.userType.userTypeValue) {
-                    case "Employee":
-                        navigate('/user/all-office');
-                        break;
-                    case "Barista":
-                        navigate('/barista/home-page');
-                        break;
-                    case "Admin":
-                        navigate('/admin/admin-home');
-                        break;
-                    default:
-                        navigate('/');
-                }
-            window.location.reload()
+            try {
+                await getUserDetails(userID, setUserDetails)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setIsLogged("true")
+                localStorage.setItem('logged', "true");
+            }
+            
         }
     }
 
     const handleSignOut = () => {
         localStorage.clear()
-        location.pathname = '/user/all-office';
+        location.pathname = '/';
         window.location.reload()
     }
 

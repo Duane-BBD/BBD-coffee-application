@@ -9,12 +9,12 @@ const TakeOrders = () => {
     const navigate = useNavigate();
 
     const pastpage =() => {
-        navigate('/past-orders')
+        navigate('/barista/past-orders')
         setTab('past')
     }
 
     const incomingpage=()=>{
-        navigate('/take-orders')
+        navigate('/barista/take-orders')
         setTab('incoming')
     }
 

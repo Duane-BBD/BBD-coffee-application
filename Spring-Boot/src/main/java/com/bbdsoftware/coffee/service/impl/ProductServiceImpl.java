@@ -1,5 +1,6 @@
 package com.bbdsoftware.coffee.service.impl;
 
+import com.bbdsoftware.coffee.DTO.ProductCreateDTO;
 import com.bbdsoftware.coffee.model.Availability;
 import com.bbdsoftware.coffee.model.Product;
 import com.bbdsoftware.coffee.repository.AvailabilityRepository;
@@ -38,8 +39,12 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public void createProduct(Product product) {
-        productRepository.save(product);
+    public void createProduct(ProductCreateDTO product ) {
+        Product newProduct = new Product();
+        newProduct.setProductName(product.getProductName());
+        newProduct.setDescription(product.getDescription());
+        newProduct.setImageURL(product.getImageURL());
+        productRepository.save(newProduct);
     }
 
     @Override

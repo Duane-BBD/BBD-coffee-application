@@ -11,11 +11,13 @@ function App() {
   return (
     <Routes>
         <Route path="/" element={<Login/>}>
-			<Route path="/user/*" element={<UserLanding/>} />
+			<Route path="/user/*" element={<UserLanding/>}/>
 
 			<Route path="/barista/*" element={<BaristaLanding/>}/>
 
-			<Route path="/admin/*" element={<AdminLanding />}/>
+			<Route path="/admin/*" element={<AdminLanding/>}/>
+
+			<Route path="/*" element={<Missing/>}/>
 		</Route>
     </Routes>
   );

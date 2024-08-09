@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import OrderHistory from './components/OrderHistory';
 import UserOrderHistory from './components/UserOrderHistory';
 import MyOrders from './components/PlaceOrder';
+import Missing from '../common/components/Missing';
 
 const UserLanding = () => {
   return (
@@ -20,6 +21,7 @@ const UserLanding = () => {
         <Route path="/order-history" element={<OrderHistory/>}/>
         <Route path="/user-order-history" element={<UserOrderHistory/>}/>
         <Route path="/my-orders" element={<MyOrders/>}/>
+        <Route path="/*" element={<Missing />}/>
     </Routes>
   )
 }

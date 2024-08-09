@@ -8,7 +8,7 @@ export default function HomePage() {
 
     const openTakeOrders=()=>{
         setIsAcceptingOrders(!isAcceptingOrders);
-        navigate(`/take-orders`);
+        navigate(`/barista/take-orders`);
     };
     const openClosedOrders =()=>{
         setIsAcceptingOrders(!isAcceptingOrders);
