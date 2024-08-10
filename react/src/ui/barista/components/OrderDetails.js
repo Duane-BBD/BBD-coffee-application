@@ -51,7 +51,7 @@ const OrderDetails = () => {
                         className="decline-button"
                         onClick={() => {
                             cancelOrders(order.orderID)
-                            navigate(`/take-orders`)
+                            navigate(`/barista/take-orders`)
                         }}
                     >Decline order</button>
         
@@ -59,7 +59,7 @@ const OrderDetails = () => {
                         className="accept-button"
                         onClick={() => {
                             progressStatus(order.orderID)
-                            navigate(`/take-orders`)
+                            navigate(`/barista/take-orders`)
                         }}
                     >Accept order</button>
                 </div>
@@ -69,7 +69,7 @@ const OrderDetails = () => {
                             className="decline-button"
                             onClick={() => {
                                 cancelOrders(order.orderID)
-                                navigate(`/take-orders`)
+                                navigate(`/barista/take-orders`)
                             }}
                         >Incomplete</button>
 
@@ -77,7 +77,7 @@ const OrderDetails = () => {
                             className="accept-button"
                             onClick={() => {
                                 progressStatus(order.orderID)
-                                navigate(`/take-orders`)
+                                navigate(`/barista/take-orders`)
                             }}
                         >Order ready</button>
                     </div>

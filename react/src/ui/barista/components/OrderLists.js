@@ -16,7 +16,7 @@ const OrderLists = ({ status }) => {
         <div className="order-section">
             <h3>{status}</h3>
             {orderDetails.map((order, index) => 
-            <button className="orderitem" key={index} onClick={() => navigate(`/order-details/?status=${encodeURIComponent(status)}`, { state: order })}>
+            <button className="orderitem" key={index} onClick={() => navigate(`/barista/order-details/?status=${encodeURIComponent(status)}`, { state: order })}>
                 <div>
                 <p>Order number: {order.orderID}</p>
                 {status === 'Pending'

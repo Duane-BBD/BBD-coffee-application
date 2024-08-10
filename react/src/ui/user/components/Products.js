@@ -19,7 +19,7 @@ export default function Products() {
     const [offices, setOffices] = useState([])
     const [search, setSearch] = useState(false)
     const [tags, setTags] = useState([])
-    const [selectedTag, setSelectedTag] = useState({tagID: 0, tagName: 'none'})
+    const [selectedTag, setSelectedTag] = useState({tagID: 0, tagName: 'All'})
 
     useEffect(() => {
         if (office.officeID == null) navigate("/user/all-office");
@@ -44,6 +44,9 @@ export default function Products() {
     }, [menu])
     
     useEffect(() => {
+        if (selectedTag.tagID === 0) {
+            setDummyMenu(menu);
+        }
         if (selectedTag.tagID !== 0) {
             const filteredMenu = menu.filter(item => {
                 const tagsArray = JSON.parse(item.associatedTags);
@@ -112,6 +115,7 @@ export default function Products() {
             </div>
         </div>
         <div class="scrollable-menu">
+            <button onClick={() => setSelectedTag({tagID: 0, tagName: 'All'})}>All</button>
             {tags.map((tag,index) => (
                 <button key={index} onClick={() => setSelectedTag(tag)}>{tag.tagName}</button>
             ))}
