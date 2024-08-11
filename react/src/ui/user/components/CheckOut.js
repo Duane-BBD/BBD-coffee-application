@@ -10,16 +10,16 @@ const CheckOut = () => {
     const location = useLocation();
     const [isEmpty, setIsEmpty] = useState(false);
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || []
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     useEffect(() => {
-        if (cart.length === 0) setIsEmpty(true)
+        if (cart.length === 0) setIsEmpty(true);
     }, [])
 
     const increaseCount = (index) => {
         cart[index].quantity += 1;
         localStorage.setItem("cart", JSON.stringify(cart));
-        navigate(location.path)
+        navigate(location.path);
     };
 
     const decreaseCount = (index) => {
@@ -30,7 +30,7 @@ const CheckOut = () => {
             for(let i = 0; i < cart.length; i++) {
                 if (cart[i] !== cart[index]) newCart.push(cart[i]);
             }
-            cart = newCart
+            cart = newCart;
         }
         localStorage.removeItem("cart");
         localStorage.setItem("cart", JSON.stringify(cart));

@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import { registerUserService } from '../../../services/registerUserService';
 
 function RegisterUser() {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const [firstName,setFirstName]=useState("");
     const [lastName,setLastName]=useState("");
     const [userID,setUserID]=useState("");
     const [officeName,setOfficeName]=useState("");
     
     const registerUser=()=>{
-        if(firstName!==''&&lastName!==''&& userID!=='' && officeName!=='') 
-            registerUserService(firstName, lastName,userID,officeName)
+        if(firstName !== '' && lastName !== '' && userID !== '' && officeName !== '') 
+            registerUserService(firstName, lastName, userID, officeName)
     }
   return (
     <div className="page-container">

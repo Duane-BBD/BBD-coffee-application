@@ -26,10 +26,10 @@ const Login = () => {
                     navigate('/admin/admin-home');
                     break;
                 default:
-                    console.log(userDetails)
                     navigate('/');
                     // window.location.reload()
             }
+        console.log(userDetails)
     }, [isLogged, location.pathname])
 
     const handleLogin = async () => {
@@ -47,9 +47,9 @@ const Login = () => {
     }
 
     const handleSignOut = () => {
-        // localStorage.clear()
+        localStorage.setItem('logged', 'false')
         setUserDetails({})
-        setIsLogged(false)
+        setIsLogged("false")
         location.pathname = '/';
         // window.location.reload()
     }

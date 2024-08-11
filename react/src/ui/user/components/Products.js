@@ -125,7 +125,7 @@ export default function Products() {
                 <div 
                     className='card-disp' 
                     key={index} 
-                    onClick={() => navigate(`/user/product-details?productID=${encodeURIComponent(menus.productID)}`)}
+                    onClick={() => navigate(`/user/product-details?productID=${encodeURIComponent(menus.productID)}`, { state: office })}
                 >
                     <div className="card">
                     <img

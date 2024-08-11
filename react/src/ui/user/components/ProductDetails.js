@@ -16,7 +16,7 @@ const ProductDetails = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     let productID = searchParams.get('productID');
-    let officeID = 1;
+    let office = location.state || {}
     const { userDetails } = useUserDetails();
 
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
@@ -38,7 +38,7 @@ const ProductDetails = () => {
         let itemFound = false;
     
         for (let i = 0; i < updatedCart.length; i++) {
-            if (updatedCart[i].milkTypeValue === selected.milkTypeValue && updatedCart[i].note === note) {
+            if (updatedCart[i].productName === product.productName && updatedCart[i].milkTypeValue === selected.milkTypeValue && updatedCart[i].note === note) {
                 updatedCart[i].quantity += 1;
                 itemFound = true;
                 break;
@@ -50,7 +50,7 @@ const ProductDetails = () => {
                 productName: product.productName,
                 quantity: 1,
                 userID: userDetails.userID,
-                officeID: officeID,
+                officeID: office.officeID,
                 milkTypeValue: selected.milkTypeValue,
                 note: note,
                 imageURL: product.imageURL
@@ -59,6 +59,7 @@ const ProductDetails = () => {
         
         localStorage.setItem("cart", JSON.stringify(updatedCart));
         setCart(updatedCart);
+        alert("Added to cart!");
     }
     
   return (
