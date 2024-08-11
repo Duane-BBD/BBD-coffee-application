@@ -1,3 +1,28 @@
+.Pending {
+    background-color: #d3d3d3;
+    text-align: center;
+}
+
+.progress {
+    background-color: #0080B7;
+    text-align: center;
+}
+
+.Prepared {
+    background-color: #30B700;
+    text-align: center;
+}
+
+.Complete {
+    background-color: #30B700;
+    text-align: center;
+}
+
+.Cancelled {
+    background-color: #D30000;
+    text-align: center;
+}
+
 .orderdetails-container {
     padding: 1rem;
     background-color: #fff;
@@ -31,7 +56,7 @@
 }
 
 .order-status {
-    background-color: #d3d3d3;
+    /* background-color: #d3d3d3; */
     border: none;
     padding: 4px 12px;
     font-size: 14px;
@@ -103,27 +128,32 @@
     margin-left: 8px;
 }
 
-.progress {
-    background-color: #0080B7;
-    text-align: center;
-}
+@media screen and (min-width:300px) and (max-width:375px) {
+    .Pending {
+        background-color: #d3d3d3;
+        text-align: center;
+    }
 
-.Prepared {
-    background-color: #30B700;
-    text-align: center;
-}
+    .progress {
+        background-color: #0080B7;
+        text-align: center;
+    }
+    
+    .Prepared {
+        background-color: #30B700;
+        text-align: center;
+    }
+    
+    .Complete {
+        background-color: #30B700;
+        text-align: center;
+    }
+    
+    .Cancelled {
+        background-color: #D30000;
+        text-align: center;
+    }
 
-.Complete {
-    background-color: #30B700;
-    text-align: center;
-}
-
-.Cancelled {
-    background-color: #D30000;
-    text-align: center;
-}
-
-@media screen and (min-width:300px) and (max-width:375px) {    
     .back-button {
         font-size: 1.7rem;
     }
@@ -133,7 +163,7 @@
         font-weight: bold;
     }
     .order-status {
-        background-color: #d3d3d3;
+        /* background-color: #d3d3d3; */
         border-radius: 0.4rem;
         padding: 0.4rem 1px;
         font-size: 0.8rem;
@@ -151,7 +181,32 @@
     }
 }
 
-@media screen and (min-width:900px) and (max-width:1500px) {    
+@media screen and (min-width:900px) and (max-width:1500px) {
+    .Pending {
+        background-color: #d3d3d3;
+        text-align: center;
+    }
+
+    .progress {
+        background-color: #0080B7;
+        text-align: center;
+    }
+    
+    .Prepared {
+        background-color: #30B700;
+        text-align: center;
+    }
+    
+    .Complete {
+        background-color: #30B700;
+        text-align: center;
+    }
+    
+    .Cancelled {
+        background-color: #D30000;
+        text-align: center;
+    }
+
     .back-button {
         font-size: 2.2rem;
     }
@@ -189,7 +244,7 @@
     }
     
     .order-status {
-        background-color: #d3d3d3;
+        /* background-color: #d3d3d3; */
         border-radius: 1rem;
         /* padding: 1rem 0.5rem; */
         text-align: center;

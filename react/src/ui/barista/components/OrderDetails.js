@@ -42,7 +42,6 @@ const OrderDetails = () => {
                 {timeDetails.map((time) => <>
                     <p>{time.orderStatusID.orderStatusValue}: {time.orderTime}</p>
                 </>)}
-                {/* <p>Time received: {order.orderTime}</p> */}
             </div>
 
             {status === "Pending"
@@ -68,7 +67,6 @@ const OrderDetails = () => {
                         <button 
                             className="decline-button"
                             onClick={() => {
-                                cancelOrders(order.orderID)
                                 navigate(`/barista/take-orders`)
                             }}
                         >Incomplete</button>

@@ -82,7 +82,7 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                                     </button>
                                     {showCancelButton && order.orderStatusValue.toLowerCase() === 'pending' && (
                                         <button
-                                            className="order-status"
+                                            className="order-status Cancelled"
                                             onClick={(e) => {
                                                 e.stopPropagation(); 
                                                 cancelOrder(order.orderID);

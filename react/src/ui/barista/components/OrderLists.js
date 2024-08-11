@@ -10,7 +10,7 @@ const OrderLists = ({ status }) => {
     const { userDetails } = useUserDetails()
 
     useEffect(() => {
-        detailsForBarista(1, status, setOrderDetails);
+        detailsForBarista(userDetails.officeID, status, setOrderDetails);
     })
 
   return (
