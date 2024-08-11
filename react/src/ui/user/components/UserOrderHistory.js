@@ -13,10 +13,17 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
 
     useEffect(() => {
         const fetchOrders = async () => {
-            try {
-                if (!userDetails) return;
+            if (!userDetails || !userDetails.userID) {
+                console.log('No user details available.');
+                return;
+            }
+            
+            console.log('User Details:', userDetails);
+            console.log('Fetching orders for userID:', userDetails.userID);
 
+            try {
                 const response = await axios.get(`/order-history/search-history/${userDetails.userID}`);
+                console.log('Orders fetched:', response.data);
                 setOrders(response.data);
             } catch (error) {
                 console.error('Error fetching orders:', error);
@@ -25,6 +32,10 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
 
         fetchOrders();
     }, [userDetails.userID, orderStatusValue]);
+
+    useEffect(() => {
+        console.log('Current orders:', orders);
+    }, [orders]);
 
     const toggleOrderDetails = (id) => {
         setExpandedOrderID(expandedOrderID === id ? null : id);
@@ -44,7 +55,7 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
             case 'prepared':
                 return '#4caf50';
             default:
-                return '#767676;';
+                return '#767676';
         }
     };
 

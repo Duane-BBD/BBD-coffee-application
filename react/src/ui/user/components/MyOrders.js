@@ -17,7 +17,7 @@ const MyOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get(`/order-list/past-orders/${userDetails.userID}`);
+                const response = await axios.get(`/order-history/search-history/${userDetails.userID}`);
                 console.log("print success");
                 setOrders(response.data);
             } catch (error) {
