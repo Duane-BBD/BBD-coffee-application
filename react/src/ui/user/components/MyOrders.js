@@ -18,6 +18,7 @@ const MyOrders = () => {
         const fetchOrders = async () => {
             try {
                 const response = await axios.get(`/order-list/past-orders/${userDetails.userID}`);
+                console.log("print success");
                 setOrders(response.data);
             } catch (error) {
                 console.error('Error fetching orders:', error);
@@ -27,7 +28,7 @@ const MyOrders = () => {
         fetchOrders();
     }, [userDetails.userID]);
 
-    if (orders.length != 0) {
+    if (orders.length != 0) {   
         return <UserOrderHistory/>;
     }
 
