@@ -113,3 +113,11 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+@media screen and (min-width: 300px) and (max-width: 375px) {
+  button.order-status {
+      font-size: 0.8rem;
+      border-radius: 1rem;
+      padding: 0.4rem 1px;
+  }
+}
