@@ -146,7 +146,7 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                         ))}
                 </div>
             </div>
-            <Navbar />
+            <Navbar navtype='users' />
         </div>
     );
 };
