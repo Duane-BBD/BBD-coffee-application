@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { detailsForBarista } from '../../../services/baristaDisplayService';
 import { useNavigate } from 'react-router-dom';
 import { SlArrowRight } from 'react-icons/sl';
+import useUserDetails from '../../../hooks/useUserDetails';
 
 const OrderLists = ({ status }) => {
     const navigate = useNavigate()
     const [orderDetails, setOrderDetails] = useState([]);
+    const { userDetails } = useUserDetails()
 
     useEffect(() => {
         detailsForBarista(1, status, setOrderDetails);

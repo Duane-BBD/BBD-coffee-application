@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../static/Login.css";
+// import { GoogleLogin } from '@react-oauth/google';
+// import { jwtDecode } from 'jwt-decode';
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { getUserDetails } from "../../../services/userDetailsService";
 import useUserDetails from "../../../hooks/useUserDetails";
@@ -12,7 +14,6 @@ const Login = () => {
     const { userDetails, setUserDetails } = useUserDetails();
 
     useEffect(() => {
-        console.log(userDetails)
         if (isLogged && location.pathname === '/')
             switch (userDetails.userTypeID) {
                 case 1:
@@ -25,6 +26,7 @@ const Login = () => {
                     navigate('/admin/admin-home');
                     break;
                 default:
+                    console.log(userDetails)
                     navigate('/');
                     // window.location.reload()
             }
@@ -45,9 +47,11 @@ const Login = () => {
     }
 
     const handleSignOut = () => {
-        localStorage.clear()
+        // localStorage.clear()
+        setUserDetails({})
+        setIsLogged(false)
         location.pathname = '/';
-        window.location.reload()
+        // window.location.reload()
     }
 
   return (
@@ -61,6 +65,18 @@ const Login = () => {
                 <div className="login-container">
                     <div className="login-content">
                         <h1>Coffee at BBD</h1>
+                        {/* <GoogleLogin
+                            onSuccess={(credentialResponse) => {
+                                console.log(credentialResponse);
+                                const decoded = jwtDecode(credentialResponse.credential);
+
+                                console.log(decoded);
+                            }}
+                            
+                            onError={() => {
+                                console.log('Login Failed');
+                            }}
+                        /> */}
                         <input
                             type="number"
                             placeholder="Enter your Employee ID"

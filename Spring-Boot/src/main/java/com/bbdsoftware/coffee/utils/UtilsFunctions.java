@@ -6,6 +6,7 @@ import com.bbdsoftware.coffee.service.MilkTypeService;
 import com.bbdsoftware.coffee.service.OrderHistoryService;
 import com.bbdsoftware.coffee.service.UserStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
@@ -71,4 +72,10 @@ public class UtilsFunctions {
         }
         return null;
     }
+//
+//    @Scheduled(cron = "0 * 19 * * ?")
+//    public void scheduleTask()
+//    {
+//
+//    }
 }

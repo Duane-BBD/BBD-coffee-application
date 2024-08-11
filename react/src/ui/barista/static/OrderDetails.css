@@ -103,6 +103,26 @@
     margin-left: 8px;
 }
 
+.progress {
+    background-color: #0080B7;
+    text-align: center;
+}
+
+.Prepared {
+    background-color: #30B700;
+    text-align: center;
+}
+
+.Complete {
+    background-color: #30B700;
+    text-align: center;
+}
+
+.Cancelled {
+    background-color: #D30000;
+    text-align: center;
+}
+
 @media screen and (min-width:300px) and (max-width:375px) {    
     .back-button {
         font-size: 1.7rem;

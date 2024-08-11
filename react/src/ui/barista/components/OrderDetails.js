@@ -26,7 +26,7 @@ const OrderDetails = () => {
             <div className="orderdetail-header">
                 <button className="back-button" onClick={() => navigate(-1)}><MdKeyboardArrowLeft/></button>
                 <span className="order-number">Order Number {order.orderID}</span>
-                <span className="order-status">{status}</span>
+                <span className={status + " order-status"}>{status}</span>
             </div>
 
             <div className="order-items">
@@ -81,7 +81,25 @@ const OrderDetails = () => {
                             }}
                         >Order ready</button>
                     </div>
-                    : <></>
+                    : status === "Prepared"
+                        ? <div className="order-actions">
+                            <button 
+                                className="decline-button"
+                                onClick={() => {
+                                    progressStatus(order.orderID)
+                                    navigate(`/barista/take-orders`)
+                                }}
+                            >Not collected</button>
+
+                            <button 
+                                className="accept-button"
+                                onClick={() => {
+                                    progressStatus(order.orderID)
+                                    navigate(`/barista/take-orders`)
+                                }}
+                            >Order collected</button>
+                        </div>
+                        : <></>
             }
 
             <div className='content'>

@@ -18,9 +18,12 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                 if (!userDetails) return;
 
                 const response = await axios.get(`/order-history/search-history/${userDetails.userID}`);
-                setOrders(response.data);
+                if (response.data) {
+                    console.log(response.data)
+                    setOrders(response.data);
+                }
             } catch (error) {
-                console.error('Error fetching orders:', error);
+                console.error('Error fetching orders: ', error);
             }
         };
 

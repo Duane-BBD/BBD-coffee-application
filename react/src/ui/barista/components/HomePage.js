@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import FrontPage from '../../common/components/FrontPage'
 import "../static/HomePage.css"
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function HomePage() {
     const [isAcceptingOrders,setIsAcceptingOrders]=useState(true);
     const navigate=useNavigate();
