@@ -32,20 +32,20 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
     };
 
     const getStatusColor = (status) => {
-        if (!status) return 'gray';
+        if (!status) return '#767676';
         switch (status.toLowerCase()) {
             case 'pending':
-                return 'gray';
+                return '#767676';
             case 'in progress':
-                return 'lightblue';
+                return '#0080B7';
             case 'complete':
-                return 'green';
+                return '#4caf50';
             case 'cancelled':
-                return 'red';
+                return '#D30000';
             case 'prepared':
-                return 'green';
+                return '#4caf50';
             default:
-                return 'gray';
+                return '#767676;';
         }
     };
 
