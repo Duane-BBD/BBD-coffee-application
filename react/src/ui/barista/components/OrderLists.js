@@ -27,7 +27,7 @@ const OrderLists = ({ status }) => {
                         ? <p className="ordertime">Accepted at {order.orderTime}</p>
                         : status === 'Prepared'
                             ? <p className="ordertime">Prepared at {order.orderTime}</p>
-                            : status === 'Completed'
+                            : status === 'Complete'
                                 ? <p className="ordertime">Completed at {order.orderTime}</p>
                                 : <p className="ordertime">Cancelled at {order.orderTime}</p>
                 }

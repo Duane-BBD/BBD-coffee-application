@@ -129,7 +129,7 @@ public class OrderListServiceImpl implements OrderListService {
         List<Integer> orderIDs = new ArrayList<>();
         for (ReceiveOrderDetailDTO orderDetailDTO: allOrderDetailDTO) {
             if (utils.isBanned(orderDetailDTO.getUserID())) {
-                return "User is banned!";
+                return "User cannot place order since he is banned!";
             }
             OrderList newOrder = new OrderList();
             newOrder.setQuantity(orderDetailDTO.getQuantity());

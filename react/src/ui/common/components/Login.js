@@ -39,10 +39,13 @@ const Login = () => {
             } catch (error) {
                 console.log(error)
             } finally {
-                setIsLogged("true")
-                localStorage.setItem('logged', "true");
+                if (userDetails.userID) {
+                    setIsLogged("true");
+                    localStorage.setItem('logged', "true");
+                } else {
+                    alert("Invalid Employee ID!")
+                }
             }
-            
         }
     }
 
