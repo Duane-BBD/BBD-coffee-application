@@ -8,7 +8,7 @@ const placeOrders = async (orderCart) => {
     try {
         const response = await axios.post("/order-creation", orderCart)
         if (response.data) {
-            console.log(response.data)
+            alert(response.data)
         }
     } catch (error) {
         console.log(error)
