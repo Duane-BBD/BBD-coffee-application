@@ -48,7 +48,7 @@ const TakeOrders = () => {
             </div>
 
             <div className="content">
-                <Navbar />
+                <Navbar  />
             </div>
         </div>
     );

@@ -16,7 +16,7 @@ const MyOrders = () => {
             </Link>
         </div>
         <div className='navbar-spacing'> 
-            <Navbar />
+            <Navbar navtype='users' />
         </div>
     </div>
   );

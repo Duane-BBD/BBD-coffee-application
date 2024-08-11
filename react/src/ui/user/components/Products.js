@@ -115,9 +115,9 @@ export default function Products() {
             </div>
         </div>
         <div class="scrollable-menu">
-            <button onClick={() => setSelectedTag({tagID: 0, tagName: 'All'})}>All</button>
+            <button className={selectedTag.tagID === 0 ? 'selected-tag' : 'notselected'} onClick={() => setSelectedTag({tagID: 0, tagName: 'All'})}>All</button>
             {tags.map((tag,index) => (
-                <button key={index} onClick={() => setSelectedTag(tag)}>{tag.tagName}</button>
+                <button key={index}  className={selectedTag.tagID === tag.tagID ? 'selected-tag' : 'notselected'} onClick={() => setSelectedTag(tag)}>{tag.tagName}</button>
             ))}
         </div>
         <div className='card-container'>
@@ -141,7 +141,7 @@ export default function Products() {
             ))}
         </div>
         <div className="content">
-        <Navbar colorChange={true}/>
+        <Navbar colorChange={true} navtype='users'/>
 
         </div>
     </div>

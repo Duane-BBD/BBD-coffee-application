@@ -85,7 +85,7 @@ const OrderDetails = () => {
             }
 
             <div className='content'>
-                <Navbar />
+                <Navbar  navtype={'barista'}  />
             </div>
         </div>
     );

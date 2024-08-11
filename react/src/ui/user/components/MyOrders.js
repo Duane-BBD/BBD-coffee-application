@@ -42,7 +42,7 @@ const MyOrders = () => {
                 </Link>
             </div>
             <div className='content'>
-                <Navbar />
+                <Navbar navtype='users'/>
             </div>
         </div>
     );

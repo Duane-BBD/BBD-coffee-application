@@ -108,7 +108,7 @@ const ProductDetails = () => {
                 </div>
             </div>
         <div className='content'> 
-        <Navbar/>
+        <Navbar colorChange={true} navtype='users'/>
         </div>
     </div>
   )

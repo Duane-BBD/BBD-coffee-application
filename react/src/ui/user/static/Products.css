@@ -99,8 +99,7 @@ body{
     padding: 10px 10px 10px 10px;
 }
 .scrollable-menu button {
-    color: rgb(132, 128, 128);
-    background-color: #EDEDED;
+   
     border-radius: 10px;
     border-width: 0px;
     height: 40px;
@@ -108,17 +107,16 @@ body{
     font-size: 12px;
     cursor: pointer;
     margin: 5px;
-    
-    &:hover {
-      background-color:   rgb(121, 77, 49);
-      color: white;
-    }
-    &:focus {
-      background:  rgb(121, 77, 49);
+  }
+.notselected{
+    color: rgb(132, 128, 128);
+    background-color: #EDEDED;
+}
+.selected-tag{
+    background:rgb(121, 77, 49);
       color: white;
       outline: 0;
-    }
-  }
+}
 
 .scrollable-menu::-webkit-scrollbar {
     display: none;
