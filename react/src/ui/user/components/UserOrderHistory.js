@@ -91,28 +91,31 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                                     >
                                         {order.orderStatusValue || 'Unknown'}
                                     </button>
-                                    {showCancelButton && order.orderStatusValue.toLowerCase() === 'pending' && (
-                                        <button
-                                            className="order-status Cancelled"
-                                            onClick={(e) => {
-                                                e.stopPropagation(); 
-                                                cancelOrder(order.orderID);
-                                            }}
-                                        >
-                                            Cancel
-                                        </button>
-                                    )}
                                     <RiArrowDropDownLine className="dropdown-arrow" />
                                 </div>
                             </div>
                         </div>
                         <div className={`order-details ${expandedOrderID === order.orderID ? 'show' : ''}`}>
-                            <div>
+                            <div className="order-info"> 
                                 <li>{`${order.quantity} ${order.productName}`}</li>
                                 <p>Milk: {order.milkTypeValue || 'None'}</p>
                                 {order.note && <p>Notes: {order.note}</p>}
                             </div>
+                        <div className="cancel-container">
+                            {showCancelButton && expandedOrderID === order.orderID && order.orderStatusValue.toLowerCase() === 'pending' && (
+                                <button
+                                    className="order-status Cancelled"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); 
+                                        cancelOrder(order.orderID);
+                                    }}
+                                >
+                                    Cancel
+                                </button>
+                            )}
                         </div>
+                    </div>
+
                     </React.Fragment>
                 ))}
         </div>

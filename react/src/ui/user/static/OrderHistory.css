@@ -86,18 +86,33 @@
 }
 
 .order-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
   font-size: 14px;
   color: #555;
   padding: 10px 0 0 20px;
+  flex-wrap: wrap;
 }
 
 .order-details.show {
-  max-height: 500px;
+  max-height: 150px;
   margin-top: 10px;
   padding-bottom: 2.5rem;
+  overflow-y: auto;
+}
+
+.order-details .order-info {
+  flex-grow: 1;
+}
+
+.order-details .cancel-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 3.5rem;
 }
 
 .footer {
@@ -120,4 +135,21 @@
       border-radius: 1rem;
       padding: 0.4rem 1px;
   }
+}
+
+/* .containing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+} */
+
+.order-status.Cancelled {
+  background-color: #D30000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 2rem;
 }
