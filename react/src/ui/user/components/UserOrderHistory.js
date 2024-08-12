@@ -86,7 +86,7 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                                 <span>{`Order Number: ${order.orderID}`}</span>
                                 <div className="order-summary">
                                     <button
-                                        className="order-status"
+                                        className="orderhist-status"
                                         style={{ backgroundColor: getStatusColor(order.orderStatusValue) }}
                                     >
                                         {order.orderStatusValue || 'Unknown'}
@@ -104,7 +104,7 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                         <div className="cancel-container">
                             {showCancelButton && expandedOrderID === order.orderID && order.orderStatusValue.toLowerCase() === 'pending' && (
                                 <button
-                                    className="order-status Cancelled"
+                                    className="orderhist-status Cancelled"
                                     onClick={(e) => {
                                         e.stopPropagation(); 
                                         cancelOrder(order.orderID);
@@ -140,7 +140,7 @@ const UserOrderHistory = ({ orderStatusValue = "" }) => {
                                         <span>{`Order Number: ${order.orderID}`}</span>
                                         <div className="order-summary">
                                             <button
-                                                className="order-status"
+                                                className="orderhist-status"
                                                 style={{ backgroundColor: getStatusColor(order.orderStatusValue) }}
                                             >
                                                 {order.orderStatusValue || 'Unknown'}

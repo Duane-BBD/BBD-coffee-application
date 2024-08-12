@@ -102,7 +102,7 @@ footer {
 }
 
 .order-item {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .order-item summary {
@@ -164,10 +164,16 @@ hr {
 }
 
 .order-header {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 
+@media (max-width: 425px) {
+  header{
+    gap:0;
+  }
+
+  }
 @media (min-width: 425px) {
 header{
   gap:0;
