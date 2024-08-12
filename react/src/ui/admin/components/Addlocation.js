@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../static/AddLocation.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { allLocation, newLocationService } from "../../../services/locationService";
 import CoffeBean from "../../common/images/coffeebean.png";
 import { BiSearch } from "react-icons/bi";
@@ -8,25 +8,28 @@ import { BiSearch } from "react-icons/bi";
 function AddLocation() {
     const [offices, setOffices] = useState([]);
     const navigate = useNavigate()
-    const [officeName,setOfficeName]= useState("")
-    const [findoffice,setFindOffice]=useState([])
-    const [search,setSearch]=useState(false)
-    const [message,setMessage]=useState('')
+    const [officeName,setOfficeName]= useState("");
+    const [search,setSearch]=useState(false);
 
     useEffect(() => {
         if(allLocation(setOffices)) {}
-    }, [offices])
+    }, [offices]);
  
-    const [dummyOffice,setDummyOffice] = useState(offices)
+    const [dummyOffice,setDummyOffice] = useState(offices);
 
-    useEffect( ()=>{
+    useEffect(() => {
         if (!search)
-            setDummyOffice(offices)
+            setDummyOffice(offices);
     },[offices]) 
 
     const submitproductname =()=>{
-            newLocationService(officeName)
-        }
+        for (let i = 0; i < offices.length; i++) {
+            if (offices[i].officeName.toLowerCase() === officeName.toLowerCase()) {
+                alert('Location already exists ');
+                break;
+            }
+        newLocationService(officeName)
+    }}
 
     const searchOffices=(searchParam)=>{
         if(searchParam==''){
@@ -61,8 +64,9 @@ function AddLocation() {
                 <button onClick={submitproductname} className="addlocation-button">
                     submit
                 </button>
+                
             </div>
-            <div className="office-div">
+            <div className="get-office-div">
             <div className='search-bar-wrapper'>
                 <div className='search-bar'>
                     <BiSearch className='search-icon' />

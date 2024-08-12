@@ -3,16 +3,19 @@ import { useNavigate } from 'react-router-dom'
 import '../static/RegisterUser.css'
 import { registerUserService } from '../../../services/registerUserService';
 import { AiFillCheckCircle, AiFillCloseCircle, AiFillInfoCircle } from 'react-icons/ai';
+import { allLocation } from '../../../services/locationService';
 
 const NAME_REGEX = /^[A-Z][a-z]{3,7}$/;
 const USERID_REGEX = /^\d{4}$/;
 
 function RegisterUser() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [userID, setUserID] = useState("");
     const [officeName, setOfficeName] = useState("");
+    const [officeOptions,setOfficeOptions]=useState([]);
 
     const [validFirstName, setValidFirstName] = useState(false);
     const [firstNameFocus, setFirstNameFocus] = useState(false);
@@ -35,16 +38,21 @@ function RegisterUser() {
         setValidUserID(USERID_REGEX.test(userID));
     }, [userID]);
 
+    useEffect( ()=>{
+        allLocation(setOfficeOptions);
+    },[officeOptions])    
+
     const registerUser = () => {
         if (validFirstName && validLastName && validUserID && officeName !== '') {
             registerUserService(firstName, lastName, userID, officeName);
+            navigate('/')
         }
     }
 
     return (
         <div className="page-container">
             <div className="login-container">
-                <div className="login-content">
+                <div className="register-content">
                     <h1>Register user</h1>
                     <div className="mb-2">
                         <label htmlFor="firstName">
@@ -59,7 +67,7 @@ function RegisterUser() {
                         <input
                             type="text"
                             id="firstName"
-                            placeholder="Enter first name"
+                            placeholder="Enter First Name"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                             className="login-input"
@@ -88,7 +96,7 @@ function RegisterUser() {
                         <input
                             type="text"
                             id="lastName"
-                            placeholder="Enter last name"
+                            placeholder="Enter Last Name"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                             className="login-input"
@@ -117,7 +125,7 @@ function RegisterUser() {
                         <input
                             type="text"
                             id="userID"
-                            placeholder="Enter userID"
+                            placeholder="Enter Employee ID"
                             value={userID}
                             onChange={(e) => setUserID(e.target.value)}
                             className="login-input"
@@ -135,16 +143,17 @@ function RegisterUser() {
 
                     <div className="mb-2">
                         <label htmlFor="officeName">Office Name:</label>
-                        <input
-                            type="text"
-                            id="officeName"
-                            placeholder="Enter office name"
-                            value={officeName}
+                        <select
+                            value={officeOptions.officeName}
                             onChange={(e) => setOfficeName(e.target.value)}
                             className="login-input"
-                            autoComplete="off"
                             required
-                        />
+                        > 
+                        <option value="" disabled>Select office</option>
+                        {officeOptions.map((office, index) => (
+                            <option key={index} value={office.officeName}>{office.officeName}</option>
+                        ))}
+                    </select>
                     </div>
 
                     <button 
