@@ -27,7 +27,6 @@ const Login = () => {
                     break;
                 default:
                     navigate('/');
-                    // window.location.reload()
             }
         console.log(userDetails)
     }, [isLogged, location.pathname])
@@ -35,26 +34,23 @@ const Login = () => {
     const handleLogin = async () => {
         if (userID) {
             try {
-                await getUserDetails(userID, setUserDetails)
+                await getUserDetails(userID, setUserDetails);
             } catch (error) {
-                console.log(error)
+                console.log(error);
             } finally {
                 if (userDetails.userID) {
                     setIsLogged("true");
                     localStorage.setItem('logged', "true");
-                } else {
-                    alert("Invalid Employee ID!")
                 }
             }
         }
     }
 
     const handleSignOut = () => {
-        localStorage.setItem('logged', 'false')
-        setUserDetails({})
-        setIsLogged("false")
+        localStorage.setItem('logged', 'false');
+        setUserDetails({});
+        setIsLogged("false");
         location.pathname = '/';
-        // window.location.reload()
     }
 
   return (

@@ -5,6 +5,8 @@ const getUserDetails = async (userID, setUserDetails) => {
         const response = await axios.get(`/app-user/get-user/${userID}`)
         if (response.data) {
             setUserDetails(response.data)
+        } else {
+            alert("Invalid Employee ID!");
         }
     } catch (error) {
         console.log(error)

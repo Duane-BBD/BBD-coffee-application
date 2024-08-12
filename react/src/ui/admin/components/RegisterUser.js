@@ -10,7 +10,6 @@ const USERID_REGEX = /^\d{4}$/;
 
 function RegisterUser() {
     const navigate = useNavigate();
-    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [userID, setUserID] = useState("");
