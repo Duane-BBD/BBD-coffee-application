@@ -170,7 +170,32 @@
     }
 }
 
-@media screen and (min-width:375px) and (max-width:439px) {    
+@media screen and (min-width:375px) and (max-width:439px) {
+    .Pending {
+        background-color: #d3d3d3;
+        text-align: center;
+    }
+
+    .progress {
+        background-color: #0080B7;
+        text-align: center;
+    }
+    
+    .Prepared {
+        background-color: #30B700;
+        text-align: center;
+    }
+    
+    .Complete {
+        background-color: #30B700;
+        text-align: center;
+    }
+    
+    .Cancelled {
+        background-color: #D30000;
+        text-align: center;
+    }
+      
     .back-button {
         font-size: 1.7rem;
     }
