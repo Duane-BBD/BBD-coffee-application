@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "../static/Login.css";
-// import { GoogleLogin } from '@react-oauth/google';
-// import { jwtDecode } from 'jwt-decode';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { getUserDetails } from "../../../services/userDetailsService";
 import useUserDetails from "../../../hooks/useUserDetails";
+import AskID from "./AskID";
 
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [userID, setUserID] = useState();
     const [isLogged, setIsLogged] = useState(localStorage.getItem('logged') || "false");
+    const [googleSigned, setGoogleSiged] = useState(localStorage.getItem('googleS') || "false");
     const { userDetails, setUserDetails } = useUserDetails();
 
     useEffect(() => {
-        if (isLogged && location.pathname === '/')
+        if (isLogged === "true" && location.pathname === '/') {
             switch (userDetails.userTypeID) {
                 case 1:
                     navigate('/user/all-office');
@@ -28,72 +28,51 @@ const Login = () => {
                 default:
                     navigate('/');
             }
-        console.log(userDetails)
-    }, [isLogged, location.pathname])
-
-    const handleLogin = async () => {
-        if (userID) {
-            try {
-                await getUserDetails(userID, setUserDetails);
-            } catch (error) {
-                console.log(error);
-            } finally {
-                if (userDetails.userID) {
-                    setIsLogged("true");
-                    localStorage.setItem('logged', "true");
-                }
-            }
         }
-    }
+        console.log(userDetails);
+    }, [isLogged, location.pathname, userDetails, navigate]);
 
     const handleSignOut = () => {
-        localStorage.setItem('logged', 'false');
+        localStorage.clear();
+
         setUserDetails({});
         setIsLogged("false");
-        location.pathname = '/';
-    }
+        setGoogleSiged("false");
 
-  return (
-    <>
-        {isLogged === "true"
-            ? <>
-                <Outlet />
-                <button className="sign-out-button" onClick={() => handleSignOut()}>Sign Out</button>
-            </>
-            : <div className="page-container">
-                <div className="login-container">
-                    <div className="login-content">
-                        <h1>Coffee at BBD</h1>
-                        {/* <GoogleLogin
-                            onSuccess={(credentialResponse) => {
-                                console.log(credentialResponse);
-                                const decoded = jwtDecode(credentialResponse.credential);
+        navigate('/');
+    };
 
-                                console.log(decoded);
-                            }}
-                            
-                            onError={() => {
-                                console.log('Login Failed');
-                            }}
-                        /> */}
-                        <input
-                            type="number"
-                            placeholder="Enter your Employee ID"
-                            value={userID}
-                            onChange={(e) => setUserID(e.target.value)}
-                            className="login-input"
-                            autoComplete="off"
-                            required
-                        />
-                        <button onClick={handleLogin} className="login-button">
-                            Login
-                        </button>
+    return (
+        <>
+            {isLogged === "true"
+                ? <>
+                    <Outlet />
+                    <button className="sign-out-button" onClick={handleSignOut}>Sign Out</button>
+                </>
+                : googleSigned === 'true'
+                    ? <AskID setIsLogged={setIsLogged} />
+                    : <div className="page-container">
+                        <div className="login-container">
+                            <div className="login-content">
+                                <h1>Coffee at BBD</h1>
+                                <GoogleLogin
+                                    onSuccess={(credentialResponse) => {
+                                        console.log(credentialResponse);
+                                        const decoded = jwtDecode(credentialResponse.credential);
+                                        localStorage.setItem('googleS', 'true');
+                                        setGoogleSiged('true');
+                                        console.log(decoded);
+                                    }}
+                                    onError={() => {
+                                        console.log('Login Failed');
+                                    }}
+                                />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        }
-    </>
-  );
+            }
+        </>
+    );
 };
 
 export default Login;

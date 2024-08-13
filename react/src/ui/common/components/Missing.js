@@ -1,6 +1,5 @@
 import React from 'react'
 import "../static/Missing.css"
-import { VscError } from "react-icons/vsc";
 import backgroundimg from '../images/front-page-backgroundimg.png'
 const Missing = () => {
   return (

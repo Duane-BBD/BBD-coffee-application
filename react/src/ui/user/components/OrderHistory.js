@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import Navbar from '../../common/components/Navbar';
 import axios from '../../../api/axios';
 import "../static/MyOrders.css";
-import "../static/CombinedOrders.css";
 import "../static/OrderHistory.css";
 import OrdersHeader from './OrdersHeader';
 import UserOrderHistory from './UserOrderHistory';

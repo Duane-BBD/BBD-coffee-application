@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../static/CombinedOrders.css';
+import '../static/OrderHistory.css';
 
 const Header = () => {
     const location = useLocation();

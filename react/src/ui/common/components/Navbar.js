@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "../static/Navbar.css"
 import { PiHouseFill } from "react-icons/pi";
 import { IoBag } from "react-icons/io5";
