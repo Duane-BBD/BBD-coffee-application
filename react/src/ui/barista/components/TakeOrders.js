@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../static/TakeOrders.css';
 import Navbar from '../../common/components/Navbar';
 import OrderLists from './OrderLists';
 import { useNavigate } from 'react-router-dom';
+// import useUserDetails from '../../../hooks/useUserDetails';
+// import { detailsForBarista } from '../../../services/baristaDisplayService';
 
 const TakeOrders = () => {
     const [tab, setTab] = useState('incoming');
     const navigate = useNavigate();
+    // const [orderDetails, setOrderDetails] = useState([]);
+    // const { userDetails } = useUserDetails()
+
+    // useEffect(() => {
+        
+    //     detailsForBarista(userDetails.officeID, status, setOrderDetails);
+    // })
 
     const pastpage =() => {
         navigate('/barista/past-orders')

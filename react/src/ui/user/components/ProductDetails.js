@@ -10,6 +10,8 @@ import Navbar from '../../common/components/Navbar';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import useUserDetails from '../../../hooks/useUserDetails';
+import Modal from '../../common/components/Modal';
+import { MdCancel } from "react-icons/md";
 
 const ProductDetails = () => {
     const navigate = useNavigate();
@@ -17,14 +19,22 @@ const ProductDetails = () => {
     const searchParams = new URLSearchParams(location.search);
     let productID = searchParams.get('productID');
     let office = location.state || {}
+    const [count, setCount] = useState(0)
     const { userDetails } = useUserDetails();
-
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || [])
     const [product, setProduct] = useState({})
     const [milkType, setMilkType] = useState([])
     const [selected, setSelected] = useState({milkTypeID: 1, milkTypeValue: "Full cream milk"})
     const [note, setNote] = useState("")
-
+    const [open, setOpen] = React.useState(false);
+ 
+    const handleClose = () => {
+        setOpen(false);
+    };
+ 
+    const handleOpen = () => {
+        setOpen(true);
+    };
     useEffect(() => {
         productDetails(productID, setProduct);
     }, [product]);
@@ -36,11 +46,11 @@ const ProductDetails = () => {
     const addToCart = () => {
         let updatedCart = [...cart];
         let itemFound = false;
-    
         for (let i = 0; i < updatedCart.length; i++) {
             if (updatedCart[i].productName === product.productName && updatedCart[i].milkTypeValue === selected.milkTypeValue && updatedCart[i].note === note) {
                 updatedCart[i].quantity += 1;
                 itemFound = true;
+                setCount(updatedCart[i].quantity);
                 break;
             }
         }
@@ -55,11 +65,14 @@ const ProductDetails = () => {
                 note: note,
                 imageURL: product.imageURL
             });
+            setCount(count+1);
+
         }
+
         
         localStorage.setItem("cart", JSON.stringify(updatedCart));
         setCart(updatedCart);
-        alert("Added to cart!");
+        handleOpen();
     }
     
   return (
@@ -68,8 +81,18 @@ const ProductDetails = () => {
             <button className='arrow-left' onClick={e => navigate(-1)} >  
                 <MdKeyboardArrowLeft/>
             </button>  
-            <h4>ProductDetails</h4>
+            <h4> {product.productName}</h4>
         </div>
+        <Modal isOpen={open} onClose={handleClose}>
+            <div  className='modalcss'>
+                <div >
+                    {count} items added to cart!
+                </div>
+                <div className='modal-button'>
+                    <MdCancel />
+                </div>
+            </div>
+        </Modal>
         <div className='product-container'>
             <div className='product-content'>
                 <img className='productimg' src={product.imageURL}/>
