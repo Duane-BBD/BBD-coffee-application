@@ -134,26 +134,52 @@ header {
   width: 7rem;
   margin-right: 10px;
   border: none;
+  transition: background-color 0.3s ease;
 }
 
+.orderhist-status:hover {
+  filter: brightness(1.2); 
+}
+
+/* Status colors */
 .order-status.complete {
-  background-color: #30B700;
+  background-color: #4caf50;
+}
+
+.order-status.complete:hover {
+  background-color: #66bb6a; 
 }
 
 .order-status.failed {
   background-color: #D30000;
 }
 
+.order-status.failed:hover {
+  background-color: #e53935; 
+}
+
 .order-status.in-progress {
   background-color: #0080B7;
+}
+
+.order-status.in-progress:hover {
+  background-color: #2196f3; 
 }
 
 .order-status.pending {
   background-color: #808080;
 }
 
+.order-status.pending:hover {
+  background-color: #9e9e9e; 
+}
+
 .order-status.prepared {
-  background-color: #30B700;
+  background-color: #4caf50;
+}
+
+.order-status.prepared:hover {
+  background-color: #66bb6a; 
 }
 
 .dropdown-arrow {
@@ -310,6 +336,9 @@ hr {
   }
 }
 
+.orderhist-status.Cancelled:hover {
+  background-color: #e53935; 
+}
 
 @media (min-width:320px) and (max-width: 425px){
   header{

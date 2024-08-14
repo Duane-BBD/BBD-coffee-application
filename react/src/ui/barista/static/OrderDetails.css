@@ -56,7 +56,6 @@
 }
 
 .order-status {
-    /* background-color: #d3d3d3; */
     border: none;
     padding: 4px 12px;
     font-size: 14px;
@@ -117,15 +116,23 @@
 }
 
 .decline-button {
-    background-color: #f4f4f4;
+    background-color: rgb(243, 235, 235);
     color: #333;
     margin-right: 8px;
+}
+
+.decline-button:hover{
+    background-color: whitesmoke;
 }
 
 .accept-button {
     background-color: #8b5e3c;
     color: #fff;
     margin-left: 8px;
+}
+
+.accept-button:hover {
+    background-color: #83654f;
 }
 
 @media screen and (min-width:300px) and (max-width:375px) {
@@ -163,7 +170,6 @@
         font-weight: bold;
     }
     .order-status {
-        /* background-color: #d3d3d3; */
         border-radius: 0.4rem;
         padding: 0.4rem 1px;
         font-size: 0.8rem;
@@ -269,9 +275,7 @@
     }
     
     .order-status {
-        /* background-color: #d3d3d3; */
         border-radius: 1rem;
-        /* padding: 1rem 0.5rem; */
         text-align: center;
         font-size: 1rem;
         color: #fff;
