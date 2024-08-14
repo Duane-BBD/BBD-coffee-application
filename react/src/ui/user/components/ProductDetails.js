@@ -65,10 +65,9 @@ const ProductDetails = () => {
                 note: note,
                 imageURL: product.imageURL
             });
-            setCount(count+1);
+            setCount(1);
 
         }
-
         
         localStorage.setItem("cart", JSON.stringify(updatedCart));
         setCart(updatedCart);
@@ -83,16 +82,18 @@ const ProductDetails = () => {
             </button>  
             <h4> {product.productName}</h4>
         </div>
-        <Modal isOpen={open} onClose={handleClose}>
-            <div  className='modalcss'>
-                <div >
-                    {count} items added to cart!
+        <div className='modal-position'>
+            <Modal isOpen={open} onClose={handleClose}>
+                <div  className='modalcss'>
+                    <div >
+                        {count} {product.productName} added to cart!
+                    </div>
+                    <div className='modal-button'>
+                        <MdCancel />
+                    </div>
                 </div>
-                <div className='modal-button'>
-                    <MdCancel />
-                </div>
-            </div>
-        </Modal>
+            </Modal>
+        </div>
         <div className='product-container'>
             <div className='product-content'>
                 <img className='productimg' src={product.imageURL}/>

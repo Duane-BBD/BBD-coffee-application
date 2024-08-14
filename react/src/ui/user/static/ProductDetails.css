@@ -198,7 +198,11 @@
     position: absolute;
     right: 2%;
 }
-
+.modal-position{
+    position: sticky;
+    position: -webkit-sticky;
+    top:0%
+}
 @media screen and (max-width:375px) {       
     .milky {
         padding: 0.5rem;
