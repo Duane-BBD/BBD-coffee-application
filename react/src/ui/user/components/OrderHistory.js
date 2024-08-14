@@ -11,8 +11,6 @@ import useUserDetails from '../../../hooks/useUserDetails';
 const MyOrders = () => {
     const { userDetails } = useUserDetails()
     const [orders, setOrders] = useState([]);
-    const location = useLocation();
-
     useEffect(() => {
         const fetchOrders = async () => {
             try {

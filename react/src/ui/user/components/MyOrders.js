@@ -31,7 +31,7 @@ const MyOrders = () => {
     }
 
     return (
-        <div>
+        <div class="order-page">
             <OrdersHeader />
             <div className="empty-order">
                 <p><strong>Your order is empty!</strong></p>
