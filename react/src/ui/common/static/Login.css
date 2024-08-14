@@ -6,17 +6,17 @@
     margin: 0;
     padding: 0;
     height: 100%;
-    background: url('../images/coffee-bean-login.jpg') no-repeat center  fixed; 
+    background: url('../images/coffee-bean-login.jpg') no-repeat center fixed; 
     background-size: cover;
-  }
-  
+}
+
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center; 
     height: 100vh;
 }
-  
+
 .login-content {
     background: rgba(255, 255, 255, 0.9);
     padding: 40px;
@@ -24,13 +24,13 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
-  
+
 .login-content h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333;
+    color: #333333;
 }
-  
+
 .login-input {
     width: 100%;
     padding: 10px;
@@ -51,7 +51,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-  
+
 .login-button:hover {
     background-color: #543D39;
 }

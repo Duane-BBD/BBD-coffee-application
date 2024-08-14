@@ -11,7 +11,7 @@
     }
 }
 .missing-content{
-    background: rgba(255, 255, 255, 0.9);
+    background: #ffffffe6;
     padding: 3rem;
     margin-top: 15%;
     border-radius: 1rem;

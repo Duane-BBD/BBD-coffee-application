@@ -2,29 +2,28 @@
     text-align: center;
     margin-top: 10rem;
     margin-bottom: 15rem;
-  }
+}
   
-  .empty-order p {
+.empty-order p {
     font-size: 18px;
-    color: #555;
-  }
+    color: #555555;
+}
   
-  .view-menu-button {
+.view-menu-button {
     background-color: #8B4513;
-    color: white;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
     border-radius: .8rem;
-  }
+}
   
-  .view-menu-button:hover {
+.view-menu-button:hover {
     background-color: #A0522D;
-  }
+}
   
-  .navbar-spacing {
+.navbar-spacing {
     margin-top: 20px; 
-  }
-  
+}

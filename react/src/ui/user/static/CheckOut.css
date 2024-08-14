@@ -85,7 +85,7 @@ padding: 0%;
     position: fixed;
     bottom: 12%;
     background-color: #8B5E34;
-    color: #FFF;
+    color: #ffffff;
     padding: 15px;
     font-size: 18px;
     border: none;
@@ -104,10 +104,7 @@ padding: 0%;
 .footer-icon {
     width: 30px;
     height: 30px;
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     border-radius: 50%;
     cursor: pointer;
 }
-  
- 
-  

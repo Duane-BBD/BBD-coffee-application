@@ -5,7 +5,7 @@
     bottom: 0.1rem;
     width: 95%;
     border-radius: 1rem;
-    box-shadow: 0 2px 5px rgb(95, 92, 92);
+    box-shadow: 0 2px 5px #5f5c5c;
     z-index: 1000;
     justify-content: center;
     gap: 6rem;
@@ -13,9 +13,9 @@
     svg{
         font-size: 1.5rem;
     }
-    background-color: white;
-
+    background-color: #ffffff;
 }
+
 .nav{
     align-items: center;
     text-align: center;
@@ -23,24 +23,28 @@
     display: flex;
     flex-direction: column;
 }
+
 .home-button{
     background-color:transparent;
     border: none;
 
 }
+
 .home-change{
     border: none;
     color: #794D31;  
-
 }
+
 .home{
     border: none;
-    color: gray; 
+    color: #808080; 
 }
+
 .cart-button{
     border: none;
     background-color:transparent;
 }
+
 .content {
     padding-bottom: 5rem; 
 }

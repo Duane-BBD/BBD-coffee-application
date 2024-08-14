@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from '../../common/components/Navbar';
 import axios from '../../../api/axios';
 import "../static/MyOrders.css";
@@ -25,7 +25,7 @@ const MyOrders = () => {
         fetchOrders();
     }, [userDetails.userID]);
 
-    if (orders.length != 0) {
+    if (orders.length !== 0) {
         return <UserOrderHistory/>;
     }
 

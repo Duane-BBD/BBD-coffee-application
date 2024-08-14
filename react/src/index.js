@@ -12,14 +12,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <UserDetailsProvider>
-                <GoogleOAuthProvider 
-                    clientId={clientId}
-                    // projectId={process.env.configs.web.project_id}
-                    // authUri={process.env.configs.web.auth_uri}
-                    // clientSecret={process.env.configs.web.client_secret}
-                    // redirectUris={process.env.configs.web.redirect_uris}
-                    // javascriptOrigins={process.env.configs.web.javascript_origins}
-                >
+                <GoogleOAuthProvider clientId={clientId}>
                     <Routes>
                         <Route exact path="/*" element={<App/>} />
                     </Routes>
